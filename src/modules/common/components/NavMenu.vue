@@ -3,12 +3,13 @@
         <router-link to="/login"
             class="text-lg leading-none text-title dark:text-white transition-all duration-300 hover:text-primary hidden lg:block">Login</router-link>
         <button class="hdr_search_btn" aria-label="search">
-            <i class="mdi mdi-magnify text-title dark:text-white text-[24px] sm:text-[28px]"></i>
+            <i class="mdi mdi-magnify text-3xl dark:text-white text-[24px] sm:text-[28px]"></i>
         </button>
         <button class="relative hdr_wishList_btn" @click="wishList = !wishList">
             <span
                 class="absolute w-[22px] h-[22px] bg-secondary top-[0px] -right-[11px] rounded-full flex items-center justify-center text-xs leading-none text-white">14</span>
-            <i class="mdi mdi-cards-heart-outline text-title dark:text-white text-[24px] sm:text-[28px]"></i>
+            <i class="mdi mdi-cards-heart-outline text-3xl dark:text-white text-[50px] sm:text-[50px]"></i>
+            <!-- <i class="mdi mdi-cards-heart-outline text-4xl text-red-600 dark:text-white"></i> -->
         </button>
 
         <div v-if="wishList"
@@ -200,7 +201,7 @@
         <button class="relative hdr_cart_btn" @click="cartList = !cartList">
             <span
                 class="absolute w-[22px] h-[22px] bg-secondary top-[0px] -right-[11px] rounded-full flex items-center justify-center text-xs leading-none text-white">22</span>
-            <span class="mdi mdi-shopping-outline text-title dark:text-white text-[24px] sm:text-[28px]"></span>
+            <span class="mdi mdi-shopping-outline text-3xl dark:text-white text-[24px] sm:text-[28px]"></span>
         </button>
 
 
@@ -419,7 +420,7 @@
         <div class="w-[1px] bg-title/20 dark:bg-white/20 h-7 hidden sm:block"></div>
 
 
-        <!--  <SwitcherS/> TODO: Modo oscuro / modo claro-->
+        <SwitcherS />
 
 
     </div>
@@ -439,6 +440,7 @@ import w3 from '@/assets/images/wishlist/wishList-03.jpg'
 import w4 from '@/assets/images/wishlist/wishList-04.jpg'
 import w5 from '@/assets/images/wishlist/wishList-05.jpg'
 
+import SwitcherS from './switcher-s.vue'
 
 const emit = defineEmits(['toggle-change']);
 
