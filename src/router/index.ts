@@ -1,3 +1,4 @@
+import { authRoutes } from '@/modules/auth/routes'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -8,6 +9,8 @@ const router = createRouter({
             name: 'home',
             component: () => import('../modules/shop/views/HomeView.vue'),
         },
+
+        authRoutes
     ],
 })
 
