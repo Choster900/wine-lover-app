@@ -70,6 +70,8 @@ import Footer from '@/modules/common/components/Footer.vue';
 import ScrollToTop from '@/modules/common/components/ScrollToTop.vue';
 import { loginAction } from '../actions/login.action';
 import { useRouter } from 'vue-router';
+import { useAuthStore } from '../stores/auth';
+
 onMounted(() => {
     Aos.init()
 })
@@ -77,11 +79,13 @@ onMounted(() => {
 const email = ref('')
 const password = ref('')
 const router = useRouter()
+const auth = useAuthStore()  // Accede al store de autenticación
+
 
 const login = async () => {
     try {
         await loginAction(email.value, password.value)
-        router.push('/') // redirige al home u otra ruta después del login
+        router.push('/') // Redirige al home u otra ruta después del login
     } catch (error) {
         alert('Login failed: ' + error.message)
     }
