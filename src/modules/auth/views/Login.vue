@@ -63,12 +63,26 @@
 <script setup>
 import Navbar from '@/modules/common/components/Navbar.vue';
 import loginImg from '@/assets/images/bg/login.jpg'
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import Aos from 'aos';
 import Footer from '@/modules/common/components/Footer.vue';
 import ScrollToTop from '@/modules/common/components/ScrollToTop.vue';
-
+import { loginAction } from '../actions/login.action';
+import { useRouter } from 'vue-router';
 onMounted(() => {
     Aos.init()
 })
+
+const email = ref('')
+const password = ref('')
+const router = useRouter()
+
+const login = async () => {
+    try {
+        await loginAction(email.value, password.value)
+        router.push('/') // redirige al home u otra ruta después del login
+    } catch (error) {
+        alert('Login failed: ' + error.message)
+    }
+}
 </script>
