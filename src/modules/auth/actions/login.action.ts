@@ -1,4 +1,4 @@
-import { backendApi } from '@/api/backendApi'
+import backendApi from '@/api/backendApi'
 import type { AuthResponse } from '../interfaces'
 
 export const loginAction = async (email: string, password: string): Promise<void> => {
@@ -11,8 +11,8 @@ export const loginAction = async (email: string, password: string): Promise<void
         console.log(data);
 
 
-          localStorage.setItem('token', data.data.token)
-          localStorage.setItem('user', JSON.stringify(data.data.user))
+        localStorage.setItem('token', data.data.token)
+        localStorage.setItem('user', JSON.stringify(data.data.user))
     } catch (error: any) {
         const message = error.response?.data?.message || 'Error al iniciar sesión'
         throw new Error(message)
