@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <Footer />
+        <FooterOne />
 
         <ScrollToTop />
     </div>
@@ -66,7 +66,7 @@ import Navbar from '@/modules/common/components/Navbar.vue';
 import loginImg from '@/assets/images/bg/login.jpg'
 import { onMounted, ref } from 'vue';
 import Aos from 'aos';
-import Footer from '@/modules/common/components/Footer.vue';
+import FooterOne from '@/modules/common/components/FooterOne.vue';
 import ScrollToTop from '@/modules/common/components/ScrollToTop.vue';
 import { loginAction } from '../actions/login.action';
 import { useRouter } from 'vue-router';

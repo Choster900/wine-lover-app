@@ -1,10 +1,10 @@
-import w1 from '@/assets/images/gallery/wishList-01.jpg'
+/* import w1 from '@/assets/images/gallery/wishList-01.jpg'
 import w2 from '@/assets/images/gallery/wishList-02.jpg'
 import w3 from '@/assets/images/gallery/wishList-03.jpg'
 import w4 from '@/assets/images/gallery/wishList-04.jpg'
-import w5 from '@/assets/images/gallery/wishList-05.jpg'
+import w5 from '@/assets/images/gallery/wishList-05.jpg' */
 
-export const wishListData = [
+/* export const wishListData = [
     {
         image:w1,
         name:'Sofa',
@@ -63,7 +63,7 @@ export const cartList = [
         desc:'Premium Quality Vase'
     },
 ]
-
+ */
 export const footerLink1 = [
     {
         name:'About',
