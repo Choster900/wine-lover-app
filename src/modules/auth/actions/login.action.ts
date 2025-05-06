@@ -1,17 +1,20 @@
+import { backendApi } from '@/api/backendApi'
+import type { AuthResponse } from '../interfaces'
 
-export const loginAction = async (email: string, password: string) => {
-    const response = await fetch('https://tu-api.com/api/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-    })
+export const loginAction = async (email: string, password: string): Promise<void> => {
+    try {
+        const { data } = await backendApi.post<AuthResponse>('/auth/login', {
+            email,
+            password,
+        })
 
-    if (!response.ok) {
-        throw new Error('Credenciales inválidas')
+        console.log(data);
+
+
+          localStorage.setItem('token', data.data.token)
+          localStorage.setItem('user', JSON.stringify(data.data.user))
+    } catch (error: any) {
+        const message = error.response?.data?.message || 'Error al iniciar sesión'
+        throw new Error(message)
     }
-
-    const data = await response.json()
-    localStorage.setItem('token', data.token)
 }

@@ -15,14 +15,14 @@
                     <div class="mt-7" data-aos="fade-up" data-aos-delay="200">
                         <label
                             class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Email</label>
-                        <input
+                        <input v-model="email"
                             class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300"
                             type="email" placeholder="Enter your email address">
                     </div>
                     <div class="mt-5" data-aos="fade-up" data-aos-delay="300">
                         <label
                             class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Password</label>
-                        <input
+                        <input v-model="password"
                             class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300 placeholder:text-xl placeholder:transform placeholder:translate-y-[10px]"
                             type="password" placeholder="* * * * * * * *">
                     </div>
@@ -43,8 +43,9 @@
                         </label>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="500">
-                        <router-link to="#" class="btn btn-theme-solid mt-[15px]"
-                            data-text="Login"><span>Login</span></router-link>
+                        <button @click="login" class="btn btn-theme-solid mt-[15px]" data-text="Login">
+                            <span>Login</span>
+                        </button>
                     </div>
                     <p class="text-lg mt-[15px]" data-aos="fade-up" data-aos-delay="600">Don't have an account yet?
                         <router-link to="/register"
