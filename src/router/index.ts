@@ -1,4 +1,5 @@
 import { authRoutes } from '@/modules/auth/routes'
+import { productRoutes } from '@/modules/products/routes'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -15,7 +16,8 @@ const router = createRouter({
             component: () => null,
             meta: { requiresAdmin: true }
         },
-        authRoutes
+        authRoutes,
+        productRoutes,
     ],
 })
 
