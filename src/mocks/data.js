@@ -49,6 +49,18 @@ import partner13 from '@/assets/images/partner/partner-13.svg'
 import partner14 from '@/assets/images/partner/partner-14.svg'
 import partner15 from '@/assets/images/partner/partner-15.svg'
 
+
+import shop01 from '@/assets/images/gallery/shop-04/shop-01.jpg'
+import shop02 from '@/assets/images/gallery/shop-04/shop-02.jpg'
+import shop03 from '@/assets/images/gallery/shop-04/shop-03.jpg'
+import shop04 from '@/assets/images/gallery/shop-04/shop-04.jpg'
+import shop05 from '@/assets/images/gallery/shop-04/shop-05.jpg'
+import shop06 from '@/assets/images/gallery/shop-04/shop-06.jpg'
+import shop07 from '@/assets/images/gallery/shop-04/shop-07.jpg'
+import shop08 from '@/assets/images/gallery/shop-04/shop-08.jpg'
+import shop09 from '@/assets/images/gallery/shop-04/shop-09.jpg'
+
+
 /* import fea1 from '@/assets/images/svg/fea-1.svg'
 import fea2 from '@/assets/images/svg/fea-2.svg'
 import fea3 from '@/assets/images/svg/fea-3.svg'
@@ -90,15 +102,7 @@ import cart3 from '@/assets/images/gallery/cart/cart-03.jpg'
 import cart4 from '@/assets/images/gallery/cart/cart-04.jpg'
 import cart5 from '@/assets/images/gallery/cart/cart-05.jpg'
 
-import shop01 from '@/assets/images/gallery/shop-04/shop-01.jpg'
-import shop02 from '@/assets/images/gallery/shop-04/shop-02.jpg'
-import shop03 from '@/assets/images/gallery/shop-04/shop-03.jpg'
-import shop04 from '@/assets/images/gallery/shop-04/shop-04.jpg'
-import shop05 from '@/assets/images/gallery/shop-04/shop-05.jpg'
-import shop06 from '@/assets/images/gallery/shop-04/shop-06.jpg'
-import shop07 from '@/assets/images/gallery/shop-04/shop-07.jpg'
-import shop08 from '@/assets/images/gallery/shop-04/shop-08.jpg'
-import shop09 from '@/assets/images/gallery/shop-04/shop-09.jpg' */
+ */
 
 /* export const categoryOne = [
     {
@@ -135,121 +139,196 @@ import shop09 from '@/assets/images/gallery/shop-04/shop-09.jpg' */
 ] */
 
 export const productList = [
-  {
-    id: 1,
-    image: shop1,
-    tag: 'Hot Sale',
-    price: '$25.75',
-    name: 'White Minimal Chair'
-  },
-  {
-    id: 2,
-    image: shop2,
-    tag: 'NEW',
-    price: '$122.75',
-    name: 'Preminu Luxury Sofa'
-  },
-  {
-    id: 3,
-    image: shop3,
-    tag: '10% OFF',
-    price: '$140.99',
-    name: 'Table With Pops'
-  },
-  {
-    id: 4,
-    image: shop4,
-    tag: '',
-    price: '$122.75',
-    name: 'Luxury Lamp for Wall'
-  },
-  {
-    id: 5,
-    image: shop5,
-    tag: 'Hot Sale',
-    price: '$140.99',
-    name: 'White Minimal Chair'
-  },
-  {
-    id: 6,
-    image: shop6,
-    tag: '',
-    price: '$122.75',
-    name: 'Luxury Vase for Table'
-  },
-  {
-    id: 7,
-    image: shop7,
-    tag: '',
-    price: '$122.75 - $140.99',
-    name: 'New Modern Luxury Table with Pops Lorem ipsum Furniture'
-  },
-  {
-    id: 8,
-    image: shop8,
-    tag: '10% OFF',
-    price: '$122.75',
-    name: 'Modern Logn Table'
-  },
-  {
-    id: 9,
-    image: shop9,
-    tag: '',
-    price: '$122.75',
-    name: 'Luxury Lamp for Wall'
-  },
-  {
-    id: 10,
-    image: shop10,
-    tag: '',
-    price: '$122.75',
-    name: 'Luxury Lamp for Wall'
-  },
-  {
-    id: 11,
-    image: shop1,
-    tag: '',
-    price: '$122.75',
-    name: 'Luxury Lamp for Wall'
-  },
-  {
-    id: 12,
-    image: shop2,
-    tag: '',
-    price: '$122.75',
-    name: 'White Minimal Chair'
-  },
+    {
+        id: 1,
+        image: shop1,
+        tag: 'Hot Sale',
+        price: '$25.75',
+        name: 'White Minimal Chair'
+    },
+    {
+        id: 2,
+        image: shop2,
+        tag: 'NEW',
+        price: '$122.75',
+        name: 'Preminu Luxury Sofa'
+    },
+    {
+        id: 3,
+        image: shop3,
+        tag: '10% OFF',
+        price: '$140.99',
+        name: 'Table With Pops'
+    },
+    {
+        id: 4,
+        image: shop4,
+        tag: '',
+        price: '$122.75',
+        name: 'Luxury Lamp for Wall'
+    },
+    {
+        id: 5,
+        image: shop5,
+        tag: 'Hot Sale',
+        price: '$140.99',
+        name: 'White Minimal Chair'
+    },
+    {
+        id: 6,
+        image: shop6,
+        tag: '',
+        price: '$122.75',
+        name: 'Luxury Vase for Table'
+    },
+    {
+        id: 7,
+        image: shop7,
+        tag: '',
+        price: '$122.75 - $140.99',
+        name: 'New Modern Luxury Table with Pops Lorem ipsum Furniture'
+    },
+    {
+        id: 8,
+        image: shop8,
+        tag: '10% OFF',
+        price: '$122.75',
+        name: 'Modern Logn Table'
+    },
+    {
+        id: 9,
+        image: shop9,
+        tag: '',
+        price: '$122.75',
+        name: 'Luxury Lamp for Wall'
+    },
+    {
+        id: 10,
+        image: shop10,
+        tag: '',
+        price: '$122.75',
+        name: 'Luxury Lamp for Wall'
+    },
+    {
+        id: 11,
+        image: shop1,
+        tag: '',
+        price: '$122.75',
+        name: 'Luxury Lamp for Wall'
+    },
+    {
+        id: 12,
+        image: shop2,
+        tag: '',
+        price: '$122.75',
+        name: 'White Minimal Chair'
+    },
 ]
 
 export const partnerData = [
-  {
-    image: partner1,
-    image2: partner01
-  },
-  {
-    image: partner2,
-    image2: partner02
-  },
-  {
-    image: partner3,
-    image2: partner03
-  },
-  {
-    image: partner4,
-    image2: partner04
-  },
-  {
-    image: partner5,
-    image2: partner05
-  },
-  {
-    image: partner6,
-    image2: partner06
-  },
-  {
-    image: partner8,
-    image2: partner08
-  },
+    {
+        image: partner1,
+        image2: partner01
+    },
+    {
+        image: partner2,
+        image2: partner02
+    },
+    {
+        image: partner3,
+        image2: partner03
+    },
+    {
+        image: partner4,
+        image2: partner04
+    },
+    {
+        image: partner5,
+        image2: partner05
+    },
+    {
+        image: partner6,
+        image2: partner06
+    },
+    {
+        image: partner8,
+        image2: partner08
+    },
+]
+
+export const productListTwo = [
+    {
+        id: 1,
+        image: shop01,
+        offer: true,
+        price: '$122.75',
+        category: ['Interior'],
+        name: 'Classic Table Lamp'
+    },
+    {
+        id: 2,
+        image: shop02,
+        offer: false,
+        price: '$122.75',
+        category: ['Table'],
+        name: 'Classic Table Lamp'
+    },
+    {
+        id: 3,
+        image: shop03,
+        offer: true,
+        price: '$122.75',
+        category: ['Interior', 'Vase',],
+        name: 'Classic Table Lamp'
+    },
+    {
+        id: 4,
+        image: shop04,
+        offer: false,
+        price: '$122.75',
+        category: ['Table', 'Design'],
+        name: 'Classic Table Lamp'
+    },
+    {
+        id: 5,
+        image: shop05,
+        offer: true,
+        price: '$122.75',
+        category: ['Table'],
+        name: 'Classic Table Lamp'
+    },
+    {
+        id: 6,
+        image: shop06,
+        offer: false,
+        price: '$122.75',
+        category: ['Vase'],
+        name: 'Classic Table Lamp'
+    },
+    {
+        id: 7,
+        image: shop07,
+        offer: false,
+        price: '$122.75',
+        category: ['Table', 'Design'],
+        name: 'Classic Table Lamp'
+    },
+    {
+        id: 8,
+        image: shop08,
+        offer: false,
+        price: '$122.75',
+        category: ['Vase'],
+        name: 'Classic Table Lamp'
+    },
+    {
+        id: 9,
+        image: shop09,
+        offer: false,
+        price: '$122.75',
+        category: ['Design'],
+        name: 'Classic Table Lamp'
+    },
 ]
 
 /* export const featureOne = [
@@ -652,80 +731,7 @@ export const cartData = [
     },
 ]
 
-export const productListTwo = [
-    {
-        id:1,
-        image:shop01,
-        offer:true,
-        price:'$122.75',
-        category:['Interior'],
-        name:'Classic Table Lamp'
-    },
-    {
-        id:2,
-        image:shop02,
-        offer:false,
-        price:'$122.75',
-        category:['Table'],
-        name:'Classic Table Lamp'
-    },
-    {
-        id:3,
-        image:shop03,
-        offer:true,
-        price:'$122.75',
-        category:['Interior', 'Vase',],
-        name:'Classic Table Lamp'
-    },
-    {
-        id:4,
-        image:shop04,
-        offer:false,
-        price:'$122.75',
-        category:['Table', 'Design'],
-        name:'Classic Table Lamp'
-    },
-    {
-        id:5,
-        image:shop05,
-        offer:true,
-        price:'$122.75',
-        category:['Table'],
-        name:'Classic Table Lamp'
-    },
-    {
-        id:6,
-        image:shop06,
-        offer:false,
-        price:'$122.75',
-        category:['Vase'],
-        name:'Classic Table Lamp'
-    },
-    {
-        id:7,
-        image:shop07,
-        offer:false,
-        price:'$122.75',
-        category:['Table', 'Design'],
-        name:'Classic Table Lamp'
-    },
-    {
-        id:8,
-        image:shop08,
-        offer:false,
-        price:'$122.75',
-        category:['Vase'],
-        name:'Classic Table Lamp'
-    },
-    {
-        id:9,
-        image:shop09,
-        offer:false,
-        price:'$122.75',
-        category:[ 'Design'],
-        name:'Classic Table Lamp'
-    },
-]
+
 
 export const productTag = [
     'Chair',
