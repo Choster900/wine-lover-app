@@ -1,7 +1,8 @@
 <template>
 
 
-    <div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70">
+    <div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70"
+        :style="{ backgroundImage: 'url(' + bg + ')' }">
         <div class="text-center w-full">
             <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Shop</h2>
             <ul
@@ -16,7 +17,7 @@
     <div class="s-py-100">
         <div class="container">
             <div class="max-w-[1477px] mx-auto flex items-start justify-between gap-8 md:gap-10 flex-col lg:flex-row">
-                <div class="grid gap-[15px] lg:max-w-[300px] w-full sm:grid-cols-2 lg:grid-cols-1"  data-aos="fade-up">
+                <div class="grid gap-[15px] lg:max-w-[300px] w-full sm:grid-cols-2 lg:grid-cols-1" data-aos="fade-up">
                     <CategoriesFilter />
                     <ItemsType />
                     <BrandsFilter />
@@ -41,6 +42,8 @@
 
 </template>
 <script setup>
+import bg from '@/assets/images/shortcode/breadcumb.jpg'
+
 import { onMounted, ref } from 'vue'
 import CategoriesFilter from '../components/CategoriesFilter.vue';
 import ItemsType from '../components/ItemsType.vue';

@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router'
 import ShopLayout from '../layout/ShopLayout.vue'
-import ProductListView from '../views/ProductListView.vue'
+import ProductListView from '../views/Products.vue'
 
 export const productRoutes: RouteRecordRaw = {
     path: '/products',
