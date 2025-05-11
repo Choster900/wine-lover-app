@@ -330,7 +330,86 @@ export const productListTwo = [
         name: 'Classic Table Lamp'
     },
 ]
+export const venderInfo = [
+    {
+        name: 'John Furniture House',
+        vendor: 'John Smith Doe',
+        shop: 'West New York, NY, 1234589',
+        mail: 'johnmsmith@gmail.com',
+        call: '+11 - 01234 5678'
+    },
+    {
+        name: 'Furniture Gallery',
+        vendor: 'John Smith Doe',
+        shop: 'West New York, NY, 1234589',
+        mail: 'johnmsmith@gmail.com',
+        call: '+11 - 01234 5678'
+    },
+]
 
+export const detailReview = [
+    {
+        name: 'Merlina Quexy',
+        desc: `Furnixar's products have transformed my living space with their stylish designs and impeccable craftsmanship.`
+    },
+    {
+        name: 'Merlina Quexy',
+        desc: `Furnixar's products have transformed my living space with their stylish designs and impeccable craftsmanship.`
+    },
+    {
+        name: 'Merlina Quexy',
+        desc: `Furnixar's products have transformed my living space with their stylish designs and impeccable craftsmanship.`
+    },
+]
+
+export const shippingAbout = [
+    {
+        title: 'For Shipping',
+        desc: `Shipping times may vary based on your location and the selected delivery option. Please review our shipping policies for details on processing times, charges, and tracking updates. Contact us for any shipping-related inquiries or assistance.`
+    },
+    {
+        title: 'Item Return',
+        desc: `We offer a hassle-free process to ensure your satisfaction. Please review our return policy for eligibility and steps to initiate a return. we offer a hassle-free process to ensure your satisfaction. Please review our return policy for eligibility and steps to initiate a return.`
+    },
+    {
+        title: 'Accepted Problem Issue',
+        desc: `Choose from multiple methods, including credit cards, debit cards, and online payment gateways. All transactions are encrypted to ensure your information remains safe. For any payment-related concerns, our support team is here to assist.`
+    },
+]
+export const pricingData = [
+    {
+        title: 'Basic Plan',
+        month: '$9',
+        year: '$99',
+        feature: [
+            'Access one person',
+            'Get access to 230+ Product',
+            'Advance Security System'
+        ]
+    },
+    {
+        title: 'Standard Plan',
+        month: '$19',
+        year: '$199',
+        feature: [
+            'Access two person.',
+            'Get access to 230+ Product',
+            'Advance Security System'
+        ]
+    },
+    {
+        title: 'Premium Plan',
+        month: '$99',
+        year: '$999',
+        feature: [
+            'Access five person',
+            'Get access to 230+ Product',
+            'Advance Security System',
+            'Buy one time get life time access',
+            'Lorem ipsum dolor sit amet.'
+        ]
+    },
+]
 /* export const featureOne = [
     {
         id:1,
@@ -523,40 +602,7 @@ export const blogTwoData = [
     },
 ]
 
-export const pricingData = [
-    {
-        title:'Basic Plan',
-        month:'$9',
-        year:'$99',
-        feature:[
-            'Access one person',
-            'Get access to 230+ Product',
-            'Advance Security System'
-        ]
-    },
-    {
-        title:'Standard Plan',
-        month:'$19',
-        year:'$199',
-        feature:[
-            'Access two person.',
-            'Get access to 230+ Product',
-            'Advance Security System'
-        ]
-    },
-    {
-        title:'Premium Plan',
-        month:'$99',
-        year:'$999',
-        feature:[
-            'Access five person',
-            'Get access to 230+ Product',
-            'Advance Security System',
-            'Buy one time get life time access',
-            'Lorem ipsum dolor sit amet.'
-        ]
-    },
-]
+
 
 export const teamDataTwo = [
     {
@@ -741,50 +787,5 @@ export const productTag = [
     'Lamp'
 ]
 
-export const venderInfo = [
-    {
-        name:'John Furniture House',
-        vendor:'John Smith Doe',
-        shop:'West New York, NY, 1234589',
-        mail:'johnmsmith@gmail.com',
-        call:'+11 - 01234 5678'
-    },
-    {
-        name:'Furniture Gallery',
-        vendor:'John Smith Doe',
-        shop:'West New York, NY, 1234589',
-        mail:'johnmsmith@gmail.com',
-        call:'+11 - 01234 5678'
-    },
-]
 
-export const detailReview = [
-    {
-        name:'Merlina Quexy',
-        desc:`Furnixar's products have transformed my living space with their stylish designs and impeccable craftsmanship.`
-    },
-    {
-        name:'Merlina Quexy',
-        desc:`Furnixar's products have transformed my living space with their stylish designs and impeccable craftsmanship.`
-    },
-    {
-        name:'Merlina Quexy',
-        desc:`Furnixar's products have transformed my living space with their stylish designs and impeccable craftsmanship.`
-    },
-]
-
-export const shippingAbout = [
-    {
-        title:'For Shipping',
-        desc:`Shipping times may vary based on your location and the selected delivery option. Please review our shipping policies for details on processing times, charges, and tracking updates. Contact us for any shipping-related inquiries or assistance.`
-    },
-    {
-        title:'Item Return',
-        desc:`We offer a hassle-free process to ensure your satisfaction. Please review our return policy for eligibility and steps to initiate a return. we offer a hassle-free process to ensure your satisfaction. Please review our return policy for eligibility and steps to initiate a return.`
-    },
-    {
-        title:'Accepted Problem Issue',
-        desc:`Choose from multiple methods, including credit cards, debit cards, and online payment gateways. All transactions are encrypted to ensure your information remains safe. For any payment-related concerns, our support team is here to assist.`
-    },
-]
  */
