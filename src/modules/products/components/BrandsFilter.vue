@@ -14,7 +14,7 @@
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
 
@@ -34,11 +34,13 @@ const options = [
     "Plastic Furniture",
     "Luxury Furniture",
 ];
-const handleSelect = (option, event) => {
-    event.stopPropagation();
+
+const handleSelect = (option: string, event: MouseEvent) => {
+    event.stopPropagation()
     selectedOption.value = option
     isOpen.value = false
 }
+
 </script>
 
 <style lang="scss" scoped></style>

@@ -41,7 +41,7 @@
 
 
 </template>
-<script setup>
+<script setup lang="ts">
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
 
 import { onMounted, ref } from 'vue'
@@ -50,7 +50,7 @@ import ItemsType from '../components/ItemsType.vue';
 import BrandsFilter from '../components/BrandsFilter.vue';
 import RangePrice from '../components/RangePrice.vue';
 import card from '@/assets/images/thumb/shop-card.jpg'
-import { productList } from '@/mocks/data';
+import { productList } from '@/mocks/data.ts';
 import ProductsCards from '../components/ProductsCards.vue';
 import Aos from 'aos';
 

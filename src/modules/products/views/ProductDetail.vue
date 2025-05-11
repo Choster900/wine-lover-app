@@ -254,7 +254,7 @@
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 import product1 from '@/assets/images/gallery/product-detls/product-01.jpg'
 import product2 from '@/assets/images/gallery/product-detls/product-02.jpg'
 import product3 from '@/assets/images/gallery/product-detls/product-03.jpg'
@@ -262,13 +262,14 @@ import product4 from '@/assets/images/gallery/product-detls/product-04.jpg'
 
 import Aos from 'aos';
 import { computed, onMounted, ref, watch } from 'vue';
-import { productList } from '@/mocks/data';
+import { productList } from '@/mocks/data.ts';
 import { useRoute } from 'vue-router'
 import DetailTab from '@/modules/common/components/DetailTab.vue';
 import ProductDetailLayout from '@/modules/common/components/ProductDetailLayout.vue';
+import { type Product } from '@/mocks/data';
 
 const route = useRoute()
-const data = ref(null)
+const data = ref<Product | null>(null)
 
 onMounted(() => {
     Aos.init()

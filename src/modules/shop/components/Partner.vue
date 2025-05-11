@@ -18,9 +18,9 @@
     </Swiper>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
-import { partnerData } from '@/mocks/data';
+import { partnerData } from '@/mocks/data.ts';
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay} from 'swiper/modules';

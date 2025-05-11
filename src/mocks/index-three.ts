@@ -12,38 +12,38 @@ import blog2 from '@/assets/img/shortcode/blog/blog-06.jpg'
 import blog3 from '@/assets/img/home-v3/blog.jpg' */
 
 export const servicesData = [
-  {
-    id: 1,
-    image: s1,
-    image2: sl1,
-    title: 'Luxury Sofa Set',
-    product: '26 Products',
-    desc: 'Elevate your living space with unparalleled comfort and style. Discover the epitome of luxury with our exquisite sofa sets.'
-  },
-  {
-    id: 2,
-    image: s2,
-    image2: sl2,
-    title: 'Table & Chair',
-    product: '40 Products',
-    desc: 'Elevate your living space with unparalleled comfort and style. Discover the epitome of luxury with our exquisite sofa sets.'
-  },
-  {
-    id: 3,
-    image: s3,
-    image2: sl3,
-    title: 'Vases & Lamp',
-    product: '14 Products',
-    desc: 'Elevate your living space with unparalleled comfort and style. Discover the epitome of luxury with our exquisite sofa sets.'
-  },
-  {
-    id: 4,
-    image: s4,
-    image2: sl4,
-    title: 'Interior Collection',
-    product: '32 Products',
-    desc: 'Elevate your living space with unparalleled comfort and style. Discover the epitome of luxury with our exquisite sofa sets.'
-  },
+    {
+        id: 1,
+        image: s1,
+        image2: sl1,
+        title: 'Luxury Sofa Set',
+        product: '26 Products',
+        desc: 'Elevate your living space with unparalleled comfort and style. Discover the epitome of luxury with our exquisite sofa sets.'
+    },
+    {
+        id: 2,
+        image: s2,
+        image2: sl2,
+        title: 'Table & Chair',
+        product: '40 Products',
+        desc: 'Elevate your living space with unparalleled comfort and style. Discover the epitome of luxury with our exquisite sofa sets.'
+    },
+    {
+        id: 3,
+        image: s3,
+        image2: sl3,
+        title: 'Vases & Lamp',
+        product: '14 Products',
+        desc: 'Elevate your living space with unparalleled comfort and style. Discover the epitome of luxury with our exquisite sofa sets.'
+    },
+    {
+        id: 4,
+        image: s4,
+        image2: sl4,
+        title: 'Interior Collection',
+        product: '32 Products',
+        desc: 'Elevate your living space with unparalleled comfort and style. Discover the epitome of luxury with our exquisite sofa sets.'
+    },
 ]
 
 /* export const blogData = [

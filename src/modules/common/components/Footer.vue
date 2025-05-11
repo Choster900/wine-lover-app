@@ -65,12 +65,12 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
 import { ref } from 'vue';
 import logoDark from '@/assets/images/svg/logo.svg'
 import logoLight from '@/assets/images/svg/logo-light.svg'
-import { footerLink1, footerLink2, footerLink3, footerLink4 } from '@/mocks/nav-data';
+import { footerLink1, footerLink2, footerLink3, footerLink4 } from '@/mocks/nav-data.ts';
 
 const year = ref(new Date().getFullYear());
 

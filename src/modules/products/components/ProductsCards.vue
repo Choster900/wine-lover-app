@@ -60,13 +60,14 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
+import { type Product } from '@/mocks/data';
 import { defineProps } from 'vue';
 
-defineProps({
-    productList: Array,
-    classList: String
-})
 
+defineProps<{
+    productList: Product[]
+    classList: string
+}>()
 </script>

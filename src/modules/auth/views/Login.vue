@@ -61,7 +61,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Navbar from '@/modules/common/components/Navbar.vue';
 import loginImg from '@/assets/images/bg/login.jpg'
 import { onMounted, ref } from 'vue';

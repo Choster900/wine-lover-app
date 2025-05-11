@@ -81,9 +81,9 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
-import { detailReview, shippingAbout, venderInfo } from '@/mocks/data';
+import { detailReview, shippingAbout, venderInfo } from '@/mocks/data.ts';
 
 const activeTab = ref(1)
 

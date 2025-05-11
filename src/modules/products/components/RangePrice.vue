@@ -16,7 +16,13 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+
+interface RangeEvent {
+    minValue: number
+    maxValue: number
+}
+
 import MultiRangeSlider from "multi-range-slider-vue";
 import { ref } from "vue";
 
@@ -24,7 +30,7 @@ import { ref } from "vue";
 const barMinValue = ref(10)
 const barMaxValue = ref(90)
 
-const UpdateValues = (e) => {
+const UpdateValues = (e: RangeEvent) => {
     barMinValue.value = e.minValue;
     barMaxValue.value = e.maxValue;
 }

@@ -78,7 +78,7 @@
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue';
 
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
@@ -86,7 +86,9 @@ import about from '@/assets/images/svg/about.svg'
 
 import Aos from 'aos';
 
-import { pricingData } from '@/mocks/data';
+
+
+import { pricingData } from '@/mocks/data.ts';
 import Partner from '@/modules/shop/components/Partner.vue';
 
 

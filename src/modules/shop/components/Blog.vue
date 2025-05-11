@@ -10,8 +10,8 @@
                 <ul class="text-[15px] font-medium flex items-center justify-center gap-2 md:gap-4">
                     <li class="dark:text-white leading-none">{{ item.date }}</li>
                     <li class="w-1 h-1 rounded-full bg-primary relative"></li>
-                    <li class="leading-none"><router-link class="text-primary leading-none"
-                            to="/blog-tag">{{ item.tag }}</router-link></li>
+                    <li class="leading-none"><router-link class="text-primary leading-none" to="/blog-tag">{{ item.tag
+                    }}</router-link></li>
                 </ul>
                 <h5 class="mt-3 text-xl font-medium dark:text-white leading-[1.5]"><router-link to="/blog-details-v1"
                         class="text-underline">{{ item.title }} </router-link></h5>
@@ -25,8 +25,8 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
-import { blogData2 } from '@/mocks/index-five';
+import { blogData2 } from '@/mocks/index-five.ts';
 
 </script>

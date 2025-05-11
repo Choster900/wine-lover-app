@@ -138,7 +138,15 @@ import cart5 from '@/assets/images/gallery/cart/cart-05.jpg'
 
 ] */
 
-export const productList = [
+export interface Product {
+    id: number
+    tag: string
+    name: string
+    price: string
+    image: string
+    // otras propiedades necesarias
+}
+export const productList: Product[] = [
     {
         id: 1,
         image: shop1,

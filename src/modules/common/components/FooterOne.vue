@@ -126,7 +126,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import logo from '@/assets/images/footer-logo.svg'
 import bg from '@/assets/images/bg/footer.jpg'
 import { footerLink1, footerLink2, footerLink3, footerLink4 } from '@/mocks/nav-data';

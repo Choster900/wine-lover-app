@@ -208,7 +208,7 @@
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted } from 'vue';
 
 import Navbar from '@/modules/common/components/Navbar.vue';
@@ -228,8 +228,8 @@ import product2 from '@/assets/images/home-v3/pdct-02.jpg'
 import Aos from 'aos';
 
 
-import { productList } from '@/mocks/data';
-import { servicesData } from '@/mocks/index-three';
+import { productList } from '@/mocks/data.ts';
+import { servicesData } from '@/mocks/index-three.ts';
 
 onMounted(() => {
     Aos.init()

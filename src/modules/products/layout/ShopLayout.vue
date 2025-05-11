@@ -13,7 +13,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Footer from '@/modules/common/components/Footer.vue';
 import FooterOne from '@/modules/common/components/FooterOne.vue';
 import Navbar from '@/modules/common/components/Navbar.vue';

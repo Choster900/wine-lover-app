@@ -85,22 +85,22 @@ export const blogData = [
 ] */
 
 export const blogData2 = [
-  {
-    image: blog4,
-    date: '13th March 2025',
-    tag: 'Home Decor',
-    title: 'The Art of Interior Design: Choosing the Perfect Furniture Online'
-  },
-  {
-    image: blog5,
-    date: '5th May 2025',
-    tag: 'Interior',
-    title: 'Transform Your Space: Top Furniture Trends for Modern Homes'
-  },
-  {
-    image: blog6,
-    date: '19th June 2025',
-    tag: 'Interior',
-    title: 'How to Choose the Perfect Furniture for Every Room in Your Home'
-  },
+    {
+        image: blog4,
+        date: '13th March 2025',
+        tag: 'Home Decor',
+        title: 'The Art of Interior Design: Choosing the Perfect Furniture Online'
+    },
+    {
+        image: blog5,
+        date: '5th May 2025',
+        tag: 'Interior',
+        title: 'Transform Your Space: Top Furniture Trends for Modern Homes'
+    },
+    {
+        image: blog6,
+        date: '19th June 2025',
+        tag: 'Interior',
+        title: 'How to Choose the Perfect Furniture for Every Room in Your Home'
+    },
 ]

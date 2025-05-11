@@ -6,11 +6,11 @@
     </label>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import moon from '@/assets/images/icon/simple-sun.svg'
 import sun from '@/assets/images/icon/simple-light.svg'
 
-function changeMode(mode) {
+function changeMode(mode: string) {
     switch (mode) {
         case 'mode':
             if (document.documentElement.className.includes("dark")) {
@@ -21,5 +21,6 @@ function changeMode(mode) {
             break;
     }
 }
+
 
 </script>
