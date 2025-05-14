@@ -11,9 +11,9 @@
         </div>
     </div>
 
-    <pre>
+    <!--    <pre>
     {{ product }}
-</pre>
+</pre> -->
     <div class="s-py-50" data-aos="fade-up">
         <div class="container-fluid">
             <div class="max-w-[1720px] mx-auto flex justify-between gap-10 flex-col lg:flex-row">
@@ -40,7 +40,7 @@
                 <div class="lg:max-w-[635px] w-full">
                     <div class="pb-4 sm:pb-6 border-b border-bdr-clr dark:border-bdr-clr-drk">
                         <h2 class="font-semibold leading-none">
-                            {{ data && data.name ? data.name : 'Classic Relaxable Chair' }}
+                            {{ product && product.name ? product.name : 'No especificado' }}
                         </h2>
                         <div class="flex gap-4 items-center mt-[15px]">
                             <span
@@ -48,7 +48,7 @@
                             <span class="text-2xl sm:text-3xl text-primary leading-none block">$85.00</span>
                         </div>
 
-                        <div class="mt-5 md:mt-7 flex items-center gap-4 flex-wrap">
+                        <!--    <div class="mt-5 md:mt-7 flex items-center gap-4 flex-wrap">
                             <h4 class="text-xl md:text-[22px] font-semibold !leading-none">Hurry Up!</h4>
                             <div class="overflow-auto">
                                 <div class="py-2 px-3 bg-[#FAF2F2] rounded-[51px] flex items-end gap-[6px] w-[360px]">
@@ -91,13 +91,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <p class="sm:text-lg mt-5 md:mt-7">
-                            Experience the epitome of relaxation with our Classic Relaxable Chair. Crafted with plush
-                            cushioning and ergonomic design, it offers unparalleled comfort for lounging or reading. Its
-                            timeless style seamlessly blends with any decor, while the sturdy construction ensures
-                            durability for years to come.
+                            {{ product?.description }}
                         </p>
                     </div>
                     <div class="py-4 sm:py-6 border-b border-bdr-clr dark:border-bdr-clr-drk" data-aos="fade-up"
@@ -122,63 +119,21 @@
                         </div>
                         <div class="flex gap-x-12 lg:gap-x-24 gap-y-3 flex-wrap mt-5 sm:mt-10">
                             <div class="flex gap-[10px] items-center">
-                                <h6 class="leading-none font-medium">Size :</h6>
+                                <h6 class="leading-none font-medium">Measure :</h6>
                                 <div class="flex gap-[10px]">
-                                    <label class="product-size">
+                                    <label class="product-size" v-for="(size, index) in product?.presentations"
+                                        :key="index">
                                         <input class="appearance-none hidden" type="radio" name="size" checked>
                                         <span
-                                            class="w-6 h-6 flex items-center justify-center pt-[2px] text-sm leading-none bg-[#E8E9EA] dark:bg-dark-secondary text-title dark:text-white duration-300">S</span>
+                                            class="w-32 h-10 uppercase flex items-center justify-center leading-none bg-[#E8E9EA] dark:bg-dark-secondary text-title dark:text-white duration-300 tracking-wide">
+                                            {{ size.amount }} {{ size.unit_measurement }}
+                                            <!-- TODO: hacer que el texto tenga espaciado en X -->
+                                        </span>
                                     </label>
-                                    <label class="product-size">
-                                        <input class="appearance-none hidden" type="radio" name="size">
-                                        <span
-                                            class="w-6 h-6 flex items-center justify-center pt-[2px] text-sm leading-none bg-[#E8E9EA] dark:bg-dark-secondary text-title dark:text-white duration-300">M</span>
-                                    </label>
-                                    <label class="product-size">
-                                        <input class="appearance-none hidden" type="radio" name="size">
-                                        <span
-                                            class="w-6 h-6 flex items-center justify-center pt-[2px] text-sm leading-none bg-[#E8E9EA] dark:bg-dark-secondary text-title dark:text-white duration-300">L</span>
-                                    </label>
-                                    <label class="product-size">
-                                        <input class="appearance-none hidden" type="radio" name="size">
-                                        <span
-                                            class="w-6 h-6 flex items-center justify-center pt-[2px] text-sm leading-none bg-[#E8E9EA] dark:bg-dark-secondary text-title dark:text-white duration-300">XL</span>
-                                    </label>
+
                                 </div>
                             </div>
-                            <div class="flex gap-[10px] items-center">
-                                <h6 class="leading-none font-medium">Color :</h6>
-                                <div class="flex gap-[10px] items-center">
-                                    <label class="product-color">
-                                        <input class="appearance-none hidden" type="radio" name="color">
-                                        <span
-                                            class="border border-[#D68553] flex rounded-full border-opacity-0 duration-300 p-1">
-                                            <span class="w-4 h-4 rounded-full bg-[#D68553] flex"></span>
-                                        </span>
-                                    </label>
-                                    <label class="product-color">
-                                        <input class="appearance-none hidden" type="radio" name="color" checked>
-                                        <span
-                                            class="border border-[#61646E] flex rounded-full border-opacity-0 duration-300 p-1">
-                                            <span class="w-4 h-4 rounded-full bg-[#61646E] flex"></span>
-                                        </span>
-                                    </label>
-                                    <label class="product-color">
-                                        <input class="appearance-none hidden" type="radio" name="color">
-                                        <span
-                                            class="border border-[#E9E3DC] flex rounded-full border-opacity-0 duration-300 p-1">
-                                            <span class="w-4 h-4 rounded-full bg-[#E9E3DC] flex"></span>
-                                        </span>
-                                    </label>
-                                    <label class="product-color">
-                                        <input class="appearance-none hidden" type="radio" name="color">
-                                        <span
-                                            class="border border-[#9A9088] flex rounded-full border-opacity-0 duration-300 p-1">
-                                            <span class="w-4 h-4 rounded-full bg-[#9A9088] flex"></span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="py-4 sm:py-6 border-b border-bdr-clr dark:border-bdr-clr-drk" data-aos="fade-up"
@@ -186,15 +141,12 @@
                         <h4 class="font-medium leading-none">Tags :</h4>
                         <div class="flex flex-wrap gap-[10px] md:gap-[15px] mt-5 md:mt-6">
                             <router-link class="btn btn-theme-outline btn-xs" to="#"
-                                data-text="Chair"><span>Chair</span></router-link>
-                            <router-link class="btn btn-theme-outline btn-xs" to="#" data-text="Art & Paint"><span>Art &
-                                    Paint</span></router-link>
-                            <router-link class="btn btn-theme-outline btn-xs" to="#"
-                                data-text="Mirror"><span>Mirror</span></router-link>
-                            <router-link class="btn btn-theme-outline btn-xs" to="#"
-                                data-text="Table"><span>Table</span></router-link>
-                            <router-link class="btn btn-theme-outline btn-xs" to="#"
-                                data-text="Lamp"><span>Lamp</span></router-link>
+                                :data-text="product?.category_product.name">
+                                <span>
+                                    {{ product?.category_product.name }}
+                                </span>
+                            </router-link>
+
                         </div>
                     </div>
                     <div class="pt-4 sm:pt-6" data-aos="fade-up" data-aos-delay="500">
@@ -222,7 +174,7 @@
     </div>
 
     <div class="s-py-50">
-        <DetailTab />
+        <DetailTab :description="product?.description"/>
     </div>
 
     <div class="s-py-50-100">
@@ -232,9 +184,13 @@
                 <p class="mt-3">Explore complementary options that enhance your experience. Discover related products
                     curated just for you. </p>
             </div>
-            <!--  <ProductDetailLayout
+
+            <div v-if="loadingAll">Cargando productos...</div>
+
+
+            <ProductDetailLayout v-else
                 :classList="'max-w-[1720px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-8 pt-8 md:pt-[50px]'"
-                :productList="productList.slice(0, 4)" /> -->
+                :productList="products?.slice(0, 4)" />
         </div>
     </div>
 
@@ -254,29 +210,23 @@ import ProductDetailLayout from '@/modules/common/components/ProductDetailLayout
 
 import { useProductByIdQuery, useProductsQuery } from '../composable/useProductsQuery'
 
-// Inicializar AOS al montar
 onMounted(() => {
     Aos.init()
 })
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
-// Obtener ID del producto desde la ruta
 const route = useRoute()
 const productId = computed(() => route.params.id?.toString() ?? '')
 
-// Obtener producto usando TanStack Query
 const { data: product, isLoading: loadingProduct, error } = useProductByIdQuery(productId.value)
 
 console.log(product);
 
 
-// Opcional: Obtener todos los productos (si los necesitas en la vista)
 const { data: products, isLoading: loadingAll } = useProductsQuery()
 
-// Gestión de la imagen activa
 const activeImage = ref(1)
 
-// Lógica de cuenta regresiva
 const now = ref(new Date().getTime())
 const targetTime = ref(new Date('Sep 13 2025').getTime())
 const difference = ref(0)

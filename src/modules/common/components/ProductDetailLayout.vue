@@ -2,8 +2,9 @@
     <div :class="classList">
         <div v-for="(item, index) in productList" :key="index" class="group">
             <div class="relative overflow-hidden">
-                <router-link :to="`/product-details/${item.id}`">
-                    <img class="w-full transform group-hover:scale-110 duration-300" :src="item.image" alt="shop" />
+                <router-link :to="`/products/${item.id}`">
+                    <img class="w-full h-60 object-cover transform group-hover:scale-110 duration-300"
+                        :src="`${baseUrl}/storage/${item.images[0].url_image}`" alt="product" />
                 </router-link>
 
                 <div v-if="item.tag === 'Hot Sale'"
@@ -64,6 +65,7 @@
 
 import { type Product } from '@/mocks/data';
 import { defineProps } from 'vue';
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 
 defineProps<{
