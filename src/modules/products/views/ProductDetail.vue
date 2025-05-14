@@ -5,13 +5,15 @@
                 class="flex items-center gap-[10px] text-base md:text-lg leading-none font-normal text-title dark:text-white max-w-[1720px] mx-auto flex-wrap">
                 <li><router-link to="/">Home</router-link></li>
                 <li>/</li>
-                <li><router-link to="/shop-v1">Shop</router-link></li>
+                <li><router-link to="/products">Shop</router-link></li>
                 <li>/</li>
             </ul>
         </div>
     </div>
 
-
+    <pre>
+    {{ product }}
+</pre>
     <div class="s-py-50" data-aos="fade-up">
         <div class="container-fluid">
             <div class="max-w-[1720px] mx-auto flex justify-between gap-10 flex-col lg:flex-row">
@@ -19,38 +21,22 @@
                     <div class="relative product-dtls-wrapper">
                         <button
                             class="absolute top-5 left-0 p-2 bg-[#E13939] text-lg leading-none text-white font-medium z-50">-10%</button>
-                        <div class="product-dtls-slider ">
-                            <div>
-                                <img :src="data && data.image ? data.image : product1" alt="product" class="w-full"
-                                    :class="activeImage === 1 ? '' : 'hidden'">
-                            </div>
-                            <div>
-                                <img :src="product2" alt="product" :class="activeImage === 2 ? '' : 'hidden'">
-                            </div>
-                            <div>
-                                <img :src="product3" alt="product" :class="activeImage === 3 ? '' : 'hidden'">
-                            </div>
-                            <div>
-                                <img :src="product4" alt="product" :class="activeImage === 4 ? '' : 'hidden'">
+                        <div class="product-dtls-slider">
+                            <div v-for="(image, index) in product?.images" :key="image.id">
+                                <img :src="`${baseUrl}/storage/${image.url_image}`" alt="product" class="w-full"
+                                    :class="activeImage === index ? '' : 'hidden'">
                             </div>
                         </div>
+
                         <div class="product-dtls-nav">
-                            <div>
-                                <img :src="data && data.image ? data.image : product1" @click="activeImage = 1"
-                                    alt="product" class="mb-2">
-                            </div>
-                            <div>
-                                <img :src="product2" @click="activeImage = 2" alt="product" class="mb-2">
-                            </div>
-                            <div>
-                                <img :src="product3" @click="activeImage = 3" alt="product" class="mb-2">
-                            </div>
-                            <div>
-                                <img :src="product4" @click="activeImage = 4" alt="product" class="mb-2">
+                            <div v-for="(image, index) in product?.images" :key="image.id">
+                                <img :src="`${baseUrl}/storage/${image.url_image}`" @click="activeImage = index"
+                                    alt="product" class="mb-2 cursor-pointer">
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="lg:max-w-[635px] w-full">
                     <div class="pb-4 sm:pb-6 border-b border-bdr-clr dark:border-bdr-clr-drk">
                         <h2 class="font-semibold leading-none">
@@ -246,47 +232,53 @@
                 <p class="mt-3">Explore complementary options that enhance your experience. Discover related products
                     curated just for you. </p>
             </div>
-            <ProductDetailLayout
+            <!--  <ProductDetailLayout
                 :classList="'max-w-[1720px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-8 pt-8 md:pt-[50px]'"
-                :productList="productList.slice(0, 4)" />
+                :productList="productList.slice(0, 4)" /> -->
         </div>
     </div>
 
 </template>
-
 <script setup lang="ts">
 import product1 from '@/assets/images/gallery/product-detls/product-01.jpg'
 import product2 from '@/assets/images/gallery/product-detls/product-02.jpg'
 import product3 from '@/assets/images/gallery/product-detls/product-03.jpg'
 import product4 from '@/assets/images/gallery/product-detls/product-04.jpg'
 
-import Aos from 'aos';
-import { computed, onMounted, ref, watch } from 'vue';
-import { productList } from '@/mocks/data.ts';
+import Aos from 'aos'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import DetailTab from '@/modules/common/components/DetailTab.vue';
-import ProductDetailLayout from '@/modules/common/components/ProductDetailLayout.vue';
-import { type Product } from '@/mocks/data';
 
-const route = useRoute()
-const data = ref<Product | null>(null)
+import DetailTab from '@/modules/common/components/DetailTab.vue'
+import ProductDetailLayout from '@/modules/common/components/ProductDetailLayout.vue'
 
+import { useProductByIdQuery, useProductsQuery } from '../composable/useProductsQuery'
+
+// Inicializar AOS al montar
 onMounted(() => {
     Aos.init()
-    const id = Number(route.params.id)
-    if (!isNaN(id)) {
-        data.value = productList.find(item => item.id === id) || null
-    }
 })
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
+// Obtener ID del producto desde la ruta
+const route = useRoute()
+const productId = computed(() => route.params.id?.toString() ?? '')
+
+// Obtener producto usando TanStack Query
+const { data: product, isLoading: loadingProduct, error } = useProductByIdQuery(productId.value)
+
+console.log(product);
+
+
+// Opcional: Obtener todos los productos (si los necesitas en la vista)
+const { data: products, isLoading: loadingAll } = useProductsQuery()
+
+// Gestión de la imagen activa
 const activeImage = ref(1)
 
-
+// Lógica de cuenta regresiva
 const now = ref(new Date().getTime())
-
-
-const targetTime = ref(new Date("Sep 13 2025").getTime())
-
+const targetTime = ref(new Date('Sep 13 2025').getTime())
 const difference = ref(0)
 
 const days = computed(() => Math.floor(difference.value / (1000 * 60 * 60 * 24)))
@@ -298,16 +290,13 @@ watch(now, () => {
     difference.value = targetTime.value - now.value
 })
 
-
 function updateNow() {
     now.value = new Date().getTime()
 }
 
 updateNow()
 setInterval(updateNow, 1000)
-
-
-
 </script>
+
 
 <style lang="scss" scoped></style>

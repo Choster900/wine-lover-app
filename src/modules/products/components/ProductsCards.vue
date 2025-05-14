@@ -4,7 +4,7 @@
             <div class="relative overflow-hidden">
                 <router-link :to="`/products/${item.id}`">
                     <img class="w-full h-60 object-cover transform group-hover:scale-110 duration-300"
-                        :src="`http://localhost:8000/storage/${item.images[0].url_image}`" alt="product" />
+                        :src="`${baseUrl}/storage/${item.images[0].url_image}`" alt="product" />
                 </router-link>
 
                 <div
@@ -67,6 +67,8 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 import type { Product } from '../interfaces/product.interface';
+
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 defineProps<{
     productList: Product[]
