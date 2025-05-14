@@ -44,18 +44,31 @@
 <script setup lang="ts">
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
 
+import Aos from 'aos';
 import { onMounted, ref } from 'vue'
-import CategoriesFilter from '../components/CategoriesFilter.vue';
 import ItemsType from '../components/ItemsType.vue';
-import BrandsFilter from '../components/BrandsFilter.vue';
 import RangePrice from '../components/RangePrice.vue';
 import card from '@/assets/images/thumb/shop-card.jpg'
-import { productList } from '@/mocks/data.ts';
+import BrandsFilter from '../components/BrandsFilter.vue';
 import ProductsCards from '../components/ProductsCards.vue';
-import Aos from 'aos';
+import CategoriesFilter from '../components/CategoriesFilter.vue';
+import { fetchProductsAction } from '../actions/fetch-products.action';
+import type { Product } from '../interfaces/product.interface';
 
-onMounted(() => {
+const productList = ref<Product[]>([])
+
+
+onMounted(async () => {
     Aos.init()
+
+    try {
+        const response = await fetchProductsAction()
+        productList.value = response.data
+    } catch (error) {
+        console.error('Error cargando productos:', error)
+    }
 })
+
+
 
 </script>
