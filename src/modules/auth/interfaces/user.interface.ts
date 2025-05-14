@@ -5,4 +5,6 @@ export interface User {
     email_verified_at: null;
     profile:           string;
     state:             boolean;
+    permissions?:      string[]; // Campo opcional por ahora
+
 }
