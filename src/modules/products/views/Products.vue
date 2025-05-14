@@ -28,10 +28,15 @@
                     </router-link>
                 </div>
                 <div class="lg:max-w-[1100px] w-full" data-aos="fade-up" data-aos-delay="200">
+                    <div v-if="isLoading">Cargando productos...</div>
+                    <div v-else-if="isError">Ocurrió un error al cargar los productos.</div>
 
-                    <ProductsCards
-                        :classList="'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-8'"
-                        :productList="productList" />
+                    <div v-else>
+                        <ProductsCards
+                            :classList="'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-8'"
+                            :productList="productList || []" />
+                    </div>
+
 
                 </div>
             </div>
@@ -52,23 +57,14 @@ import card from '@/assets/images/thumb/shop-card.jpg'
 import BrandsFilter from '../components/BrandsFilter.vue';
 import ProductsCards from '../components/ProductsCards.vue';
 import CategoriesFilter from '../components/CategoriesFilter.vue';
-import { fetchProductsAction } from '../actions/fetch-products.action';
-import type { Product } from '../interfaces/product.interface';
-
-const productList = ref<Product[]>([])
+import { useProductsQuery } from '../composable/useProductsQuery';
 
 
 onMounted(async () => {
     Aos.init()
-
-    try {
-        const response = await fetchProductsAction()
-        productList.value = response.data
-    } catch (error) {
-        console.error('Error cargando productos:', error)
-    }
 })
 
+const { data: productList, isLoading, isError } = useProductsQuery()
 
 
 </script>

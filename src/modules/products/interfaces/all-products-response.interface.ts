@@ -1,7 +1,7 @@
-import type { Producto } from "./product.interface";
+import type { Product } from "./product.interface";
 
 export interface ProductoResponse {
-    data:  Producto[];
+    data:  Product[];
     links: Links;
     meta:  Meta;
 }

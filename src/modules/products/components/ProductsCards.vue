@@ -3,9 +3,8 @@
         <div v-for="(item, index) in productList" :key="index" class="group">
             <div class="relative overflow-hidden">
                 <router-link :to="`/products/${item.id}`">
-                    <img class="w-full transform group-hover:scale-110 duration-300"
+                    <img class="w-full h-60 object-cover transform group-hover:scale-110 duration-300"
                         :src="`http://localhost:8000/storage/${item.images[0].url_image}`" alt="product" />
-
                 </router-link>
 
                 <div
