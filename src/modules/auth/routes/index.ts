@@ -1,7 +1,25 @@
 import type { RouteRecordRaw } from 'vue-router'
 
 export const authRoutes: RouteRecordRaw = {
-    path: '/login',
+    path: '/auth',
     name: 'auth',
-    component: () => import('../views/Login.vue')
+    children: [
+        {
+            path: 'login',
+            name: 'product-list',
+            component: () => import('../views/Login.vue'),
+            meta: {
+                title: 'Todos los productos'
+            }
+        },
+        {
+            path: ':id',
+            name: 'register',
+            component: () => import('../views/Register.vue'),
+            props: true,
+            meta: {
+                title: 'Detalle del producto'
+            }
+        }
+    ]
 }

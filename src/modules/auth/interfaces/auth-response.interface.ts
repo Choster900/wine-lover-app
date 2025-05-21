@@ -1,4 +1,4 @@
-import type { User } from "./user.interface";
+import type { Client, User } from "./user.interface";
 
 export interface AuthResponse {
     data: Data;
@@ -6,5 +6,6 @@ export interface AuthResponse {
 
 export interface Data {
     user: User;
+    client?: Client;
     token: string;
 }

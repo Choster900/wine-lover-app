@@ -1,6 +1,6 @@
 <template>
     <div class="flex items-center gap-4 sm:gap-6">
-        <router-link v-if="!auth.isLoggedIn" to="/login"
+        <router-link v-if="!auth.isLoggedIn" to="/auth/login"
             class="text-lg leading-none text-title dark:text-white transition-all duration-300 hover:text-primary hidden lg:block">
             Login
         </router-link>

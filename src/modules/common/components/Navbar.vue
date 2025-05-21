@@ -11,16 +11,9 @@
                     :class="toggle ? 'active' : ''">
 
                     <ul class="text-lg leading-none text-title dark:text-white lg:flex lg:gap-[30px]">
-                        <li class="relative"
-                            :class="['/', '/index-v2', '/index-v3', '/index-v4', '/index-v5', '/index-v6'].includes(current) ? 'active' : ''">
-                            <router-link to="#">Home<span></span></router-link>
-                            <ul
-                                class="sub-menu lg:absolute z-50 lg:top-full lg:left-0 lg:min-w-[220px] lg:invisible lg:transition-all lg:bg-white lg:dark:bg-title lg:py-[15px] lg:pr-[30px]">
-
-                                <li :class="current === '/index-v6' ? 'active' : ''"><router-link to="/index-v6"
-                                        class="menu-item">Home
-                                        Retro - currently</router-link></li>
-                            </ul>
+                        <li :class="current === '/' ? 'active' : ''"><router-link to="/">Home</router-link></li>
+                        <li :class="current === '/products' ? 'active' : ''">
+                            <router-link to="/products">Product</router-link>
                         </li>
 
                         <li
@@ -150,8 +143,8 @@
                         </li>
                         <li :class="current === '/contact' ? 'active' : ''"><router-link
                                 to="/contact">Contact</router-link></li>
-                        <li :class="current === '/login' ? 'active' : ''" class="lg:hidden"><router-link
-                                to="/login">Login</router-link></li>
+                        <li :class="current === '/auth/login' ? 'active' : ''" class=" lg:hidden"><router-link
+                                to="/auth/login">Login</router-link></li>
                     </ul>
                 </div>
 

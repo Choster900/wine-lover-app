@@ -174,7 +174,7 @@
     </div>
 
     <div class="s-py-50">
-        <DetailTab :description="product?.description"/>
+        <DetailTab :description="product?.description" />
     </div>
 
     <div class="s-py-50-100">

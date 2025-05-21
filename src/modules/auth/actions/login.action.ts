@@ -10,7 +10,7 @@ export const loginAction = async (email: string, password: string): Promise<void
         const { data } = await backendApi.post<AuthResponse>('/auth/login', {
             email,
             password,
-        })
+        }) 
 
         console.log(data)
 

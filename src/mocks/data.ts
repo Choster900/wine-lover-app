@@ -418,6 +418,1059 @@ export const pricingData = [
         ]
     },
 ]
+
+export const distric = [
+
+    {
+        id: 1,
+        name: "Atiquizaya"
+    },
+    {
+        id: 2,
+        name: "El Refugio"
+    },
+    {
+        id: 3,
+        name: "San Lorenzo"
+    },
+    {
+        id: 4,
+        name: "Turin"
+    },
+    {
+        id: 5,
+        name: "Ahuachapan"
+    },
+    {
+        id: 6,
+        name: "Apaneca"
+    },
+    {
+        id: 7,
+        name: "Concepción de Ataco"
+    },
+    {
+        id: 8,
+        name: "Tacuba"
+    },
+    {
+        id: 9,
+        name: "Guaymango"
+    },
+    {
+        id: 10,
+        name: "Jujutla"
+    },
+    {
+        id: 11,
+        name: "San Francisco Menendez"
+    },
+    {
+        id: 12,
+        name: "San Pedro Puxtla"
+    },
+    {
+        id: 13,
+        name: "Aguilares"
+    },
+    {
+        id: 14,
+        name: "El Paisnal"
+    },
+    {
+        id: 15,
+        name: "Guazapa"
+    },
+    {
+        id: 16,
+        name: "Apopa"
+    },
+    {
+        id: 17,
+        name: "Nejapa"
+    },
+    {
+        id: 18,
+        name: "llopango"
+    },
+    {
+        id: 19,
+        name: "San Martín"
+    },
+    {
+        id: 20,
+        name: "Soyapango"
+    },
+    {
+        id: 21,
+        name: "Tonacatepeque"
+    },
+    {
+        id: 22,
+        name: "Ayutuxtepeque"
+    },
+    {
+        id: 23,
+        name: "Mejicanos"
+    },
+    {
+        id: 24,
+        name: "San Salvador"
+    },
+    {
+        id: 25,
+        name: "Cuscatancingo"
+    },
+    {
+        id: 26,
+        name: "Ciudad Delgado"
+    },
+    {
+        id: 27,
+        name: "Panchimalco"
+    },
+    {
+        id: 28,
+        name: "Rosario de Mora"
+    },
+    {
+        id: 29,
+        name: "San Marcos"
+    },
+    {
+        id: 30,
+        name: "Santo Tomás"
+    },
+    {
+        id: 31,
+        name: "Santiago Texacuangos"
+    },
+    {
+        id: 32,
+        name: "Quezaltepeque"
+    },
+    {
+        id: 33,
+        name: "San Matías"
+    },
+    {
+        id: 34,
+        name: "San Pablo Tacachico"
+    },
+    {
+        id: 35,
+        name: "San Juan Opico"
+    },
+    {
+        id: 36,
+        name: "Ciudad Arce"
+    },
+    {
+        id: 37,
+        name: "Colón"
+    },
+    {
+        id: 38,
+        name: "Jayaque"
+    },
+    {
+        id: 39,
+        name: "Sacacoyo"
+    },
+    {
+        id: 40,
+        name: "Tepecoyo"
+    },
+    {
+        id: 41,
+        name: "Talnique"
+    },
+    {
+        id: 42,
+        name: "Antiguo Cuscatlán"
+    },
+    {
+        id: 43,
+        name: "Huizucar"
+    },
+    {
+        id: 44,
+        name: "Nuevo Cuscatlán"
+    },
+    {
+        id: 45,
+        name: "San José Villanueva"
+    },
+    {
+        id: 46,
+        name: "Zaragoza"
+    },
+    {
+        id: 47,
+        name: "Chiltuipán"
+    },
+    {
+        id: 48,
+        name: "Jicalapa"
+    },
+    {
+        id: 49,
+        name: "La Libertad"
+    },
+    {
+        id: 50,
+        name: "Tamanique"
+    },
+    {
+        id: 51,
+        name: "Teotepeque"
+    },
+    {
+        id: 52,
+        name: "Comasagua"
+    },
+    {
+        id: 53,
+        name: "Santa Tecla"
+    },
+    {
+        id: 54,
+        name: "La Palma"
+    },
+    {
+        id: 55,
+        name: "Citalá"
+    },
+    {
+        id: 56,
+        name: "San Ignacio"
+    },
+    {
+        id: 57,
+        name: "Nueva Concepción"
+    },
+    {
+        id: 58,
+        name: "Tejutla"
+    },
+    {
+        id: 59,
+        name: "La Reina"
+    },
+    {
+        id: 60,
+        name: "Agua Caliente"
+    },
+    {
+        id: 61,
+        name: "Dulce Nombre de María"
+    },
+    {
+        id: 62,
+        name: "El Paraíso"
+    },
+    {
+        id: 63,
+        name: "San Francisco Morazán"
+    },
+    {
+        id: 64,
+        name: "San Rafael"
+    },
+    {
+        id: 65,
+        name: "Santa Rita"
+    },
+    {
+        id: 66,
+        name: "San Fernando"
+    },
+    {
+        id: 67,
+        name: "Chalatenango"
+    },
+    {
+        id: 68,
+        name: "Arcatao"
+    },
+    {
+        id: 69,
+        name: "Azacualpa"
+    },
+    {
+        id: 70,
+        name: "Comalapa"
+    },
+    {
+        id: 71,
+        name: "Concepción Quezaltepeque"
+    },
+    {
+        id: 72,
+        name: "El Carrizal"
+    },
+    {
+        id: 73,
+        name: "La Laguna"
+    },
+    {
+        id: 74,
+        name: "Las Vueltas"
+    },
+    {
+        id: 75,
+        name: "Nombre de Jesús"
+    },
+    {
+        id: 76,
+        name: "Nueva Trinidad"
+    },
+    {
+        id: 77,
+        name: "Ojos de Agua"
+    },
+    {
+        id: 78,
+        name: "Potonico"
+    },
+    {
+        id: 79,
+        name: "San Antonio de La Cruz"
+    },
+    {
+        id: 80,
+        name: "San Antonio Los Ranchos"
+    },
+    {
+        id: 81,
+        name: "San Francisco Lempa"
+    },
+    {
+        id: 82,
+        name: "San Isidro Labrador"
+    },
+    {
+        id: 83,
+        name: "San José Cancasque"
+    },
+    {
+        id: 84,
+        name: "San Miguel de Mercedes"
+    },
+    {
+        id: 85,
+        name: "San José Las Flores"
+    },
+    {
+        id: 86,
+        name: "San Luis del Carmen"
+    },
+    {
+        id: 87,
+        name: "Suchitoto"
+    },
+    {
+        id: 88,
+        name: "San José Guayabal"
+    },
+    {
+        id: 89,
+        name: "Oratorio de Concepción"
+    },
+    {
+        id: 90,
+        name: "San Bartolomé Perulapán"
+    },
+    {
+        id: 91,
+        name: "San Pedro Perulapán"
+    },
+    {
+        id: 92,
+        name: "Cojutepeque"
+    },
+    {
+        id: 93,
+        name: "San Rafael Cedros"
+    },
+    {
+        id: 94,
+        name: "Candelaria"
+    },
+    {
+        id: 95,
+        name: "Monte San Juan"
+    },
+    {
+        id: 96,
+        name: "El Carmen"
+    },
+    {
+        id: 97,
+        name: "San Cristóbal"
+    },
+    {
+        id: 98,
+        name: "Santa Cruz Michapa"
+    },
+    {
+        id: 99,
+        name: "San Ramón"
+    },
+    {
+        id: 100,
+        name: "El Rosario"
+    },
+    {
+        id: 101,
+        name: "Santa Cruz Analquito"
+    },
+    {
+        id: 102,
+        name: "Tenancingo"
+    },
+    {
+        id: 103,
+        name: "Sensuntepeque"
+    },
+    {
+        id: 104,
+        name: "Victoria"
+    },
+    {
+        id: 105,
+        name: "Dolores"
+    },
+    {
+        id: 106,
+        name: "Guacotecti"
+    },
+    {
+        id: 107,
+        name: "San Isidro"
+    },
+    {
+        id: 108,
+        name: "llobasco"
+    },
+    {
+        id: 109,
+        name: "Tejutepeque"
+    },
+    {
+        id: 110,
+        name: "Jutiapa"
+    },
+    {
+        id: 111,
+        name: "Cinquera"
+    },
+    {
+        id: 112,
+        name: "Cuyultitán"
+    },
+    {
+        id: 113,
+        name: "Olocuilta"
+    },
+    {
+        id: 114,
+        name: "San Juan Talpa"
+    },
+    {
+        id: 115,
+        name: "San Luis Talpa"
+    },
+    {
+        id: 116,
+        name: "San Pedro Masahuat"
+    },
+    {
+        id: 117,
+        name: "Tapalhuaca"
+    },
+    {
+        id: 118,
+        name: "San Francisco Chinameca"
+    },
+    {
+        id: 119,
+        name: "El Rosario"
+    },
+    {
+        id: 120,
+        name: "Jerusalén"
+    },
+    {
+        id: 121,
+        name: "Mercedes La Ceiba"
+    },
+    {
+        id: 122,
+        name: "Paraíso de Osorio"
+    },
+    {
+        id: 123,
+        name: "San Antonio Masahuat"
+    },
+    {
+        id: 124,
+        name: "San Emigdio"
+    },
+    {
+        id: 125,
+        name: "San Juan Tepezontes"
+    },
+    {
+        id: 126,
+        name: "San Luis La Herradura"
+    },
+    {
+        id: 127,
+        name: "San Miguel Tepezontes"
+    },
+    {
+        id: 128,
+        name: "San Pedro Nonualco"
+    },
+    {
+        id: 129,
+        name: "Santa María Ostuma"
+    },
+    {
+        id: 130,
+        name: "Santiago Nonualco"
+    },
+    {
+        id: 131,
+        name: "San Juan Nonualco"
+    },
+    {
+        id: 132,
+        name: "San Rafael Obrajuelo"
+    },
+    {
+        id: 133,
+        name: "Zacatecoluca"
+    },
+    {
+        id: 134,
+        name: "Anamorós"
+    },
+    {
+        id: 135,
+        name: "Bolivar"
+    },
+    {
+        id: 136,
+        name: "Concepción de Oriente"
+    },
+    {
+        id: 137,
+        name: "El Sauce"
+    },
+    {
+        id: 138,
+        name: "Lislique"
+    },
+    {
+        id: 139,
+        name: "Nueva Esparta"
+    },
+    {
+        id: 140,
+        name: "Pasaquina"
+    },
+    {
+        id: 141,
+        name: "Polorós"
+    },
+    {
+        id: 142,
+        name: "San José La Fuente"
+    },
+    {
+        id: 143,
+        name: "Santa Rosa de Lima"
+    },
+    {
+        id: 144,
+        name: "Conchagua"
+    },
+    {
+        id: 145,
+        name: "El Carmen"
+    },
+    {
+        id: 146,
+        name: "lntipucá"
+    },
+    {
+        id: 147,
+        name: "La Unión"
+    },
+    {
+        id: 148,
+        name: "Meanguera del Golfo"
+    },
+    {
+        id: 149,
+        name: "San Alejo"
+    },
+    {
+        id: 150,
+        name: "Yayantique"
+    },
+    {
+        id: 151,
+        name: "Yucuaiquín"
+    },
+    {
+        id: 152,
+        name: "Santiago de María"
+    },
+    {
+        id: 153,
+        name: "Alegría"
+    },
+    {
+        id: 154,
+        name: "Berlín"
+    },
+    {
+        id: 155,
+        name: "Mercedes Umana"
+    },
+    {
+        id: 156,
+        name: "Jucuapa"
+    },
+    {
+        id: 157,
+        name: "El Triunfo"
+    },
+    {
+        id: 158,
+        name: "Estanzuelas"
+    },
+    {
+        id: 159,
+        name: "San Buenaventura"
+    },
+    {
+        id: 160,
+        name: "Nueva Granada"
+    },
+    {
+        id: 161,
+        name: "Usulután"
+    },
+    {
+        id: 162,
+        name: "Jucuarán"
+    },
+    {
+        id: 163,
+        name: "San Dionisio"
+    },
+    {
+        id: 164,
+        name: "Concepción Batres"
+    },
+    {
+        id: 165,
+        name: "Santa María"
+    },
+    {
+        id: 166,
+        name: "Ozatlán"
+    },
+    {
+        id: 167,
+        name: "Tecapán"
+    },
+    {
+        id: 168,
+        name: "Santa Elena"
+    },
+    {
+        id: 169,
+        name: "California"
+    },
+    {
+        id: 170,
+        name: "Ereguayquín"
+    },
+    {
+        id: 171,
+        name: "Jiquilisco"
+    },
+    {
+        id: 172,
+        name: "Puerto El Triunfo"
+    },
+    {
+        id: 173,
+        name: "San Agustín"
+    },
+    {
+        id: 174,
+        name: "San Francisco Javier"
+    },
+    {
+        id: 175,
+        name: "Juayúa"
+    },
+    {
+        id: 176,
+        name: "Nahuizalco"
+    },
+    {
+        id: 177,
+        name: "Salcoatitán"
+    },
+    {
+        id: 178,
+        name: "Santa Catarina Masahuat"
+    },
+    {
+        id: 179,
+        name: "Sonsonate"
+    },
+    {
+        id: 180,
+        name: "Sonzacate"
+    },
+    {
+        id: 181,
+        name: "Nahulingo"
+    },
+    {
+        id: 182,
+        name: "San Antonio del Monte"
+    },
+    {
+        id: 183,
+        name: "Santo Domingo de Guzmán"
+    },
+    {
+        id: 184,
+        name: "lzalco"
+    },
+    {
+        id: 185,
+        name: "Armenia"
+    },
+    {
+        id: 186,
+        name: "Caluco"
+    },
+    {
+        id: 187,
+        name: "San Julián"
+    },
+    {
+        id: 188,
+        name: "Cuisnahuat"
+    },
+    {
+        id: 189,
+        name: "Santa Isabel lshuatán"
+    },
+    {
+        id: 190,
+        name: "Acajutla"
+    },
+    {
+        id: 191,
+        name: "Masahuat"
+    },
+    {
+        id: 192,
+        name: "Metapán"
+    },
+    {
+        id: 193,
+        name: "Santa Rosa Guachipilín"
+    },
+    {
+        id: 194,
+        name: "Texistepeque"
+    },
+    {
+        id: 195,
+        name: "Santa Ana"
+    },
+    {
+        id: 196,
+        name: "Coatepeque"
+    },
+    {
+        id: 197,
+        name: "El Congo"
+    },
+    {
+        id: 198,
+        name: "Candelaria de la Frontera"
+    },
+    {
+        id: 199,
+        name: "Chalchuapa"
+    },
+    {
+        id: 200,
+        name: "El Porvenir"
+    },
+    {
+        id: 201,
+        name: "San Antonio Pajonal"
+    },
+    {
+        id: 202,
+        name: "San Sebastián Salitrillo"
+    },
+    {
+        id: 203,
+        name: "Santiago de La Frontera"
+    },
+    {
+        id: 204,
+        name: "Apastepeque"
+    },
+    {
+        id: 205,
+        name: "Santa Clara"
+    },
+    {
+        id: 206,
+        name: "San Ildefonso"
+    },
+    {
+        id: 207,
+        name: "San Esteban Catarina"
+    },
+    {
+        id: 208,
+        name: "San Sebastián"
+    },
+    {
+        id: 209,
+        name: "San Lorenzo"
+    },
+    {
+        id: 210,
+        name: "Santo Domingo"
+    },
+    {
+        id: 211,
+        name: "San Vicente"
+    },
+    {
+        id: 212,
+        name: "Guadalupe"
+    },
+    {
+        id: 213,
+        name: "Verapaz"
+    },
+    {
+        id: 214,
+        name: "Tepetitán"
+    },
+    {
+        id: 215,
+        name: "Tecoluca"
+    },
+    {
+        id: 216,
+        name: "San Cayetano lstepeque"
+    },
+    {
+        id: 217,
+        name: "Ciudad Barrios"
+    },
+    {
+        id: 218,
+        name: "Sesori"
+    },
+    {
+        id: 219,
+        name: "Nuevo Edén de San Juan"
+    },
+    {
+        id: 220,
+        name: "San Gerardo"
+    },
+    {
+        id: 221,
+        name: "San Luis de La Reina"
+    },
+    {
+        id: 222,
+        name: "Carolina"
+    },
+    {
+        id: 223,
+        name: "San Antonio del Mosco"
+    },
+    {
+        id: 224,
+        name: "Chapeltique"
+    },
+    {
+        id: 225,
+        name: "San Miguel"
+    },
+    {
+        id: 226,
+        name: "Comacarán"
+    },
+    {
+        id: 227,
+        name: "Uluazapa"
+    },
+    {
+        id: 228,
+        name: "Moncagua"
+    },
+    {
+        id: 229,
+        name: "Quelepa"
+    },
+    {
+        id: 230,
+        name: "Chirilagua"
+    },
+    {
+        id: 231,
+        name: "Chinameca"
+    },
+    {
+        id: 232,
+        name: "Nueva Guadalupe"
+    },
+    {
+        id: 233,
+        name: "Lolotique"
+    },
+    {
+        id: 234,
+        name: "San Jorge"
+    },
+    {
+        id: 235,
+        name: "San Rafael Oriente"
+    },
+    {
+        id: 236,
+        name: "El Tránsito"
+    },
+    {
+        id: 237,
+        name: "Arambala"
+    },
+    {
+        id: 238,
+        name: "Cacaopera"
+    },
+    {
+        id: 239,
+        name: "Corinto"
+    },
+    {
+        id: 240,
+        name: "El Rosario"
+    },
+    {
+        id: 241,
+        name: "Joateca"
+    },
+    {
+        id: 242,
+        name: "Jocoaitique"
+    },
+    {
+        id: 243,
+        name: "Meanguera"
+    },
+    {
+        id: 244,
+        name: "Perquín"
+    },
+    {
+        id: 245,
+        name: "San Fernando"
+    },
+    {
+        id: 246,
+        name: "San Isidro"
+    },
+    {
+        id: 247,
+        name: "Torola"
+    },
+    {
+        id: 248,
+        name: "Chilanga"
+    },
+    {
+        id: 249,
+        name: "Delicias de Concepción"
+    },
+    {
+        id: 250,
+        name: "El Divisadero"
+    },
+    {
+        id: 251,
+        name: "Gualococti"
+    },
+    {
+        id: 252,
+        name: "Guatajiagua"
+    },
+    {
+        id: 253,
+        name: "Jocoro"
+    },
+    {
+        id: 254,
+        name: "Lolotiquillo"
+    },
+    {
+        id: 255,
+        name: "Osicala"
+    },
+    {
+        id: 256,
+        name: "San Carlos"
+    },
+    {
+        id: 257,
+        name: "San Francisco Gotera"
+    },
+    {
+        id: 258,
+        name: "San Simón"
+    },
+    {
+        id: 259,
+        name: "Sensembra"
+    },
+    {
+        id: 260,
+        name: "Sociedad"
+    },
+    {
+        id: 261,
+        name: "Yamabal"
+    },
+    {
+        id: 262,
+        name: "Yoloaiquín"
+    }
+
+]
 /* export const featureOne = [
     {
         id:1,

@@ -87,7 +87,8 @@ const login = async () => {
         await loginAction(email.value, password.value)
         router.push('/') // Redirige al home u otra ruta después del login
     } catch (error) {
-        alert('Login failed: ' + error.message)
+        const errorMessage = (error instanceof Error) ? error.message : String(error);
+        alert('Login failed: ' + errorMessage)
     }
 }
 </script>

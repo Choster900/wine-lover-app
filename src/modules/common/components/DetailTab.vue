@@ -29,12 +29,12 @@
             <div id="content" class="mt-5 sm:mt-8 lg:mt-12 mx-0 sm:mr-5 md:mr-8 lg:mr-12">
                 <div v-if="activeTab === 1">
                     <p class="sm:text-lg">{{ description }}</p>
-                    <ul class="mt-4 sm:mt-6 grid gap-4 sm:gap-5 sm:text-lg leading-none">
+                    <!-- <ul class="mt-4 sm:mt-6 grid gap-4 sm:gap-5 sm:text-lg leading-none">
                         <li>Leather : From Japan</li>
                         <li>Brand : Navana</li>
                         <li>Weight : 1kg</li>
                         <li>Color : Wooden , Whtie , Blue , Orange</li>
-                    </ul>
+                    </ul> -->
                 </div>
                 <div v-if="activeTab === 2">
                     <div class="max-w-[680px] flex items-start justify-between gap-y-8 gap-x-10 flex-wrap">
@@ -89,7 +89,7 @@ import { detailReview, shippingAbout, venderInfo } from '@/mocks/data.ts';
 const activeTab = ref(1)
 
 defineProps<{
-    description: string
+    description?: string
     classList: string
 }>()
 
