@@ -8,7 +8,7 @@ import type { ClientRegistrationPayload } from '../interfaces/client-registratio
 export const registerAction = async (payload: ClientRegistrationPayload): Promise<void> => {
     try {
         const { data } = await backendApi.post<AuthResponse>(
-            '/api/v1/public/client/register',
+            '/public/client/register',
             payload
         )
 

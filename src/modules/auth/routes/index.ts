@@ -6,7 +6,6 @@ export const authRoutes: RouteRecordRaw = {
     children: [
         {
             path: 'login',
-            name: 'product-list',
             component: () => import('../views/Login.vue'),
             meta: {
                 title: 'Todos los productos'
@@ -14,7 +13,6 @@ export const authRoutes: RouteRecordRaw = {
         },
         {
             path: ':id',
-            name: 'register',
             component: () => import('../views/Register.vue'),
             props: true,
             meta: {

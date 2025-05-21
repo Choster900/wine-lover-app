@@ -48,7 +48,7 @@
                         </button>
                     </div>
                     <p class="text-lg mt-[15px]" data-aos="fade-up" data-aos-delay="600">Don't have an account yet?
-                        <router-link to="/register"
+                        <router-link to="/auth/register"
                             class="text-primary font-medium ml-1 inline-block">Register</router-link>
                     </p>
                 </div>

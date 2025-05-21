@@ -10,7 +10,7 @@ export const loginAction = async (email: string, password: string): Promise<void
         const { data } = await backendApi.post<AuthResponse>('/auth/login', {
             email,
             password,
-        }) 
+        })
 
         console.log(data)
 
@@ -24,7 +24,12 @@ export const loginAction = async (email: string, password: string): Promise<void
         localStorage.setItem('user', JSON.stringify(user))
 
     } catch (error: any) {
-        const message = error.response?.data?.message || 'Error al iniciar sesión'
-        throw new Error(message)
+        if (error.response?.data?.errors) {
+            console.error('Errores de validación:', error.response.data.errors)
+        } else {
+            console.error('Error durante el registro:', error.response?.data || error.message)
+        }
+        throw error
     }
+
 }
