@@ -1,5 +1,5 @@
 <template>
-    <label class="switcher cursor-pointer order-first sm:order-last" @change="changeMode('mode', $event)">
+    <label class="switcher cursor-pointer order-first sm:order-last" @change="changeMode('mode')">
         <input class="hidden" type="checkbox">
         <img class="moon w-[22px] sm:w-7 block dark:hidden" :src="moon" alt="moon">
         <img class="sun w-[22px] sm:w-7 hidden dark:block" :src="sun" alt="sun">

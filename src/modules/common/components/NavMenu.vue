@@ -4,9 +4,7 @@
             class="text-lg leading-none text-title dark:text-white transition-all duration-300 hover:text-primary hidden lg:block">
             Login
         </router-link>
-        <button class="hdr_search_btn" aria-label="search">
-            <i class="mdi mdi-magnify text-3xl dark:text-white text-[24px] sm:text-[28px]"></i>
-        </button>
+
         <button class="relative hdr_wishList_btn" @click="wishList = !wishList">
             <span
                 class="absolute w-[22px] h-[22px] bg-secondary top-[0px] -right-[11px] rounded-full flex items-center justify-center text-xs leading-none text-white">14</span>
@@ -417,19 +415,21 @@
                     d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
             </svg>
         </button>
-
+        <router-link aria-label="" to="/client/my-profile">
+            <i class="mdi mdi-account text-3xl dark:text-white text-[24px] sm:text-[28px]"></i>
+        </router-link>
 
         <div class="w-[1px] bg-title/20 dark:bg-white/20 h-7 hidden sm:block"></div>
 
-
         <SwitcherS />
+
 
 
     </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 
 import { useAuthStore } from '@/modules/auth/stores/auth';
 
@@ -443,7 +443,7 @@ import w3 from '@/assets/images/wishlist/wishList-03.jpg'
 import w4 from '@/assets/images/wishlist/wishList-04.jpg'
 import w5 from '@/assets/images/wishlist/wishList-05.jpg'
 
-import SwitcherS from './switcher-s.vue'
+import SwitcherS from './Switcher-s.vue'
 
 const emit = defineEmits(['toggle-change']);
 
@@ -454,8 +454,6 @@ const props = defineProps({
 function handleToggle() {
     emit('toggle-change', !props.toggle);
 }
-
-const isLoggedIn = ref(false)
 
 
 const auth = useAuthStore()
