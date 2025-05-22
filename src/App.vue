@@ -1,11 +1,11 @@
 <template>
-  <RouterView></RouterView>
+    <RouterView></RouterView>
 </template>
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { fetchUserAction } from '@/modules/auth/actions/fetch-user.action'
+import { fetchUserFromToken } from './modules/auth/actions/auth.action';
 
 onMounted(() => {
-    fetchUserAction()
+    fetchUserFromToken()
 })
 </script>

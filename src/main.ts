@@ -8,11 +8,16 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
+import { fetchUserFromToken } from '@/modules/auth/actions/auth.action'
+
+
 const app = createApp(App)
 const queryClient = new QueryClient()
 
 app.use(createPinia())
 app.use(VueQueryPlugin, { queryClient })
 app.use(router)
+
+fetchUserFromToken()
 
 app.mount('#app')

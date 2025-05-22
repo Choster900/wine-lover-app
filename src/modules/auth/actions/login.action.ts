@@ -1,25 +1,31 @@
-// actions/login.action.ts
 import backendApi from '@/api/backendApi'
-import type { AuthResponse } from '../interfaces'
+
 import { useAuthStore } from '../stores/auth'
+import type { AuthResponseLogin, User } from '../interfaces'
 
 export const loginAction = async (email: string, password: string): Promise<void> => {
-    const authStore = useAuthStore() // Obtener instancia del store
+    const authStore = useAuthStore()
 
     try {
-        const { data } = await backendApi.post<AuthResponse>('/auth/login', {
+        const { data } = await backendApi.post<AuthResponseLogin>('/auth/login', {
             email,
             password,
         })
 
-        console.log(data)
+        const user: User = {
+            id: data.data.id,
+            username: data.data.username,
+            email: data.data.email,
+            email_verified_at: data.data.email_verified_at,
+            profile: data.data.profile,
+            state: data.data.state,
+            permissions: data.data.permissions,
+            client: data.data.client,
+        }
 
-        const { token, user } = data.data
+        const token = data.data.token
 
-        // Guarda el token y el usuario en el estado de Pinia
         authStore.setUser(user, token)
-
-        // Guarda los datos en localStorage
         localStorage.setItem('token', token)
         localStorage.setItem('user', JSON.stringify(user))
 
@@ -27,9 +33,8 @@ export const loginAction = async (email: string, password: string): Promise<void
         if (error.response?.data?.errors) {
             console.error('Errores de validación:', error.response.data.errors)
         } else {
-            console.error('Error durante el registro:', error.response?.data || error.message)
+            console.error('Error durante el login:', error.response?.data || error.message)
         }
         throw error
     }
-
 }

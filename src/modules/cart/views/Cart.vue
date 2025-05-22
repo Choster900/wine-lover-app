@@ -266,7 +266,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted } from 'vue';
 
 import bg from '@/assets/images/shortcode/breadcumb.jpg'

@@ -1,4 +1,3 @@
-// stores/auth.ts
 import { defineStore } from 'pinia'
 import type { User } from '@/modules/auth/interfaces'
 
@@ -14,6 +13,9 @@ export const useAuthStore = defineStore('auth', {
     }),
     getters: {
         isLoggedIn: (state) => !!state.token,
+        client: (state) => state.user?.client || null,
+        permissions: (state) => state.user?.permissions || [],
+        username: (state) => state.user?.username || '',
     },
     actions: {
         setUser(user: User, token: string) {
@@ -23,6 +25,8 @@ export const useAuthStore = defineStore('auth', {
         logout() {
             this.user = null
             this.token = null
+            localStorage.removeItem('user')
+            localStorage.removeItem('token')
         },
         initAuthFromStorage() {
             const token = localStorage.getItem('token')
