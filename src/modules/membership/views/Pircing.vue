@@ -39,28 +39,20 @@
                     class="w-full sm:w-[47%] lg:w-auto flex flex-col justify-between bg-primary bg-opacity-10 px-7 md:px-10 py-8 md:py-12 group"
                     data-aos="fade-up" data-aos-delay="100">
                     <div>
-                        <h4 class="font-normal leading-none">{{ item.title }}</h4>
+                        <h4 class="font-normal leading-none">{{ item.name }}</h4>
                         <span v-if="price"
                             class="block text-title dark:text-white text-4xl md:text-5xl font-bold leading-none mt-4 md:mt-6 duration-300 price"
-                            data-monthly="9" data-yearly="99">{{ item.month }}</span>
+                            data-monthly="9" data-yearly="99">{{ item.plans?.[0]?.price }}</span>
                         <span v-if="!price"
                             class="block text-title dark:text-white text-4xl md:text-5xl font-bold leading-none mt-4 md:mt-6 duration-300 price"
-                            data-monthly="9" data-yearly="99">{{ item.year }}</span>
+                            data-monthly="9" data-yearly="99">{{ item.plans?.[3]?.price }}</span>
                         <ul class="mt-4 md:mt-6 flex flex-col gap-[15px]">
-                            <li v-for="(el, index) in item.feature" :key="index"
-                                class="flex items-center gap-[10px] text-title dark:text-white-light">
-                                <svg width="14" height="13" viewBox="0 0 14 13" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M4.80386 12.9623L4.6596 12.7166C3.57757 10.8731 0.699387 6.95693 0.670357 6.91758L0.585938 6.80285L1.66876 5.73317L4.76732 7.89681C6.70934 5.38699 8.51847 3.65968 9.70196 2.6474C11.0094 1.52905 11.8372 1.02863 11.8716 1.00787L11.9107 0.984375H13.8186L13.4955 1.27213C9.41548 4.90614 4.98911 12.6371 4.94486 12.7147L4.80386 12.9623Z"
-                                        fill="#BB976D" />
-                                </svg>
-                                {{ el }}
-                            </li>
+                            <p>{{ item.description }}</p>
                         </ul>
                     </div>
                     <div class="mt-4 md:mt-6">
-                        <router-link class="btn btn-theme-outline duration-300 group-hover:border-primary" to="#"
+                        <router-link class="btn btn-theme-outline duration-300 group-hover:border-primary"
+                            :to="`/cart/payment-confirmation/membership/${item.id}/${price ? 'monthly' : 'annual'}`"
                             data-text="Subscribe">
                             <span class="duration-300 group-hover:text-primary">Subscribe</span>
                         </router-link>
@@ -86,14 +78,27 @@ import about from '@/assets/images/svg/about.svg'
 
 import Aos from 'aos';
 
-
-
-import { pricingData } from '@/mocks/data.ts';
 import Partner from '@/modules/shop/components/Partner.vue';
+import { getAllMemberships } from '../actions/get-all-membership.action';
+import { type Membership, type Plan } from '../interfaces/membership.interface';
 
+
+const pricingData = ref<Membership[]>()
+const fetchCards = async () => {
+    const data = await getAllMemberships()
+    if (data) {
+        console.log(data);
+
+        pricingData.value = data
+
+    } else {
+        alert('❌ Error al obtener las tarjetas.')
+    }
+}
 
 onMounted(() => {
     Aos.init()
+    fetchCards()
 })
 
 const price = ref(true)

@@ -15,7 +15,6 @@ export const fetchUserFromToken = async () => {
         })
 
         const authStore = useAuthStore()
-        console.log({ "data": data.data, token });
 
         authStore.setUser(data.data, token)
 

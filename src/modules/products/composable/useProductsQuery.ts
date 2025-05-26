@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/vue-query'
+import { useQueries, useQuery } from '@tanstack/vue-query'
 import { fetchProductsAction, fetchProductByIdAction } from '../actions/fetch-products.action'
 import type { Product } from '../interfaces/product.interface'
 
@@ -26,5 +26,19 @@ export function useProductByIdQuery(productId: string) {
         staleTime: 1000 * 60 * 5,
         retry: 1,
         refetchOnWindowFocus: false,
+    })
+}
+
+export function useProductByIdQueryWhitoutDelay(productId: string) {
+    return useQuery<Product, Error, Product, [string, string]>({
+        queryKey: ['product', productId],
+        queryFn: async () => {
+            const response = await fetchProductByIdAction(productId)
+            return response.data
+        },
+        enabled: !!productId, // Solo se ejecuta si hay un ID
+        refetchOnMount: false,     // ❌ No al montar
+        refetchOnWindowFocus: false, // ❌ No al cambiar de pestaña
+        refetchOnReconnect: false, // ❌ No al reconectar
     })
 }

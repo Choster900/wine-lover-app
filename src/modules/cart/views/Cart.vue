@@ -18,137 +18,83 @@
         <div class="container ">
             <div class="flex xl:flex-row flex-col gap-[30px] lg:gap-[30px] xl:gap-[70px]">
                 <div class="flex-1 overflow-auto">
-                    <table id="cart-table" class="responsive nowrap table-wrapper" style="width:100%">
-                        <thead class="table-header">
-                            <tr>
-                                <th class="text-lg md:text-xl font-semibold leading-none text-title dark:text-white">
-                                    Product Info</th>
-                                <th class="text-lg md:text-xl font-semibold leading-none text-title dark:text-white">
-                                    Price</th>
-                                <th class="text-lg md:text-xl font-semibold leading-none text-title dark:text-white">
-                                    Quantity</th>
-                                <th class="text-lg md:text-xl font-semibold leading-none text-title dark:text-white">
-                                    Total</th>
-                                <th class="text-lg md:text-xl font-semibold leading-none text-title dark:text-white">
-                                    Remove</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-body">
-                            <tr>
-                                <td class="w-[42%]">
-                                    <div class="flex items-center gap-3 md:gap-4 lg:gap-6 cart-product">
-                                        <div class="w-14 sm:w-20 flex-none py-3">
-                                            <img :src="cart1" alt="product">
+                    <div
+                        class="overflow-x-auto rounded-xl shadow-lg dark:shadow-none border border-gray-200 dark:border-gray-700">
+                        <table class="min-w-full bg-white dark:bg-dark-secondary text-sm md:text-base">
+                            <thead class="bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
+                                <tr>
+                                    <th class="px-4 py-3 text-left font-semibold text-title dark:text-white">Product
+                                        Info</th>
+                                    <th class="px-4 py-3 text-left font-semibold text-title dark:text-white">Price</th>
+                                    <th class="px-4 py-3 text-left font-semibold text-title dark:text-white">Quantity
+                                    </th>
+                                    <th class="px-4 py-3 text-left font-semibold text-title dark:text-white">Total</th>
+                                    <th class="px-4 py-3 text-center font-semibold text-title dark:text-white">Remove
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr v-for="item in getUserCartItems" :key="item.id"
+                                    class="hover:bg-gray-50 dark:hover:bg-gray-900 transition">
+                                    <td class="px-4 py-3 w-[42%]">
+                                        <div class="flex items-center gap-4">
+                                            <div
+                                                class="w-16 h-16 flex-none overflow-hidden rounded-md border border-gray-200 dark:border-gray-600">
+                                                <img src="https://walmartsv.vtexassets.com/arquivos/ids/294906/Vino-Tinto-Santa-Helena-Caber-Sauv-750Ml-1-6705.jpg?v=638104630460530000"
+                                                    alt="product" class="object-cover w-full h-full" />
+                                            </div>
+                                            <div class="flex-1">
+                                                <h6
+                                                    class="text-base font-medium text-title dark:text-white leading-tight">
+                                                    {{
+                                                        (() => {
+                                                            const product = products.find(product => product && product.id ===
+                                                                item.productId)
+                                                            return product ? product.name : 'Producto no encontrado'
+                                                        })()
+                                                    }}
+                                                </h6>
+                                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                                                    {{
+                                                        (() => {
+                                                            const product = products.find(product => product && product.id ===
+                                                                item.productId)
+                                                            return product ? product.description : 'Producto no encontrado'
+                                                        })()
+                                                    }}
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div class="flex-1">
-                                            <h6 class="leading-none font-medium">Chair</h6>
-                                            <h5 class="font-semibold leading-none mt-2"><router-link to="#">Modern
-                                                    Sofa Set</router-link></h5>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h6
-                                        class="text-base md:text-lg leading-none text-title dark:text-white font-semibold">
-                                        $45</h6>
-                                </td>
-                                <td>
-                                    <IncDec />
-                                </td>
-                                <td>
-                                    <h6
-                                        class="text-base md:text-lg leading-none text-title dark:text-white font-semibold">
-                                        $312</h6>
-                                </td>
-                                <td>
-                                    <button
-                                        class="w-8 h-8 bg-[#E8E9EA] dark:bg-dark-secondary flex items-center justify-center ml-auto duration-300 text-title dark:text-white">
-                                        <svg class="fill-current " width="12" height="12" viewBox="0 0 12 12"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M0.546875 1.70822L1.70481 0.550293L5.98646 4.83195L10.2681 0.550293L11.3991 1.6813L7.11746 5.96295L11.453 10.2985L10.295 11.4564L5.95953 7.12088L1.67788 11.4025L0.546875 10.2715L4.82853 5.98988L0.546875 1.70822Z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-[42%]">
-                                    <div class="flex items-center gap-3 md:gap-4 lg:gap-6 cart-product">
-                                        <div class="w-14 sm:w-20 flex-none pb-3">
-                                            <img :src="cart2" alt="product">
-                                        </div>
-                                        <div class="flex-1">
-                                            <h6 class="leading-none font-medium">Light/Lamp</h6>
-                                            <h5 class="font-semibold leading-none mt-2"><router-link to="#">Classic
-                                                    Chair with Vase</router-link></h5>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h6
-                                        class="text-base md:text-lg leading-none text-title dark:text-white font-semibold">
-                                        $120</h6>
-                                </td>
-                                <td>
-                                    <IncDec />
-                                </td>
-                                <td>
-                                    <h6
-                                        class="text-base md:text-lg leading-none text-title dark:text-white font-semibold">
-                                        $780</h6>
-                                </td>
-                                <td>
-                                    <button
-                                        class="w-8 h-8 bg-[#E8E9EA] dark:bg-dark-secondary flex items-center justify-center ml-auto duration-300 text-title dark:text-white">
-                                        <svg class="fill-current " width="12" height="12" viewBox="0 0 12 12"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M0.546875 1.70822L1.70481 0.550293L5.98646 4.83195L10.2681 0.550293L11.3991 1.6813L7.11746 5.96295L11.453 10.2985L10.295 11.4564L5.95953 7.12088L1.67788 11.4025L0.546875 10.2715L4.82853 5.98988L0.546875 1.70822Z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-[42%]">
-                                    <div class="flex items-center gap-3 md:gap-4 lg:gap-6 cart-product">
-                                        <div class="w-14 sm:w-20 flex-none">
-                                            <img :src="cart3" alt="product">
-                                        </div>
-                                        <div class="flex-1">
-                                            <h6 class="leading-none font-medium">Interior</h6>
-                                            <h5 class="font-semibold leading-none mt-2"><router-link to="#">Luxury
-                                                    Hanging Lamp</router-link></h5>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h6
-                                        class="text-base md:text-lg leading-none text-title dark:text-white font-semibold">
-                                        $90</h6>
-                                </td>
-                                <td>
-                                    <IncDec />
-                                </td>
-                                <td>
-                                    <h6
-                                        class="text-base md:text-lg leading-none text-title dark:text-white font-semibold">
-                                        $380</h6>
-                                </td>
-                                <td>
-                                    <button
-                                        class="w-8 h-8 bg-[#E8E9EA] dark:bg-dark-secondary flex items-center justify-center ml-auto duration-300 text-title dark:text-white">
-                                        <svg class="fill-current " width="12" height="12" viewBox="0 0 12 12"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M0.546875 1.70822L1.70481 0.550293L5.98646 4.83195L10.2681 0.550293L11.3991 1.6813L7.11746 5.96295L11.453 10.2985L10.295 11.4564L5.95953 7.12088L1.67788 11.4025L0.546875 10.2715L4.82853 5.98988L0.546875 1.70822Z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <span class="font-semibold text-title dark:text-white">${{ item.price }}</span>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <IncrementDecrement :initialCount="item.quantity"
+                                            @update:count="newCount => handleCountUpdate(newCount, item.cartItemId)" />
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <span class="font-semibold text-title dark:text-white">
+                                            ${{ (item.quantity * item.price).toFixed(2) }}
+                                        </span>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <button
+                                            class="w-8 h-8 flex items-center justify-center bg-red-100 dark:bg-red-800 rounded-full hover:bg-red-200 dark:hover:bg-red-700 text-red-600 dark:text-red-200 transition">
+                                            <svg class="fill-current" width="12" height="12" viewBox="0 0 12 12"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M0.546875 1.70822L1.70481 0.550293L5.98646 4.83195L10.2681 0.550293L11.3991 1.6813L7.11746 5.96295L11.453 10.2985L10.295 11.4564L5.95953 7.12088L1.67788 11.4025L0.546875 10.2715L4.82853 5.98988L0.546875 1.70822Z" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
+                </div>
+                <!--     -->
                 <div>
                     <div class="mb-[30px]">
                         <h4 class="text-lg md:text-xl font-semibold leading-none text-title dark:text-white mb-[15px]">
@@ -262,21 +208,91 @@
                 </div>
             </div>
         </div>
-
+        <pre>
+{{ products }}
+</pre>
     </div>
 </template>
-
 <script setup lang="ts">
-import { onMounted } from 'vue';
-
+import { ref, onMounted, computed } from 'vue'
+import { useAuthStore } from '@/modules/auth/stores/auth'
+import { useQueries } from '@tanstack/vue-query'
+import { fetchProductByIdAction } from '@/modules/products/actions/fetch-products.action'
+import Aos from 'aos'
+import IncrementDecrement from '@/modules/products/components/IncrementDecrement.vue';
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
-import cart1 from '@/assets/images/gallery/cart/cart-01.jpg'
-import cart2 from '@/assets/images/gallery/cart/cart-02.jpg'
-import cart3 from '@/assets/images/gallery/cart/cart-03.jpg'
 
-import Aos from 'aos';
+const CART_KEY = 'cart'
+const authStore = useAuthStore()
+const userCartItems = ref<any[]>([])
+
+// ✅ Inicializar desde localStorage al recargar
+authStore.initAuthFromStorage()
 
 onMounted(() => {
     Aos.init()
+    const storedCart = JSON.parse(localStorage.getItem(CART_KEY) || '[]')
+    userCartItems.value = storedCart.filter((item: any) => item.userId === authStore.user?.id)
 })
+
+
+// 🔄 Obtener productos del carrito del usuario autenticado
+const getUserCartItems = computed(() => {
+    return userCartItems.value
+})
+
+
+const productIds = computed(() => {
+    return [...new Set(getUserCartItems.value.map(item => item.productId))]
+})
+
+
+// ✅ Lanzar múltiples consultas en paralelo con useQueries
+const productQueries = useQueries({
+    queries: computed(() =>
+        productIds.value.map(id => ({
+            queryKey: ['product', id],
+            queryFn: () => fetchProductByIdAction(String(id)).then(res => res.data),
+            enabled: !!authStore.user && !!id,
+            staleTime: 1000 * 60 * 5,
+        }))
+    )
+})
+
+// 📦 Productos cargados exitosamente
+const products = computed(() =>
+    productQueries.value
+        .map(q => q.data)
+        .filter(Boolean) // elimina `undefined`
+)
+
+// 🔄 Estado de carga global (si alguna query está cargando)
+const loading = computed(() =>
+    productQueries.value.some(q => q.isLoading)
+)
+
+const handleCountUpdate = (newCount: number, cartItemId: string) => {
+
+    /*  if (newCount <= 1) return */
+
+    console.log('Nuevo valor:', newCount)
+
+    const storedCart = JSON.parse(localStorage.getItem(CART_KEY) || '[]')
+
+    const updatedCart = storedCart.map((item: any) => {
+        if (item.cartItemId === cartItemId) {
+            return {
+                ...item,
+                quantity: newCount
+            }
+        }
+        return item
+    })
+
+    localStorage.setItem(CART_KEY, JSON.stringify(updatedCart))
+
+    // ⚠️ Solo actualiza los del usuario actual
+    userCartItems.value = updatedCart.filter((item: any) => item.userId === authStore.user?.id)
+}
+
 </script>

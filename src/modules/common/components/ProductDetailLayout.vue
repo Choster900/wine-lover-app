@@ -4,7 +4,7 @@
             <div class="relative overflow-hidden">
                 <router-link :to="`/products/${item.id}`">
                     <img class="w-full h-60 object-cover transform group-hover:scale-110 duration-300"
-                        :src="`${baseUrl}/storage/${item.images[0].url_image}`" alt="product" />
+                        :src="`${baseUrl}/storage/${item.image}`" alt="product" />
                 </router-link>
 
                 <div v-if="item.tag === 'Hot Sale'"
