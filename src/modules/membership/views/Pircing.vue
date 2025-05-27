@@ -62,12 +62,6 @@
         </div>
     </div>
 
-    <div class="py-12 bg-[#F3F3F3] dark:bg-dark-secondary">
-        <div class="container">
-            <Partner />
-        </div>
-    </div>
-
 </template>
 
 <script setup lang="ts">
@@ -86,6 +80,7 @@ import { type Membership, type Plan } from '../interfaces/membership.interface';
 const pricingData = ref<Membership[]>()
 const fetchCards = async () => {
     const data = await getAllMemberships()
+    console.log(data);
     if (data) {
         console.log(data);
 

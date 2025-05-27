@@ -3,47 +3,10 @@
         <div class="s-pt-100">
             <div class="container-fluid">
                 <div
-                    class="max-w-lg lg:max-w-[1052px] mx-auto flex items-end justify-between gap-3 lg:gap-8 flex-col lg:flex-row s-pb-100">
-                    <div class="md:max-w-[473px] w-full">
-                        <h2 class="font-bold leading-none text-white">Newsletter</h2>
-                        <p class="mt-2 sm:mt-4 text-white-light">Stay in the loop with exclusive offers and updates.
-                            Subscribe to our newsletter for the latest trends and promotions delivered straight to your
-                            inbox. </p>
-                    </div>
-                    <div class="mt-4 lg:mt-6 sm:flex md:max-w-[478px] w-full">
-                        <input
-                            class="w-full h-12 md:h-14 bg-white bg-opacity-[0.03] border border-white text-white placeholder:text-white-light border-opacity-30 focus:border-primary p-4 outline-none sm:flex-1 sm:border-r-0 duration-300"
-                            type="text" placeholder="Enter your email address">
-                        <button
-                            class="w-full h-12 bg-primary text-white flex items-center justify-center text-base md:text-lg font-medium p-3 mt-3 sm:mt-0 sm:w-32 sm:h-auto sm:flex-none">Subscribe</button>
-                    </div>
-                </div>
+                    class="max-w-[1722px] mx-auto flex items-start justify-between gap-10 s-pb-50 flex-wrap lg:flex-nowrap footer-wrapper">
 
-                <div
-                    class="max-w-[1722px] mx-auto flex items-start justify-between gap-10 s-pb-100 flex-wrap lg:flex-nowrap footer-wrapper">
-
-                    <div
-                        class="lg:max-w-[366px] sm:w-[45%] lg:w-full flex items-start justify-between gap-10 footer-inner-wrapper">
-                        <div>
-                            <h4 class="text-white leading-none mb-5 md:mb-6 text-xl md:text-2xl">Sitemap</h4>
-                            <ul class="text-white leading-none flex flex-col gap-4">
-                                <li v-for="(item, index) in footerLink1" :key="index"
-                                    class="duration-100 hover:text-primary inline-block group"><router-link
-                                        class="text-underline-primary" :to="item.link">{{ item.name }}</router-link></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="text-white leading-none mb-5 md:mb-6 text-xl md:text-2xl">Others</h4>
-                            <ul class="text-white leading-none flex flex-col gap-4">
-                                <li v-for="(item, index) in footerLink2" :key="index"
-                                    class="duration-100 hover:text-primary inline-block group"><router-link
-                                        class="text-underline-primary" :to="item.link">{{ item.name }}</router-link></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="lg:max-w-[522px] w-full sm:text-center -order-1 lg:order-none">
-                        <img class="sm:mx-auto w-[150px] sm:w-auto" :src="logo" alt="logo">
+                    <div class="w-full sm:text-center -order-1 lg:order-none">
+                        <img class="sm:mx-auto w-[140px] rounded-xl" :src="logo" alt="logo">
                         <p class="mt-4 text-white-light max-w-[522px] sm:mx-auto">Furnixar is a modern furniture
                             template for an eCommerce website designed to help you create an impressive online store for
                             your furniture or home decor business. </p>
@@ -117,9 +80,8 @@
                 </div>
 
                 <div class="max-w-[1722px] mx-auto border-t border-white border-opacity-10 py-5 md:py-7 text-center">
-                    <p class="text-white">© {{ year }} Furnixar Develop with <i
-                            class="fa-solid fa-heart text-red-600"></i> by <a href="https://shreethemes.in/"
-                            target="_blank" className='ms-1'>Shreethemes</a></p>
+                    <p class="text-white">© {{ year }} Club Amante del Vino y Licores <i
+                            class="fa-solid fa-heart text-red-600"></i></p>
                 </div>
             </div>
         </div>
@@ -127,9 +89,9 @@
 </template>
 
 <script setup lang="ts">
-import logo from '@/assets/images/footer-logo.svg'
+import logo from '@/assets/images/logo/wine-lovers.png'
 import bg from '@/assets/images/bg/footer.jpg'
-import { footerLink1, footerLink2, footerLink3, footerLink4 } from '@/mocks/nav-data';
+import { footerLink3, footerLink4 } from '@/mocks/nav-data';
 import { ref } from 'vue';
 
 const year = ref(new Date().getFullYear());

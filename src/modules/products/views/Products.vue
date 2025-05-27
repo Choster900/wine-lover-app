@@ -1,6 +1,5 @@
 <template>
 
-
     <div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70"
         :style="{ backgroundImage: 'url(' + bg + ')' }">
         <div class="text-center w-full">
@@ -22,10 +21,6 @@
                     <ItemsType />
                     <BrandsFilter />
                     <RangePrice />
-
-                    <router-link to="/shop-v1" class="hidden lg:block">
-                        <img class="w-full" :src="card" alt="shop-card">
-                    </router-link>
                 </div>
                 <div class="lg:max-w-[1100px] w-full" data-aos="fade-up" data-aos-delay="200">
                     <div v-if="isLoading">Cargando productos...</div>
@@ -43,17 +38,14 @@
         </div>
     </div>
 
-
-
 </template>
 <script setup lang="ts">
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
 
 import Aos from 'aos';
-import { onMounted, ref } from 'vue'
+import { onMounted } from 'vue'
 import ItemsType from '../components/ItemsType.vue';
 import RangePrice from '../components/RangePrice.vue';
-import card from '@/assets/images/thumb/shop-card.jpg'
 import BrandsFilter from '../components/BrandsFilter.vue';
 import ProductsCards from '../components/ProductsCards.vue';
 import CategoriesFilter from '../components/CategoriesFilter.vue';

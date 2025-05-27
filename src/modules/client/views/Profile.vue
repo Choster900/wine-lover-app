@@ -1,6 +1,4 @@
 <template>
-    <!--   <div> -->
-    <!--  <Navbar /> -->
 
     <div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70"
         :style="{ backgroundImage: 'url(' + bg + ')' }">
@@ -66,7 +64,7 @@
 
 <script setup lang="ts">
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
-import { onMounted, ref } from 'vue';
+import { onMounted } from 'vue';
 import Aos from 'aos';
 import ProfileTab from '../components/ProfileTab.vue';
 

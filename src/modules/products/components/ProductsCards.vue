@@ -4,20 +4,11 @@
             <div class="relative overflow-hidden">
                 <router-link :to="`/products/${item.id}`">
                     <img class="w-full h-60 object-cover transform group-hover:scale-110 duration-300"
-                        :src="`${baseUrl}/storage/${item.images[0].url_image}`" alt="product" />
+                        :src="`${baseUrl}/${item.images[0].url_image}`" alt="product" />
                 </router-link>
-
-                <div
-                    class="absolute z-10 top-7 left-7 pt-[10px] pb-2 px-3 bg-[#1CB28E] rounded-[30px] font-primary text-[14px] text-white font-semibold leading-none">
-                    Hot Sale
-                </div>
                 <div
                     class="absolute z-10 top-7 left-7 pt-[10px] pb-2 px-3 bg-[#9739E1] rounded-[30px] font-primary text-[14px] text-white font-semibold leading-none">
                     NEW
-                </div>
-                <div
-                    class="absolute z-10 top-7 left-7 pt-[10px] pb-2 px-3 bg-[#E13939] rounded-[30px] font-primary text-[14px] text-white font-semibold leading-none">
-                    10% OFF
                 </div>
 
                 <div
@@ -68,7 +59,7 @@
 import { defineProps } from 'vue';
 import type { Product } from '../interfaces/product.interface';
 
-const baseUrl = import.meta.env.VITE_BACKEND_URL;
+const baseUrl = import.meta.env.VITE_BACKEND_STORAGE_URL;
 
 defineProps<{
     productList: Product[]

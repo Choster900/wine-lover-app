@@ -11,26 +11,21 @@
         </div>
     </div>
 
-    <!--    <pre>
-    {{ product }}
-</pre> -->
     <div class="s-py-50" data-aos="fade-up">
         <div class="container-fluid">
             <div class="max-w-[1720px] mx-auto flex justify-between gap-10 flex-col lg:flex-row">
                 <div class="w-full lg:w-[58%]">
                     <div class="relative product-dtls-wrapper">
-                        <button
-                            class="absolute top-5 left-0 p-2 bg-[#E13939] text-lg leading-none text-white font-medium z-50">-10%</button>
                         <div class="product-dtls-slider">
                             <div v-for="(image, index) in product?.images" :key="image.id">
-                                <img :src="`${baseUrl}/storage/${image.url_image}`" alt="product" class="w-full"
+                                <img :src="`${baseUrl}/${image.url_image}`" alt="product" class="w-full"
                                     :class="activeImage === index ? '' : 'hidden'">
                             </div>
                         </div>
 
                         <div class="product-dtls-nav">
                             <div v-for="(image, index) in product?.images" :key="image.id">
-                                <img :src="`${baseUrl}/storage/${image.url_image}`" @click="activeImage = index"
+                                <img :src="`${baseUrl}/${image.url_image}`" @click="activeImage = index"
                                     alt="product" class="mb-2 cursor-pointer">
                             </div>
                         </div>
@@ -131,23 +126,6 @@
         <DetailTab :description="product?.description" classList="" />
     </div>
 
-    <div class="s-py-50-100">
-        <div class="container-fluid">
-            <div class="max-w-[547px] mx-auto text-center">
-                <h6 class="text-2xl sm:text-3xl md:text-4xl leading-none">Related Products</h6>
-                <p class="mt-3">Explore complementary options that enhance your experience. Discover related products
-                    curated just for you. </p>
-            </div>
-
-            <div v-if="loadingAll">Cargando productos...</div>
-
-
-            <ProductDetailLayout v-else
-                :classList="'max-w-[1720px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-8 pt-8 md:pt-[50px]'"
-                :productList="(products ?? []).slice(0, 4)" />
-        </div>
-    </div>
-
 </template>
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
@@ -163,7 +141,7 @@ import ProductDetailLayout from '@/modules/common/components/ProductDetailLayout
 
 // Constantes
 const CART_KEY = 'cart'
-const baseUrl = import.meta.env.VITE_BACKEND_URL
+const baseUrl = import.meta.env.VITE_BACKEND_STORAGE_URL
 const authStore = useAuthStore()
 
 // Ruta y producto actual
