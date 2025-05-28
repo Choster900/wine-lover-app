@@ -12,7 +12,7 @@ export const authRoutes: RouteRecordRaw = {
             }
         },
         {
-            path: ':id',
+            path: 'register',
             component: () => import('../views/Register.vue'),
             props: true,
             meta: {

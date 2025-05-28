@@ -9,15 +9,14 @@
             <div
                 class="w-full md:w-1/2 lg:max-w-lg xl:max-w-3xl lg:w-full py-16 px-[20px] sm:px-8 lg:p-16 xl:p-24 relative z-10 flex items-center overflow-hidden">
                 <div class="mx-auto md:mx-0 max-w-md">
-                    <h2 class="leading-none" data-aos="fade-up">Welcome back !</h2>
-                    <p class="text-lg mt-[15px]" data-aos="fade-up" data-aos-delay="100">Buy & sale your exclusive
-                        product only on Furnixar</p>
+                    <h2 class="leading-none" data-aos="fade-up">Bienvenido de nuevo!</h2>
+                    <p class="text-lg mt-[15px]" data-aos="fade-up" data-aos-delay="100">Compra y disfruta productos exclusivos solo en Club Amantes del Vino y Licores</p>
                     <div class="mt-7" data-aos="fade-up" data-aos-delay="200">
                         <label
                             class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Email</label>
                         <input v-model="email"
                             class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300"
-                            type="email" placeholder="Enter your email address">
+                            type="email" placeholder="Ingresa tu dirección de correo">
                     </div>
                     <div class="mt-5" data-aos="fade-up" data-aos-delay="300">
                         <label
@@ -38,8 +37,7 @@
                                 </svg>
                             </span>
                             <span
-                                class="text-base sm:text-lg text-title dark:text-white leading-none sm:leading-none select-none inline-block transform translate-y-[3px]">Remember
-                                Me</span>
+                                class="text-base sm:text-lg text-title dark:text-white leading-none sm:leading-none select-none inline-block transform translate-y-[3px]">Recordarme</span>
                         </label>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="500">
@@ -47,9 +45,9 @@
                             <span>Login</span>
                         </button>
                     </div>
-                    <p class="text-lg mt-[15px]" data-aos="fade-up" data-aos-delay="600">Don't have an account yet?
+                    <p class="text-lg mt-[15px]" data-aos="fade-up" data-aos-delay="600">No tienes cuenta?
                         <router-link to="/auth/register"
-                            class="text-primary font-medium ml-1 inline-block">Register</router-link>
+                            class="text-primary font-medium ml-1 inline-block">Registrate</router-link>
                     </p>
                 </div>
             </div>

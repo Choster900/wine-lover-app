@@ -4,6 +4,10 @@
             class="text-lg leading-none text-title dark:text-white transition-all duration-300 hover:text-primary hidden lg:block">
             Login
         </router-link>
+        <router-link v-if="!auth.isLoggedIn" to="/auth/register"
+            class="text-lg leading-none text-title dark:text-white transition-all duration-300 hover:text-primary hidden lg:block">
+            Registro
+        </router-link>
 
         <button class="relative hdr_cart_btn" @click="cartList = !cartList">
             <span
