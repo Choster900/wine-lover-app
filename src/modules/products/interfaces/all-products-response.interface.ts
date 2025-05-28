@@ -1,10 +1,23 @@
-import type { Product } from "./product.interface";
+import type { Manufacturer, Product, YProduct } from "./product.interface";
 
 export interface ProductoResponse {
     data:  Product[];
     links: Links;
     meta:  Meta;
 }
+
+export interface CategoryResponse {
+    data:  YProduct[];
+}
+
+export interface QualityResponse {
+    data:  YProduct[];
+}
+
+export interface ManufacturerResponse {
+    data:  Manufacturer[];
+}
+
 export interface Links {
     first: string;
     last:  string;

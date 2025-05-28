@@ -1,5 +1,5 @@
 import backendApi from '@/api/backendApi'
-import type { Membership, Plan } from '../interfaces/membership.interface'
+import type { Membership } from '../interfaces/membership.interface'
 
 export const getAllMemberships = async (): Promise<Membership[] | null> => {
     try {

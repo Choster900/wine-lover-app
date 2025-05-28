@@ -3,12 +3,12 @@
     <div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70"
         :style="{ backgroundImage: 'url(' + bg + ')' }">
         <div class="text-center w-full">
-            <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">My Profile</h2>
+            <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Mi Perfil</h2>
             <ul
                 class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4">
-                <li><router-link to="/">Home</router-link></li>
+                <li><router-link to="/">Inicio</router-link></li>
                 <li>/</li>
-                <li class="text-primary">Profile</li>
+                <li class="text-primary">Perfil</li>
             </ul>
         </div>
     </div>
@@ -24,30 +24,17 @@
 
                     <div class="w-full max-w-[951px] bg-[#F8F8F9] dark:bg-dark-secondary p-5 sm:p-8 lg:p-[50px]">
                         <div>
-                            <h3 class="font-semibold leading-none">Kathlene Roser</h3>
-                            <span class="leading-none mt-3">Product Designer</span>
+                            <h3 class="font-semibold leading-none">{{ authStore.user!.client.names + authStore.user!.client.surnames }}</h3>
+                            <span class="leading-none mt-3">{{ authStore.user!.client.identity_number }}</span>
                         </div>
-                        <p class="text-base sm:text-lg mt-5 sm:mt-8 md:mt-10 text-justify">
-                            All the Lorem Ipsum generators on the Internet tend to repeat predefined on the
-                            Internet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non, lobortis in in
-                            tortor lectus iaculis viverra. Adipiscing lobortis interdum fringilla euismod odio vitae
-                            nam pulvinar elementum. Nibh purus integer elementum in. Tellus vulputate habitasse ut
-                            vulputate posuere habitant vel tempor varius.
-                        </p>
                         <div class="mt-5 sm:mt-8 md:mt-10 grid gap-4 sm:gap-6">
                             <router-link to="#" class="flex items-center gap-2">
                                 <i class="fa-solid fa-phone text-[#BB976D]"></i>
-                                <span class="leading-none font-medium text-base sm:text-lg">+111 - (1234 5678
-                                    99)</span>
+                                <span class="leading-none font-medium text-base sm:text-lg">+503 {{ authStore.user!.client.phone }}</span>
                             </router-link>
                             <router-link to="#" class="flex items-center gap-2">
                                 <i class="fa-solid fa-envelope text-[#BB976D]"></i>
-                                <span class="leading-none font-medium text-base sm:text-lg">furnixar123@gmail.com</span>
-                            </router-link>
-                            <router-link to="#" class="flex items-center gap-2">
-                                <i class="fa-solid fa-location-dot text-[#BB976D]"></i>
-                                <span class="leading-none font-medium text-base sm:text-lg">23/ A Lake Side , New
-                                    Arizona , USA</span>
+                                <span class="leading-none font-medium text-base sm:text-lg">{{ authStore.user!.email }}</span>
                             </router-link>
                         </div>
                     </div>
@@ -55,24 +42,27 @@
             </div>
         </div>
     </div>
-
-    <!-- <FooterOne />
-
-        <ScrollToTop />
-    </div> -->
 </template>
 
 <script setup lang="ts">
+import { useAuthStore } from '@/modules/auth/stores/auth';
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
-import { onMounted } from 'vue';
+import { onBeforeMount, onMounted } from 'vue';
+import { useRouter } from 'vue-router'
 import Aos from 'aos';
 import ProfileTab from '../components/ProfileTab.vue';
+
+const router = useRouter()
+const authStore = useAuthStore()
 
 onMounted(() => {
     Aos.init()
 })
 
-
-
+onBeforeMount(() => {
+  if (!authStore.user) {
+    router.push('/') // o a '/login' si es más adecuado
+  }
+})
 
 </script>

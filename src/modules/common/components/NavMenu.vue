@@ -1,19 +1,19 @@
 <template>
     <div class="flex items-center gap-4 sm:gap-6">
-        <router-link v-if="!auth.isLoggedIn" to="/auth/login"
+        <router-link v-if="!auth.user" to="/auth/login"
             class="text-lg leading-none text-title dark:text-white transition-all duration-300 hover:text-primary hidden lg:block">
             Login
         </router-link>
-        <router-link v-if="!auth.isLoggedIn" to="/auth/register"
+        <router-link v-if="!auth.user" to="/auth/register"
             class="text-lg leading-none text-title dark:text-white transition-all duration-300 hover:text-primary hidden lg:block">
             Registro
         </router-link>
 
-        <button class="relative hdr_cart_btn" @click="cartList = !cartList">
+        <!-- <button class="relative hdr_cart_btn" @click="cartList = !cartList">
             <span
                 class="absolute w-[22px] h-[22px] bg-secondary top-[0px] -right-[11px] rounded-full flex items-center justify-center text-xs leading-none text-white">22</span>
             <span class="mdi mdi-shopping-outline text-3xl dark:text-white text-[24px] sm:text-[28px]"></span>
-        </button>
+        </button> -->
 
 
         <div v-if="cartList"
@@ -226,7 +226,7 @@
                     d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
             </svg>
         </button>
-        <router-link aria-label="" to="/client/my-profile">
+        <router-link v-if="auth.user" aria-label="" to="/client/my-profile">
             <i class="mdi mdi-account text-3xl dark:text-white text-[24px] sm:text-[28px]"></i>
         </router-link>
 
@@ -268,7 +268,6 @@ function handleToggle() {
 
 
 const auth = useAuthStore()
-
 
 </script>
 

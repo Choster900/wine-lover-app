@@ -26,9 +26,9 @@
                                         to="/checkout">Checkout</router-link></li>
                             </ul>
                         </li>
-                        <li :class="current === '/blog-v1' ? 'active' : ''">
+                        <!-- <li :class="current === '/blog-v1' ? 'active' : ''">
                             <router-link to="/blog-v1">Blog</router-link>
-                        </li>
+                        </li> -->
                         <li :class="current === '/contact' ? 'active' : ''"><router-link
                                 to="/contact">Contacto</router-link></li>
                         <li :class="current === '/auth/login' ? 'active' : ''" class=" lg:hidden"><router-link

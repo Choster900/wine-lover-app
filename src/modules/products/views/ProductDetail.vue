@@ -129,15 +129,17 @@
 </template>
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import { useRoute } from 'vue-router'
 import Aos from 'aos'
 
-import { useProductByIdQuery, useProductsQuery } from '../composable/useProductsQuery'
+import { useProductByIdQuery } from '../composable/useProductsQuery'
 import { useAuthStore } from '@/modules/auth/stores/auth'
 
 import IncrementDecrement from '../components/IncrementDecrement.vue'
 import DetailTab from '@/modules/common/components/DetailTab.vue'
-import ProductDetailLayout from '@/modules/common/components/ProductDetailLayout.vue'
+
+const router = useRouter()
 
 // Constantes
 const CART_KEY = 'cart'
@@ -147,8 +149,7 @@ const authStore = useAuthStore()
 // Ruta y producto actual
 const route = useRoute()
 const productId = computed(() => route.params.id?.toString() ?? '')
-const { data: product, isLoading: loadingProduct } = useProductByIdQuery(productId.value)
-const { data: products, isLoading: loadingAll } = useProductsQuery()
+const { data: product, } = useProductByIdQuery(productId.value)
 
 // Estados
 const activeImage = ref(1)
@@ -190,7 +191,7 @@ async function addToCart() {
     const productData = product.value
 
     if (!user || !productData) {
-        alert('Debes iniciar sesión para agregar al carrito.')
+        router.push('/auth/login')
         return
     }
 

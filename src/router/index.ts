@@ -1,6 +1,7 @@
 import { authRoutes } from '@/modules/auth/routes'
 import { cartRoutes } from '@/modules/cart/routes'
 import { clientRoutes } from '@/modules/client/router'
+import { contactRoutes } from '@/modules/contact/router'
 import { membershipRoutes } from '@/modules/membership/routes'
 import { productRoutes } from '@/modules/products/routes'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -24,6 +25,7 @@ const router = createRouter({
         cartRoutes,
         membershipRoutes,
         clientRoutes,
+        contactRoutes
     ],
 })
 

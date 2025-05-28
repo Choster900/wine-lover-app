@@ -40,45 +40,18 @@
 
                     <div class="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 lg:gap-x-7 gap-y-[30px] lg:gap-y-12"
                         data-aos="fade-up" data-aos-delay="100">
-                        <div v-for="(item, index) in productList.slice(4, 12)" :key="index">
-                            <div class="group relative overflow-hidden">
-                                <img class="w-full transform duration-300 group-hover:scale-110" :src="item.image"
+                        <div v-for="(item, index) in productList?.data" :key="index">
+                            <div class="group relative overflow-hidden ">
+                                <img class="w-full transform duration-300 group-hover:scale-110" :src="`${baseUrl}/${item.images[0].url_image}`"
                                     alt="product-card">
-                                <div
-                                    class="absolute w-11/12 h-[91.6666%] top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4 bg-white dark:bg-title bg-opacity-70 dark:bg-opacity-70 flex items-end p-5 scale-110 opacity-0 duration-200 group-hover:scale-100 group-hover:opacity-100">
-                                    <ul class="flex items-center gap-2 mt-1">
-                                        <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
-                                        <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
-                                        <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
-                                        <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
-                                        <li><i class="fa-solid fa-star text-slate-300 text-[14px]"></i></li>
-                                        <li class="dark:text-gray-100 text-[#3C474E]">( 1,230 )</li>
-                                    </ul>
-                                    <div class="absolute z-10 top-5 right-5 flex flex-col items-end gap-3">
-                                        <router-link to="#"
-                                            class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon new-product-icon-3">
-                                            <i class="mdi mdi-cards-heart-outline dark:text-white text-[24px]"></i>
-                                            <span class="mt-1">Add to wishlist</span>
-                                        </router-link>
-                                        <router-link to="#"
-                                            class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon new-product-icon-3">
-                                            <i class="mdi mdi-shopping-outline dark:text-white text-[24px]"></i>
-                                            <span class="mt-1">Add to Cart</span>
-                                        </router-link>
-                                        <button
-                                            class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon new-product-icon-3 quick-view">
-                                            <i class="mdi mdi-eye-outline dark:text-white text-[24px]"></i>
-                                            <span class="mt-1">Quick View</span>
-                                        </button>
-                                    </div>
-                                </div>
+
                             </div>
                             <div class="mt-4 md:mt-6 flex items-start justify-between gap-4">
                                 <div>
-                                    <h5 class="leading-none mb-4 dark:text-white font-primary text-lg font-medium">
-                                        {{ item.price }}</h5>
-                                    <h5 class="text-lg md:text-xl font-normal dark:text-white leading-[1.5]">
-                                        <router-link to="/product-details">{{ item.name }}</router-link>
+                                    <h5 class="text-primary font-semibold text-sm mb-1 uppercase tracking-wide">
+                                        <router-link :to="`/products/${item.id}`" class="text-underline">
+                                            {{ item.name }}
+                                        </router-link>
                                     </h5>
                                 </div>
                             </div>
@@ -86,7 +59,7 @@
                     </div>
 
                     <div class="text-center mt-7 md:mt-12" data-aos="fade-up" data-aos-delay="200">
-                        <router-link to="/shop-v3" class="btn btn-outline" data-text="Ver todos los Productos">
+                        <router-link to="/products" class="btn btn-outline" data-text="Ver todos los Productos">
                             <span>Ver todos los Productos</span>
                         </router-link>
                     </div>
@@ -94,7 +67,7 @@
             </div>
         </div>
 
-        <div class="s-py-50-100">
+        <!-- <div class="s-py-50-100">
             <div class="container">
                 <div class="max-w-1366 mx-auto">
                     <div class="max-w-[547px] mx-auto mb-8 sm:mb-[70px] text-center" data-aos="fade-up">
@@ -106,7 +79,7 @@
                     <Blog />
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <Footer />
 
@@ -119,16 +92,17 @@
 import { onMounted } from 'vue';
 
 import Navbar from '@/modules/common/components/Navbar.vue';
-//import NavbarOne from '@/components/navbar/navbar-one.vue';
-import Blog from '../components/Blog.vue';
+// import Blog from '../components/Blog.vue';
 import Footer from '@/modules/common/components/FooterOne.vue';
 import ScrollToTop from '@/modules/common/components/ScrollToTop.vue';
 
 
 import Aos from 'aos';
+import { useProductsQuery } from '@/modules/products/composable/useProductsQuery';
 
+const baseUrl = import.meta.env.VITE_BACKEND_STORAGE_URL;
 
-import { productList } from '@/mocks/data.ts';
+const { data: productList } = useProductsQuery({ page: 1, per_page: 3 })
 
 onMounted(() => {
     Aos.init()

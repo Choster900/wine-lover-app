@@ -21,6 +21,7 @@ export enum Name {
     Premiumn = "Premiumn",
     Standard = "Standard",
     Vino = "Vino",
+    Licor = "Licor",
 }
 
 export interface Image {
@@ -40,4 +41,12 @@ export interface Presentation {
 export enum UnitMeasurement {
     L = "l",
     Ml = "ml",
+}
+
+export interface Manufacturer {
+    id: number
+    name: string
+    city: string
+    country: string
+    description: string
 }
