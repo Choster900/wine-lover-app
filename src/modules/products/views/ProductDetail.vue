@@ -43,7 +43,6 @@
                             <span class="text-2xl sm:text-3xl text-primary leading-none block">
                                 ${{ product?.presentations[selectedPresentationIndex]?.unit_price }}
                             </span>
-                            {{ selectedPresentationIndex }}
                         </div>
 
                         <p class="sm:text-lg mt-5 md:mt-7">
@@ -137,11 +136,12 @@ import { useAuthStore } from '@/modules/auth/stores/auth'
 
 import IncrementDecrement from '../components/IncrementDecrement.vue'
 import DetailTab from '@/modules/common/components/DetailTab.vue'
+import { useCartStore } from '../stores/cart';
 
 const router = useRouter()
+const cartStore = useCartStore()
 
 // Constantes
-const CART_KEY = 'cart'
 const baseUrl = import.meta.env.VITE_BACKEND_STORAGE_URL
 const authStore = useAuthStore()
 
@@ -182,8 +182,6 @@ function changePrice(index: number) {
 // Lógica para el carrito
 import { nextTick } from 'vue'
 
-import { nanoid } from 'nanoid' // Asegúrate de instalarlo: `npm i nanoid`
-
 async function addToCart() {
     await nextTick()
     const user = authStore.user
@@ -195,21 +193,10 @@ async function addToCart() {
     }
 
     const price = productData.presentations[selectedPresentationIndex.value].unit_price
+    const presentationId = productData.presentations[selectedPresentationIndex.value].id
 
-    const cartItem = {
-        cartItemId: nanoid(),
-        userId: user.id,
-        productId: productData.id,
-        price,
-        quantity: selectedQuantity.value,
-    }
+    cartStore.addItem(productData.id, presentationId, price, selectedQuantity.value)
 
-    const existingCart = JSON.parse(localStorage.getItem(CART_KEY) || '[]')
-
-    // Agrega siempre el nuevo ítem sin verificar si existe
-    existingCart.push(cartItem)
-
-    localStorage.setItem(CART_KEY, JSON.stringify(existingCart))
     alert('Producto agregado al carrito')
 }
 
