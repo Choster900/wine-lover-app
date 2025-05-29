@@ -78,7 +78,6 @@
                                             class="px-6 py-2 rounded-lg uppercase flex items-center justify-center leading-none bg-[#E8E9EA] dark:bg-dark-secondary text-title dark:text-white duration-300 hover:bg-primary hover:text-white transition-all">
                                             {{ size.amount }}&nbsp;{{ size.unit_measurement }}
                                         </span>
-                                        {{ size.id }}
 
                                     </label>
                                 </div>

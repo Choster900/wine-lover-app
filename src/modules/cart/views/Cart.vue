@@ -18,18 +18,22 @@
         <div class="container ">
             <div class="flex xl:flex-row flex-col gap-[30px] lg:gap-[30px] xl:gap-[70px]">
                 <div class="flex-1 overflow-auto">
-                    <div
-                        class="overflow-x-auto rounded-xl shadow-lg dark:shadow-none border border-gray-200 dark:border-gray-700">
-                        <table class="min-w-full bg-white dark:bg-dark-secondary text-sm md:text-base">
-                            <thead class="bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
+                    <div class="overflow-x-auto  ">
+                        <table id="cart-table" class="responsive nowrap table-wrapper" style="width:100%">
+                            <thead class="   ">
                                 <tr>
-                                    <th class="px-4 py-3 text-left font-semibold text-title dark:text-white">Product
+                                    <th class="text-lg px-4 py-3 text-left font-semibold text-title dark:text-white">
+                                        Product
                                         Info</th>
-                                    <th class="px-4 py-3 text-left font-semibold text-title dark:text-white">Price</th>
-                                    <th class="px-4 py-3 text-left font-semibold text-title dark:text-white">Quantity
+                                    <th class="text-lg px-4 py-3 text-left font-semibold text-title dark:text-white">
+                                        Price</th>
+                                    <th class="text-lg px-4 py-3 text-left font-semibold text-title dark:text-white">
+                                        Quantity
                                     </th>
-                                    <th class="px-4 py-3 text-left font-semibold text-title dark:text-white">Total</th>
-                                    <th class="px-4 py-3 text-center font-semibold text-title dark:text-white">Remove
+                                    <th class="text-lg px-4 py-3 text-left font-semibold text-title dark:text-white">
+                                        Total</th>
+                                    <th class="text-lg px-4 py-3 text-center font-semibold text-title dark:text-white">
+                                        Remove
                                     </th>
                                 </tr>
                             </thead>
@@ -37,32 +41,33 @@
                                 <tr v-for="item in getUserCartItems" :key="item.id"
                                     class="hover:bg-gray-50 dark:hover:bg-gray-900 transition">
                                     <td class="px-4 py-3 w-[42%]">
-                                        <div class="flex items-center gap-4">
-                                            <div
-                                                class="w-16 h-16 flex-none overflow-hidden rounded-md border border-gray-200 dark:border-gray-600">
-                                                <img src="https://walmartsv.vtexassets.com/arquivos/ids/294906/Vino-Tinto-Santa-Helena-Caber-Sauv-750Ml-1-6705.jpg?v=638104630460530000"
-                                                    alt="product" class="object-cover w-full h-full" />
+                                        <div class="flex items-center gap-3 md:gap-4 lg:gap-6 cart-product">
+                                            <div class="w-14 sm:w-20 flex-none py-3">
+                                                <img :src="(() => {
+                                                    const product = products.find(product => product && product.id === item.productId)
+                                                    return product ? `${baseUrl}/${product.images[0].url_image}` : '/images/default-product.jpg'
+                                                })()" alt="product">
                                             </div>
                                             <div class="flex-1">
-                                                <h6
-                                                    class="text-base font-medium text-title dark:text-white leading-tight">
-                                                    {{
-                                                        (() => {
-                                                            const product = products.find(product => product && product.id ===
-                                                                item.productId)
-                                                            return product ? product.name : 'Producto no encontrado'
-                                                        })()
-                                                    }}
-                                                </h6>
-                                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                                    {{
-                                                        (() => {
-                                                            const product = products.find(product => product && product.id ===
-                                                                item.productId)
-                                                            return product ? product.description : 'Producto no encontrado'
-                                                        })()
-                                                    }}
-                                                </p>
+                                                <h6 class="leading-none font-medium">{{
+                                                    (() => {
+                                                        const product = products.find(product => product && product.id ===
+                                                            item.productId)
+                                                        return product ? product.name : 'Producto no encontrado'
+                                                    })()
+                                                }}</h6>
+                                                <h5 class="font-semibold leading-none mt-2">
+                                                    <router-link to="#">
+                                                        {{
+                                                            (() => {
+                                                                const product = products.find(product => product && product.id
+                                                                    ===
+                                                                    item.productId)
+                                                                return product ? product.description : 'Producto no encontrado'
+                                                            })()
+                                                        }}
+                                                    </router-link>
+                                                </h5>
                                             </div>
                                         </div>
                                     </td>
@@ -78,11 +83,11 @@
                                             ${{ (item.quantity * item.price).toFixed(2) }}
                                         </span>
                                     </td>
-                                    <td class="px-4 py-3 text-center">
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center bg-red-100 dark:bg-red-800 rounded-full hover:bg-red-200 dark:hover:bg-red-700 text-red-600 dark:text-red-200 transition">
-                                            <svg class="fill-current" width="12" height="12" viewBox="0 0 12 12"
-                                                xmlns="http://www.w3.org/2000/svg">
+                                    <td class="px-8 py-3 text-center">
+                                        <button @click="removeFromCart(item.cartItemId)"
+                                            class="w-8 h-8 bg-[#E8E9EA] dark:bg-dark-secondary flex items-center justify-center ml-auto duration-300 text-title dark:text-white">
+                                            <svg class="fill-current " width="12" height="12" viewBox="0 0 12 12"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M0.546875 1.70822L1.70481 0.550293L5.98646 4.83195L10.2681 0.550293L11.3991 1.6813L7.11746 5.96295L11.453 10.2985L10.295 11.4564L5.95953 7.12088L1.67788 11.4025L0.546875 10.2715L4.82853 5.98988L0.546875 1.70822Z" />
                                             </svg>
@@ -94,7 +99,6 @@
                     </div>
 
                 </div>
-                <!--     -->
                 <div>
                     <div class="mb-[30px]">
                         <h4 class="text-lg md:text-xl font-semibold leading-none text-title dark:text-white mb-[15px]">
@@ -208,9 +212,6 @@
                 </div>
             </div>
         </div>
-        <pre>
-{{ products }}
-</pre>
     </div>
 </template>
 <script setup lang="ts">
@@ -225,6 +226,7 @@ import bg from '@/assets/images/shortcode/breadcumb.jpg'
 const CART_KEY = 'cart'
 const authStore = useAuthStore()
 const userCartItems = ref<any[]>([])
+const baseUrl = import.meta.env.VITE_BACKEND_STORAGE_URL;
 
 // ✅ Inicializar desde localStorage al recargar
 authStore.initAuthFromStorage()
@@ -292,6 +294,17 @@ const handleCountUpdate = (newCount: number, cartItemId: string) => {
     localStorage.setItem(CART_KEY, JSON.stringify(updatedCart))
 
     // ⚠️ Solo actualiza los del usuario actual
+    userCartItems.value = updatedCart.filter((item: any) => item.userId === authStore.user?.id)
+}
+
+const removeFromCart = (cartItemId: string) => {
+    const storedCart = JSON.parse(localStorage.getItem(CART_KEY) || '[]')
+
+    const updatedCart = storedCart.filter((item: any) => item.cartItemId !== cartItemId)
+
+    localStorage.setItem(CART_KEY, JSON.stringify(updatedCart))
+
+    // Actualiza el carrito del usuario actual
     userCartItems.value = updatedCart.filter((item: any) => item.userId === authStore.user?.id)
 }
 

@@ -174,10 +174,13 @@
 
 <script setup lang="ts">
 import { onMounted, ref, computed } from 'vue'
+import { useAuthStore } from '@/modules/auth/stores/auth';
 import Aos from 'aos'
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
 import { getAllMemberships } from '../actions/get-all-membership.action'
 import type { Membership, PlanType, MembershipPlan } from '../interfaces/membership.interface'
+
+const authStore = useAuthStore()
 
 // Estado reactivo
 const memberships = ref<Membership[]>([])
@@ -253,19 +256,6 @@ const getMembershipCardClass = (name: string): string => {
     }
 }
 
-const getMembershipButtonClass = (name: string): string => {
-    switch (name.toLowerCase()) {
-        case 'silver':
-            return 'bg-gray-600 hover:bg-gray-700 text-white shadow-lg hover:shadow-xl'
-        case 'gold':
-            return 'bg-yellow-500 hover:bg-yellow-600 text-white shadow-lg hover:shadow-xl'
-        case 'platinum':
-            return 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-xl'
-        default:
-            return 'bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl'
-    }
-}
-
 const getMembershipIconClass = (name: string): string => {
     const baseClass = 'w-8 h-8 rounded-full flex items-center justify-center text-white '
     switch (name.toLowerCase()) {
@@ -295,6 +285,10 @@ const getMembershipIcon = (name: string): string => {
 
 // Generar link de suscripción
 const getSubscriptionLink = (membership: Membership): string => {
+    if (!authStore.user) {
+        return '/auth/login'
+    }
+  
     const currentPlan = getCurrentPlan(membership)
     if (!currentPlan) return '#'
 

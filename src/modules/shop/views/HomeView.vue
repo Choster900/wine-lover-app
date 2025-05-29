@@ -38,7 +38,7 @@
                         </p>
                     </div>
 
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 lg:gap-x-7 gap-y-[30px] lg:gap-y-12"
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 gap-x-5 lg:gap-x-7 gap-y-[30px] lg:gap-y-12"
                         data-aos="fade-up" data-aos-delay="100">
                         <div v-for="(item, index) in productList?.data" :key="index">
                             <div class="group relative overflow-hidden ">
