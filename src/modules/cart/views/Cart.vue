@@ -129,7 +129,6 @@
 
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import Aos from 'aos'
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
 import { useCartStore } from '@/modules/products/stores/cart'
@@ -138,7 +137,6 @@ import { useQueries } from '@tanstack/vue-query'
 import { fetchProductByIdAction } from '@/modules/products/actions/fetch-products.action'
 import IncrementDecrement from '@/modules/products/components/IncrementDecrement.vue'
 
-const router = useRouter()
 const authStore = useAuthStore()
 const cartStore = useCartStore()
 
@@ -224,8 +222,5 @@ const removeFromCart = (cartItemId: string) => {
 
 onMounted(() => {
   Aos.init()
-  if (authStore && !authStore.user) {
-    router.push('/auth/login')
-  }
 })
 </script>

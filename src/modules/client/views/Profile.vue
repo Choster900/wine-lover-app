@@ -54,7 +54,7 @@
                                             <p class="font-medium text-title dark:text-white">{{ authStore.user?.client.identity_number }}</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="flex items-start gap-3 mb-5">
                                         <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 flex-shrink-0">
                                             <i class="fas fa-phone"></i>
@@ -64,7 +64,7 @@
                                             <p class="font-medium text-title dark:text-white">+503 {{ authStore.user?.client.phone }}</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="flex items-start gap-3 mb-5">
                                         <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 flex-shrink-0">
                                             <i class="fas fa-calendar"></i>
@@ -74,7 +74,7 @@
                                             <p class="font-medium text-title dark:text-white">{{ formatDate(authStore.user?.client.birthday_date) }}</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="flex items-start gap-3 mb-5">
                                         <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 flex-shrink-0">
                                             <i class="fas fa-user-tag"></i>
@@ -276,13 +276,11 @@
 import { useAuthStore } from '@/modules/auth/stores/auth';
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
 import { onBeforeMount, onMounted, ref } from 'vue';
-import { useRouter } from 'vue-router'
 import Aos from 'aos';
 import ProfileTab from '../components/ProfileTab.vue';
 import { updateClientInfo } from '../actions/fetch-client.action';
 import type { ClientPayload } from '../interfaces/update-client-info.interface';
 
-const router = useRouter()
 const authStore = useAuthStore()
 
 const isEditing = ref(false)
@@ -302,7 +300,7 @@ const formData = ref<ClientPayload>({
 // Iniciar edición
 const startEditing = () => {
     if (!authStore.user) return
-    
+
     formData.value = {
         names: authStore.user.client.names,
         surnames: authStore.user.client.surnames,
@@ -312,7 +310,7 @@ const startEditing = () => {
         username: authStore.user.username,
         email: authStore.user.email
     }
-    
+
     isEditing.value = true
 }
 
@@ -324,11 +322,11 @@ const cancelEditing = () => {
 // Actualizar perfil
 const updateProfile = async () => {
     if (!authStore.user) return
-    
+
     isSubmitting.value = true
     try {
         const result = await updateClientInfo(formData.value)
-        
+
         if (result) {
             // Actualizar el store con la nueva información
             authStore.updateUserInfo(result)
@@ -348,10 +346,10 @@ const updateProfile = async () => {
 // Obtener iniciales del nombre
 const getInitials = () => {
     if (!authStore.user) return ''
-    
+
     const names = authStore.user.client.names
     const surnames = authStore.user.client.surnames
-    
+
     return (names.charAt(0) + (surnames ? surnames.charAt(0) : '')).toUpperCase()
 }
 
@@ -371,7 +369,7 @@ const formatDate = (date: string | Date | undefined): string => {
 // Formatear fecha para input
 const formatDateForInput = (date: string | Date) => {
     if (!date) return ''
-    
+
     const d = new Date(date)
     return d.toISOString().split('T')[0]
 }
@@ -379,7 +377,8 @@ const formatDateForInput = (date: string | Date) => {
 // Obtener total gastado (simulado)
 const getTotalSpent = () => {
     const orders = authStore.user?.client.orders || []
-    const total = orders.reduce((sum, order) => sum + (order.total || 0), 0)
+    const total = orders.reduce((sum, order) => sum + (Number.parseFloat(order.total) || 0), 0)
+
     return total.toFixed(2)
 }
 
@@ -388,9 +387,6 @@ onMounted(() => {
 })
 
 onBeforeMount(() => {
-  if (!authStore.user) {
-    router.push('/') // o a '/login' si es más adecuado
-  }
 })
 </script>
 

@@ -1,5 +1,5 @@
 import backendApi from '@/api/backendApi'
-import type { AcquareMembershipPayload, CurrentMembership, ResponseAcquire } from '../interfaces/acquare-membership.interface'
+import type { AcquareMembershipPayload, CurrentMembership, Membership, ResponseAcquire } from '../interfaces/acquare-membership.interface'
 
 export const getCurrentMembership = async (): Promise<CurrentMembership | null> => {
     const token = localStorage.getItem('token')
@@ -18,6 +18,20 @@ export const getCurrentMembership = async (): Promise<CurrentMembership | null> 
         return response.data.data
     } catch (error) {
         console.error('Error al obtener membresia actual:', error)
+        return null
+    }
+}
+
+export const getMemberships = async (): Promise<Membership[] | null> => {
+
+    try {
+        const response = await backendApi.get(
+            '/public/catalogs/membership',
+        )
+
+        return response.data.data
+    } catch (error) {
+        console.error('Error al obtener membresias:', error)
         return null
     }
 }

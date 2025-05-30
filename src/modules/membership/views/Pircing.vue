@@ -288,11 +288,11 @@ const getSubscriptionLink = (membership: Membership): string => {
     if (!authStore.user) {
         return '/auth/login'
     }
-  
+
     const currentPlan = getCurrentPlan(membership)
     if (!currentPlan) return '#'
 
-    return `/cart/payment-confirmation/membership/${membership.id}/${currentPlan.plan.id}`
+    return `/membership/payment-confirmation/${membership.id}/${currentPlan.plan.id}`
 }
 
 // Función para cargar membresías

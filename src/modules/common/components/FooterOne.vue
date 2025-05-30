@@ -60,16 +60,16 @@
                                 <li class="duration-100 hover:text-primary inline-block group"><router-link
                                         class="text-underline-primary" to="/cart">Carrito</router-link></li>
                                 <li class="duration-100 hover:text-primary inline-block group"><router-link
-                                        class="text-underline-primary" to="/checkout">Checkout</router-link></li>
+                                        class="text-underline-primary" to="/">Checkout</router-link></li>
                             </ul>
                         </div>
                         <div>
                             <h4 class="text-white leading-none mb-5 md:mb-6 text-xl md:text-2xl">Servicio al Cliente</h4>
                             <ul class="text-white leading-none flex flex-col gap-4">
                                 <li class="duration-100 hover:text-primary inline-block group"><router-link
-                                        class="text-underline-primary" to="/faq">FAQs</router-link></li>
+                                        class="text-underline-primary" to="/">FAQs</router-link></li>
                                 <li class="duration-100 hover:text-primary inline-block group"><router-link
-                                        class="text-underline-primary" to="/terms-and-conditions">Terms & Condition</router-link></li>
+                                        class="text-underline-primary" to="/">Terms & Condition</router-link></li>
                                 <li class="duration-100 hover:text-primary inline-block group"><router-link
                                         class="text-underline-primary" to="/">Return Policy</router-link></li>
                                 <li class="duration-100 hover:text-primary inline-block group"><router-link

@@ -48,8 +48,8 @@
                                 <p class="text-sm text-gray-500 dark:text-gray-500 mt-2">
                                     Adquiere una membresía para obtener beneficios exclusivos
                                 </p>
-                                <router-link 
-                                    to="/membership" 
+                                <router-link
+                                    to="/membership"
                                     class="inline-flex items-center gap-2 mt-4 px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium transition-all duration-300"
                                 >
                                     <i class="fas fa-plus"></i>
@@ -59,10 +59,10 @@
 
                             <div v-else class="space-y-6">
                                 <!-- Tarjeta de Membresía -->
-                                <div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary to-primary/80 p-6 text-white">
+                                <div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary to-primary/80 p-6 dark:text-white">
                                     <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
                                     <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-12 -translate-x-12"></div>
-                                    
+
                                     <div class="relative z-10">
                                         <div class="flex justify-between items-start mb-4">
                                             <div>
@@ -75,7 +75,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="grid grid-cols-2 gap-4 mt-6">
                                             <div>
                                                 <p class="text-white/70 text-sm">Cashback</p>
@@ -121,17 +121,9 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <button 
-                                                @click="toggleAutoRenewal"
-                                                :class="currentMembership.automatic_renewal ? 'bg-green-500 hover:bg-green-600' : 'bg-gray-400 hover:bg-gray-500'"
-                                                class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                                            >
-                                                <span 
-                                                    :class="currentMembership.automatic_renewal ? 'translate-x-6' : 'translate-x-1'"
-                                                    class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"
-                                                ></span>
-                                            </button>
+                                            <!-- TODO: activar / desactivar renovacion automatica -->
                                         </div>
+
                                     </div>
 
                                     <div v-if="currentMembership.refund_amount > 0" class="flex items-center justify-between p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
@@ -153,14 +145,14 @@
                                 <!-- Acciones -->
                                 <div class="flex gap-4 pt-4">
                                     <button
-                                        @click="showCancelModal = true"
-                                        class="flex-1 h-12 bg-red-500 hover:bg-red-600 text-white rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2"
+                                        @click="cancelMembership = true"
+                                        class="flex-1 h-12 bg-red-500 hover:bg-red-600 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2"
                                     >
                                         <i class="fas fa-times-circle"></i>
                                         <span>Cancelar Membresía</span>
                                     </button>
-                                    <router-link 
-                                        to="/membership/upgrade"
+                                    <router-link
+                                        to="/membership"
                                         class="flex-1 h-12 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2"
                                     >
                                         <i class="fas fa-arrow-up"></i>
@@ -176,41 +168,92 @@
                                 <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
                                     <i class="fas fa-receipt"></i>
                                 </div>
-                                <h3 class="text-xl font-semibold text-title dark:text-white">Información de Pago</h3>
+                                <h3 class="text-xl font-semibold text-title dark:text-white">Historial de Pagos</h3>
                             </div>
 
-                            <div v-if="currentMembership?.payment_track" class="space-y-4">
-                                <!-- Estado del Pago -->
-                                <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
-                                    <div class="flex justify-between items-center mb-3">
-                                        <h4 class="font-semibold text-title dark:text-white">Estado del Pago</h4>
-                                        <span :class="getPaymentStatusClass(currentMembership.payment_track.payment_status)">
-                                            {{ getPaymentStatusText(currentMembership.payment_track.payment_status) }}
+                            <div v-if="!currentMembership?.payment_track?.length" class="py-12 text-center">
+                                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                    <i class="fas fa-receipt text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-medium text-gray-600 dark:text-gray-400">Sin Historial de Pagos</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-500 mt-2">
+                                    No hay registros de pagos disponibles
+                                </p>
+                            </div>
+
+                            <div v-else class="space-y-4">
+                                <!-- Último Pago -->
+                                <div v-if="getLastPayment()" class="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800 mb-6">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h4 class="font-semibold text-green-800 dark:text-green-300">Último Pago</h4>
+                                        <span :class="getPaymentStatusClass(getLastPayment().payment_status)">
+                                            {{ getPaymentStatusText(getLastPayment().payment_status) }}
                                         </span>
                                     </div>
-                                    
+
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                                         <div>
-                                            <p class="text-gray-500">Método de Pago</p>
-                                            <p class="font-medium text-title dark:text-white">{{ currentMembership.payment_track.payment_method }}</p>
+                                            <p class="text-gray-600">Método de Pago</p>
+                                            <p class="font-medium text-gray-800 dark:text-gray-200">{{ getLastPayment().payment_method }}</p>
                                         </div>
                                         <div>
-                                            <p class="text-gray-500">Monto Pagado</p>
-                                            <p class="font-medium text-title dark:text-white">${{ currentMembership.payment_track.amount_paid }}</p>
+                                            <p class="text-gray-600">Monto Pagado</p>
+                                            <p class="font-medium text-gray-800 dark:text-gray-200">${{ getLastPayment().amount_paid }}</p>
                                         </div>
                                         <div>
-                                            <p class="text-gray-500">ID de Transacción</p>
-                                            <p class="font-mono text-xs text-title dark:text-white">{{ currentMembership.payment_track.transaction_id }}</p>
+                                            <p class="text-gray-600">Fecha de Pago</p>
+                                            <p class="font-medium text-gray-800 dark:text-gray-200">{{ formatDate(getLastPayment().created_at) }}</p>
                                         </div>
                                         <div>
-                                            <p class="text-gray-500">Fecha de Pago</p>
-                                            <p class="font-medium text-title dark:text-white">{{ formatDate(currentMembership.payment_track.created_at) }}</p>
+                                            <p class="text-gray-600">ID de Transacción</p>
+                                            <p class="font-mono text-xs text-gray-800 dark:text-gray-200">{{ getLastPayment().transaction_id }}</p>
                                         </div>
                                     </div>
                                 </div>
 
+                                <!-- Historial de Pagos -->
+                                <h4 class="font-semibold text-title dark:text-white mb-3">Todos los Pagos</h4>
+                                <div class="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
+                                    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                                        <thead class="bg-gray-50 dark:bg-gray-800">
+                                            <tr>
+                                                <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                                    Fecha
+                                                </th>
+                                                <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                                    Monto
+                                                </th>
+                                                <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                                    Método
+                                                </th>
+                                                <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                                    Estado
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="ligth:bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+                                            <tr v-for="(payment, index) in currentMembership.payment_track" :key="index" class="hover:bg-gray-50 dark:hover:bg-gray-800">
+                                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
+                                                    {{ formatDate(payment.created_at) }}
+                                                </td>
+                                                <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                                                    ${{ payment.amount_paid }}
+                                                </td>
+                                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
+                                                    {{ payment.payment_method }}
+                                                </td>
+                                                <td class="px-4 py-3 whitespace-nowrap">
+                                                    <span :class="getPaymentStatusClass(payment.payment_status)">
+                                                        {{ getPaymentStatusText(payment.payment_status) }}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
                                 <!-- Próximo Pago -->
-                                <div v-if="currentMembership.automatic_renewal" class="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                                <div v-if="currentMembership.automatic_renewal" class="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800 mt-6">
                                     <div class="flex items-center gap-3 mb-2">
                                         <i class="fas fa-calendar-check text-blue-600"></i>
                                         <h4 class="font-semibold text-blue-800 dark:text-blue-300">Próximo Pago</h4>
@@ -252,40 +295,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal de Cancelación -->
-    <div v-if="showCancelModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-        <div class="bg-white dark:bg-dark-secondary rounded-xl p-6 max-w-md w-full">
-            <div class="text-center">
-                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-red-100 flex items-center justify-center text-red-600">
-                    <i class="fas fa-exclamation-triangle text-2xl"></i>
-                </div>
-                <h3 class="text-lg font-semibold text-title dark:text-white mb-2">¿Cancelar Membresía?</h3>
-                <p class="text-gray-600 dark:text-gray-400 mb-6">
-                    Esta acción cancelará tu membresía actual. Perderás todos los beneficios asociados.
-                </p>
-                <div v-if="currentMembership?.refund_amount && currentMembership.refund_amount > 0" class="mb-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                    <p class="text-sm text-green-700 dark:text-green-400">
-                        Recibirás un reembolso de ${{ currentMembership.refund_amount }}
-                    </p>
-                </div>
-                <div class="flex gap-4">
-                    <button
-                        @click="showCancelModal = false"
-                        class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
-                    >
-                        Mantener Membresía
-                    </button>
-                    <button
-                        @click="cancelMembership"
-                        class="flex-1 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors"
-                    >
-                        Confirmar Cancelación
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 </template>
 
 <script setup lang="ts">
@@ -294,11 +303,10 @@ import Aos from 'aos'
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
 import ProfileTab from './ProfileTab.vue'
 import { getCurrentMembership } from '../actions/fetch-membership.action'
-import type { CurrentMembership } from '../interfaces/acquare-membership.interface'
+import type { CurrentMembership, PaymentTrack } from '../interfaces/acquare-membership.interface'
 
 const currentMembership = ref<CurrentMembership | null>(null)
 const isLoading = ref(true)
-const showCancelModal = ref(false)
 
 // Obtener membresía actual
 const fetchCurrentMembership = async () => {
@@ -315,6 +323,18 @@ const fetchCurrentMembership = async () => {
     }
 }
 
+// Obtener el último pago
+const getLastPayment = (): PaymentTrack | null => {
+    if (!currentMembership.value?.payment_track?.length) return null
+
+    // Ordenar por fecha más reciente
+    const sortedPayments = [...currentMembership.value.payment_track].sort((a, b) => {
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    })
+
+    return sortedPayments[0]
+}
+
 // Formatear fecha
 const formatDate = (date: string) => {
     return new Date(date).toLocaleDateString('es-ES', {
@@ -327,11 +347,11 @@ const formatDate = (date: string) => {
 // Obtener estado de la membresía
 const getMembershipStatus = () => {
     if (!currentMembership.value) return ''
-    
+
     const endDate = new Date(currentMembership.value.end_date)
     const now = new Date()
     const daysUntilExpiry = Math.ceil((endDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
-    
+
     if (daysUntilExpiry < 0) return 'Expirada'
     if (daysUntilExpiry <= 7) return `Expira en ${daysUntilExpiry} días`
     if (daysUntilExpiry <= 30) return `Expira en ${daysUntilExpiry} días`
@@ -374,15 +394,12 @@ const getPaymentStatusClass = (status: string) => {
 
 // Toggle renovación automática
 const toggleAutoRenewal = async () => {
-    // Aquí implementarías la lógica para cambiar la renovación automática
-    alert('Funcionalidad de renovación automática no implementada')
+    // Aquí se implementará la lógica para cambiar la renovación automática
 }
 
 // Cancelar membresía
 const cancelMembership = async () => {
-    // Aquí implementarías la lógica para cancelar la membresía
-    alert('Funcionalidad de cancelación no implementada')
-    showCancelModal.value = false
+
 }
 
 onMounted(() => {

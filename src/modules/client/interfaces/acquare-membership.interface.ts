@@ -1,8 +1,8 @@
 export interface ResponseAcquire {
-    data: MembershipResponse;
+    data: AcquireMembershipResponse;
 }
 
-export interface MembershipResponse {
+export interface AcquireMembershipResponse {
     transaction_id: string;
     monto: string;
 }
@@ -26,7 +26,7 @@ export interface CurrentMembership {
     automatic_renewal: boolean
     membership: string
     plan: string
-    payment_track: PaymentTrack
+    payment_track: PaymentTrack[]
 }
 
 export interface PaymentTrack {
@@ -35,4 +35,24 @@ export interface PaymentTrack {
     amount_paid: number
     transaction_id: string
     created_at: string
+}
+
+export interface Membership {
+    id: number
+    name: string
+    description: string
+    plans: MembershipPlan[]
+}
+
+export interface MembershipPlan {
+    plan: Plan
+    price: number
+    cashback_percentage: number
+}
+
+export interface Plan {
+    id: number
+    name: string
+    months: number
+    description: string
 }
