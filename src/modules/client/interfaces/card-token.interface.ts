@@ -8,3 +8,10 @@ export interface CardToken {
     masked_number: string;
     brand: string;
 }
+
+export interface CardPayload {
+    number: string
+    cvv: string
+    expiration_month: string
+    expiration_year: string
+}

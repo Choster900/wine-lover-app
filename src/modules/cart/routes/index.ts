@@ -7,7 +7,8 @@ const MainShopLayout = () => import('@/modules/common/components/MainShopLayout.
 
 export const cartRoutes: RouteRecordRaw = {
     path: '/cart',
-    component: MainShopLayout, // Componente base con <router-view />
+    component: MainShopLayout,
+    meta: { requiresAuth: true },
     children: [
         {
             path: '',
@@ -25,8 +26,6 @@ export const cartRoutes: RouteRecordRaw = {
                 title: 'Confirmación de Pago'
             }
         }
-
-
         /* {
             path: 'checkout',
             name: 'checkout',

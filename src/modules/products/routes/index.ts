@@ -7,6 +7,7 @@ import ProductDetail from '../views/ProductDetail.vue'
 export const productRoutes: RouteRecordRaw = {
     path: '/products',
     component: ShopLayout,
+    meta: { requiresAuth: false },
     children: [
         {
             path: '',

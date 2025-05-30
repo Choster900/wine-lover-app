@@ -6,6 +6,7 @@ import MainShopLayout from '@/modules/common/components/MainShopLayout.vue'
 export const membershipRoutes: RouteRecordRaw = {
     path: '/membership',
     component: MainShopLayout,
+    meta: { requiresAuth: false },
     children: [
         {
             path: '',
@@ -15,7 +16,6 @@ export const membershipRoutes: RouteRecordRaw = {
                 title: 'Pircing'
             }
         },
-
     ]
 
 }

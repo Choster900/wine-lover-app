@@ -75,14 +75,14 @@
                                 </td>
                                 </tr>
                             </tbody>
+                            <tbody v-else-if="getUserCartItems.length === 0">
+                                <tr>
+                                    <td colspan="5" class="text-center py-10 text-title dark:text-white">Tu carrito está vacío</td>
+                                </tr>
+                            </tbody>
                             <tbody v-else-if="isLoading">
                                 <tr>
                                     <td colspan="5" class="text-center py-10 text-title dark:text-white">Cargando productos del carrito...</td>
-                                </tr>
-                            </tbody>
-                            <tbody v-else>
-                                <tr>
-                                    <td colspan="5" class="text-center py-10 text-title dark:text-white">Tu carrito está vacío</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -129,6 +129,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import Aos from 'aos'
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
 import { useCartStore } from '@/modules/products/stores/cart'
@@ -137,6 +138,7 @@ import { useQueries } from '@tanstack/vue-query'
 import { fetchProductByIdAction } from '@/modules/products/actions/fetch-products.action'
 import IncrementDecrement from '@/modules/products/components/IncrementDecrement.vue'
 
+const router = useRouter()
 const authStore = useAuthStore()
 const cartStore = useCartStore()
 
@@ -222,7 +224,7 @@ const removeFromCart = (cartItemId: string) => {
 
 onMounted(() => {
   Aos.init()
-  if (!authStore.user) {
+  if (authStore && !authStore.user) {
     router.push('/auth/login')
   }
 })

@@ -8,7 +8,7 @@
                 class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4">
                 <li><router-link to="/">Inicio</router-link></li>
                 <li>/</li>
-                <li><router-link to="/account">Mi Cuenta</router-link></li>
+                <li><router-link to="/my-profile">Mi Cuenta</router-link></li>
                 <li>/</li>
                 <li class="text-primary">Métodos de Pago</li>
             </ul>
@@ -233,9 +233,8 @@ import { ref, onMounted } from 'vue'
 import Aos from 'aos'
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
 
-import { addCard } from '../actions/add-card.action'
+import { addCard, getCardsToken, removeCard } from '../actions/fetch-card.action'
 import type { CardToken } from '../interfaces/card-token.interface'
-import { getCardsToken } from '../actions/get-cards-token.action'
 import ProfileTab from './ProfileTab.vue'
 
 const paymentMethod = ref({
@@ -393,7 +392,18 @@ const submitForm = async () => {
 
 const deleteCard = async (cardId: number) => {
     if (confirm('¿Estás seguro de eliminar esta tarjeta?')) {
-        alert('Funcionalidad de eliminación no implementada')
+        try {
+            const result = await removeCard(cardId)
+            if (result) {
+                alert('✅ Tarjeta eliminada exitosamente.')
+                await fetchCards()
+            } else {
+                alert('❌ Ocurrió un error al eliminar la tarjeta.')
+            }
+        } catch (error) {
+            console.error('Error al eliminar la tarjeta:', error)
+            alert('❌ Ocurrió un error al eliminar la tarjeta.')
+        }
     }
 }
 

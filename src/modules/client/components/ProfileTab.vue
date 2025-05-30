@@ -5,12 +5,21 @@
             <router-link class="duration-300 hover:text-primary" to="/client/my-profile">Perfil</router-link>
         </li>
         <li class="py-3 lg:py-6 pl-6 lg:pl-12">
+            <router-link class="duration-300 hover:text-primary" to="/client/membership">Membresia</router-link>
+        </li>
+        <li class="py-3 lg:py-6 pl-6 lg:pl-12">
+            <router-link class="duration-300 hover:text-primary" to="/client/address">Direcciones</router-link>
+        </li>
+        <li class="py-3 lg:py-6 pl-6 lg:pl-12">
             <router-link class="duration-300 hover:text-primary" to="/client/method-payment">Metodos de Pago</router-link>
         </li>
-        <li class="py-3 lg:py-6 pl-6 lg:pl-12" :class="{ 'active text-primary': current === '/order-history' }">
+        <li class="py-3 lg:py-6 pl-6 lg:pl-12">
             <router-link class="duration-300 hover:text-primary" to="/client/order-history">Mis ordenes</router-link>
         </li>
-        <li class="pt-3 lg:pt-6 pl-6 lg:pl-12" :class="{ 'active text-primary': current === '/' }">
+        <li class="py-3 lg:py-6 pl-6 lg:pl-12">
+            <router-link class="duration-300 hover:text-primary" to="/client/cashback-history">Historial de cashback</router-link>
+        </li>
+        <li class="pt-3 lg:pt-6 pl-6 lg:pl-12">
             <button @click="logout" class="duration-300 hover:text-primary">Logout</button>
         </li>
     </ul>
@@ -18,18 +27,16 @@
 
 <script setup lang="ts">
 import { useAuthStore } from '@/modules/auth/stores/auth';
-import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 
-const router = useRoute();
-const current = ref(router.path);
+const router = useRouter();
 
 function logout() {
     const authStore = useAuthStore()
     authStore.logout()
-    // opcionalmente redirigir a login o home
-    window.location.href = '/'
+    
+    router.push('/')
 }
 
 </script>

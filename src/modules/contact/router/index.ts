@@ -5,6 +5,7 @@ import ContactView from '../views/ContactView.vue'
 export const contactRoutes: RouteRecordRaw = {
     path: '/contact',
     component: MainShopLayout,
+    meta: { requiresAuth: false },
     children: [
         {
             path: '',

@@ -1,4 +1,5 @@
 import { authRoutes } from '@/modules/auth/routes'
+import { useAuthStore } from '@/modules/auth/stores/auth'
 import { cartRoutes } from '@/modules/cart/routes'
 import { clientRoutes } from '@/modules/client/router'
 import { contactRoutes } from '@/modules/contact/router'
@@ -13,30 +14,34 @@ const router = createRouter({
             path: '/',
             name: 'home',
             component: () => import('../modules/shop/views/HomeView.vue'),
-        },
-        {
-            path: '/admin',
-            name: 'admin',
-            component: () => null,
-            meta: { requiresAdmin: true }
+            meta: { requiresAuth: false }
         },
         authRoutes,
         productRoutes,
         cartRoutes,
         membershipRoutes,
         clientRoutes,
-        contactRoutes
+        contactRoutes,
     ],
 })
 
 export default router
 
 router.beforeEach((to, from, next) => {
-    const token = localStorage.getItem('token')
-    const isAdminRoute = to.meta.requiresAdmin
+    const authStore = useAuthStore()
 
-    if (isAdminRoute && !token) {
-        return next({ path: '/auth' }) // redirige al login si no hay token
+    if (!authStore.isAuthenticated()) {
+        if (to.meta.requiresAuth) {
+            return next({ path: '/auth/login' })
+        } else {
+            return next()
+        }
+    }
+
+    if (authStore.user && authStore.user.profile.name !== 'Member') {
+        authStore.logout()
+        window.location.href = import.meta.env.VITE_FRONT_ADMIN_URL
+        return
     }
 
     next()

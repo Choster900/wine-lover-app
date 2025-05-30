@@ -114,14 +114,14 @@ import { useRoute } from 'vue-router'
 
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
 
-import { getAddresses } from '@/modules/client/actions/get-addresses.action'
-import { getCardsToken } from '@/modules/client/actions/get-cards-token.action'
+import { getAddresses } from '@/modules/client/actions/fetch-addresses.action'
+import { getCardsToken } from '@/modules/client/actions/fetch-card.action'
 import { getMembershipsById } from '@/modules/membership/actions/get-all-membership.action copy'
 
 import type { Address } from '@/modules/client/interfaces/addresses.interface'
 import type { CardToken } from '@/modules/client/interfaces/card-token.interface'
 import type { Membership } from '@/modules/membership/interfaces/membership.interface'
-import { acquireMembership } from '@/modules/client/actions/add-card.action copy'
+import { acquireMembership } from '@/modules/client/actions/fetch-membership.action'
 
 const route = useRoute()
 

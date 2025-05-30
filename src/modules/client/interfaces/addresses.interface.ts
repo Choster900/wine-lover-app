@@ -11,3 +11,12 @@ export interface Address {
     reference:    null;
     district:     string;
 }
+
+export interface AddressPayload {
+    name: string
+    neighborhood: string
+    street: string
+    number: string
+    reference: string
+    district_id: number
+}

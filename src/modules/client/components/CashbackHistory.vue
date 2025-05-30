@@ -3,14 +3,14 @@
     <div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70"
         :style="{ backgroundImage: 'url(' + bg + ')' }">
         <div class="text-center w-full">
-            <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Historial de ordenes</h2>
+            <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Historial de cashback</h2>
             <ul
                 class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4">
                 <li><router-link to="/">Inicio</router-link></li>
                 <li>/</li>
                 <li><router-link to="/my-profile">Mi Cuenta</router-link></li>
                 <li>/</li>
-                <li class="text-primary">Historial de ordenes</li>
+                <li class="text-primary">Historial de cashback</li>
             </ul>
         </div>
     </div>
