@@ -548,13 +548,21 @@ onMounted(async () => {
         fetchMemberships()
     ])
 
-    if (currentMembership.value && !(selectedMembership.value.id > currentMembership.value.id)) {
-        if (
-            confirm('❌ Para poder actualizar tu membresía debes seleccionar una categoría mayor.\n\n¿Deseas ir a la página de membresías?')
-        ) {
-            router.push('/membership')
-        } else {
-            router.push('/')
+    if (currentMembership.value) {
+
+        if (memberships.value) {
+            const currentMembershipId = memberships.value
+                .find((membership) => membership.name === currentMembership.value.membership).id
+
+            if (!(selectedMembership.value.id > currentMembershipId)) {
+                if (
+                    confirm('❌ Para poder actualizar tu membresía debes seleccionar una categoría mayor.\n\n¿Deseas ir a la página de membresías?')
+                ) {
+                    router.push('/membership')
+                } else {
+                    router.push('/')
+                }
+            }
         }
     }
 

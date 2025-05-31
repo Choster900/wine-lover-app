@@ -273,7 +273,7 @@ const formatCardNumberInput = (event: Event) => {
 // Función para formatear la fecha de expiración
 const formatExpiryDate = (month: string, year: string) => {
     if (!month || !year) return ''
-    return `${month}/${year.slice(-2)}`
+    return `${month}/${year.toString().slice(-2)}`
 }
 
 // Función para agregar cero a números menores a 10
