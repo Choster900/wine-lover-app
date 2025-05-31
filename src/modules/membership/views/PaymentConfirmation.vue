@@ -548,7 +548,7 @@ onMounted(async () => {
         fetchMemberships()
     ])
 
-    if (!(selectedMembership.value.id > currentMembership.value.id)) {
+    if (currentMembership.value && !(selectedMembership.value.id > currentMembership.value.id)) {
         if (
             confirm('❌ Para poder actualizar tu membresía debes seleccionar una categoría mayor.\n\n¿Deseas ir a la página de membresías?')
         ) {

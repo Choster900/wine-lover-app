@@ -10,25 +10,6 @@
                     class="absolute z-10 top-7 left-7 pt-[10px] pb-2 px-3 bg-[#9739E1] rounded-[30px] font-primary text-[14px] text-white font-semibold leading-none">
                     NEW
                 </div>
-
-                <div
-                    class="absolute z-10 top-[50%] right-3 transform -translate-y-[40%] opacity-0 duration-300 transition-all group-hover:-translate-y-1/2 group-hover:opacity-100 flex flex-col items-end gap-3">
-                    <router-link to="#"
-                        class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
-                        <i class="mdi mdi-cards-heart-outline dark:text-white text-[24px]"></i>
-                        <span class="mt-1">Add to wishlist</span>
-                    </router-link>
-                    <router-link to="#"
-                        class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
-                        <i class="mdi mdi-shopping-outline dark:text-white text-[24px]"></i>
-                        <span class="mt-1">Add to Cart</span>
-                    </router-link>
-                    <button
-                        class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon quick-view">
-                        <i class="mdi mdi-eye-outline dark:text-white text-[24px]"></i>
-                        <span class="mt-1">Quick View</span>
-                    </button>
-                </div>
             </div>
 
             <div class="md:px-2 lg:px-4 xl:px-6 lg:pt-6 pt-5 flex gap-4 md:gap-5 flex-col">

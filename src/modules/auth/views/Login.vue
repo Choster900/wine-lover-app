@@ -16,14 +16,14 @@
                             class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Email</label>
                         <input v-model="email"
                             class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300"
-                            type="email" placeholder="Ingresa tu dirección de correo">
+                            type="email" placeholder="Ingresa tu dirección de correo" required>
                     </div>
                     <div class="mt-5" data-aos="fade-up" data-aos-delay="300">
                         <label
                             class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Password</label>
                         <input v-model="password"
                             class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300 placeholder:text-xl placeholder:transform placeholder:translate-y-[10px]"
-                            type="password" placeholder="* * * * * * * *">
+                            type="password" placeholder="* * * * * * * *" required>
                     </div>
                     <div class="mt-7" data-aos="fade-up" data-aos-delay="400">
                         <label class="flex items-center gap-2 iam-agree">
@@ -68,7 +68,6 @@ import FooterOne from '@/modules/common/components/FooterOne.vue';
 import ScrollToTop from '@/modules/common/components/ScrollToTop.vue';
 import { loginAction } from '../actions/login.action';
 import { useRouter } from 'vue-router';
-import { useAuthStore } from '../stores/auth';
 
 onMounted(() => {
     Aos.init()
@@ -77,13 +76,14 @@ onMounted(() => {
 const email = ref('')
 const password = ref('')
 const router = useRouter()
-const auth = useAuthStore()  // Accede al store de autenticación
 
 
 const login = async () => {
     try {
-        await loginAction(email.value, password.value)
-        router.push('/') // Redirige al home u otra ruta después del login
+        if (email.value && password.value) {
+            await loginAction(email.value, password.value)
+            router.push('/')
+        }
     } catch (error) {
         const errorMessage = (error instanceof Error) ? error.message : String(error);
         alert('Login failed: ' + errorMessage)
