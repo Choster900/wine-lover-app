@@ -116,7 +116,7 @@
                             class="btn btn-sm btn-outline !text-title hover:!text-white before:!z-[-1] dark:!text-white dark:hover:!text-title">
                             Continuar Comprando
                         </router-link>
-                        <router-link to="/checkout"
+                        <router-link to="/cart/checkout"
                             class="btn btn-sm btn-theme-solid !text-white hover:!text-primary before:!z-[-1]">
                             Checkout
                         </router-link>
@@ -167,7 +167,6 @@ const isLoading = computed(() =>
   productQueries.value.some(q => q.isLoading) || products.value.length === 0
 )
 
-// Funciones helper para obtener información del producto de forma segura
 const getProductById = (productId: number) => {
   return products.value.find(product => product && product.id === productId)
 }
@@ -177,7 +176,6 @@ const getProductImage = (productId: number): string => {
   if (product && product.images && product.images.length > 0) {
     return `${baseUrl}/${product.images[0].url_image}`
   }
-  // Imagen placeholder si no hay imagen disponible
   return '/placeholder.svg?height=80&width=80'
 }
 
@@ -193,7 +191,6 @@ const getProductDisplayName = (productId: number, presentationId: number): strin
   const presentation = product.presentations?.find(p => p && p.id === presentationId)
   if (!presentation) return product.name
 
-  // Manejar diferentes formatos de unit_measurement
   let unitText = ''
   if (typeof presentation.unit_measurement === 'string') {
     unitText = presentation.unit_measurement
@@ -208,7 +205,7 @@ const subtotal = computed(() =>
   getUserCartItems.value.reduce((acc, item) => acc + item.price * item.quantity, 0)
 )
 
-const discount = computed(() => 0) // Aquí puedes cambiar la lógica de descuento si aplica
+const discount = computed(() => 0)
 
 const total = computed(() => subtotal.value - discount.value)
 

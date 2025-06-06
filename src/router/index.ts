@@ -5,6 +5,7 @@ import { clientRoutes } from '@/modules/client/router'
 import { contactRoutes } from '@/modules/contact/router'
 import { membershipRoutes } from '@/modules/membership/routes'
 import { productRoutes } from '@/modules/products/routes'
+import { reviewRoutes } from '@/modules/review/router'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -21,6 +22,7 @@ const router = createRouter({
         cartRoutes,
         membershipRoutes,
         clientRoutes,
+        reviewRoutes,
         contactRoutes,
     ],
 })

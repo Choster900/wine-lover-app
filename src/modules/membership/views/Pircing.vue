@@ -177,22 +177,19 @@ import { onMounted, ref, computed } from 'vue'
 import { useAuthStore } from '@/modules/auth/stores/auth';
 import Aos from 'aos'
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
-import { getAllMemberships } from '../actions/get-all-membership.action'
+import { getMemberships } from '../../client/actions/fetch-membership.action';
 import type { Membership, PlanType, MembershipPlan } from '../interfaces/membership.interface'
 
 const authStore = useAuthStore()
 
-// Estado reactivo
 const memberships = ref<Membership[]>([])
-const selectedPlanTypeId = ref<number>(1) // Por defecto mensual
+const selectedPlanTypeId = ref<number>(1)
 const isLoading = ref(true)
 const error = ref(false)
 
-// Computed para obtener los tipos de planes disponibles
 const availablePlanTypes = computed<PlanType[]>(() => {
     if (!memberships.value.length) return []
 
-    // Obtener todos los tipos de planes únicos
     const planTypes = new Map<number, PlanType>()
 
     memberships.value.forEach(membership => {
@@ -204,11 +201,9 @@ const availablePlanTypes = computed<PlanType[]>(() => {
         })
     })
 
-    // Ordenar por duración (meses)
     return Array.from(planTypes.values()).sort((a, b) => a.months - b.months)
 })
 
-// Funciones para obtener información del plan actual
 const getCurrentPlan = (membership: Membership): MembershipPlan | undefined => {
     return membership.plans.find(p => p.plan.id === selectedPlanTypeId.value)
 }
@@ -228,7 +223,6 @@ const getCurrentPlanCashback = (membership: Membership): number => {
     return plan ? plan.cashback_percentage : 0
 }
 
-// Calcular ahorro comparado con el plan mensual
 const calculateSavings = (membership: Membership): number => {
     const currentPlan = getCurrentPlan(membership)
     const monthlyPlan = membership.plans.find(p => p.plan.months === 1)
@@ -242,7 +236,6 @@ const calculateSavings = (membership: Membership): number => {
     return Math.round(savings)
 }
 
-// Funciones para estilos dinámicos
 const getMembershipCardClass = (name: string): string => {
     switch (name.toLowerCase()) {
         case 'silver':
@@ -283,7 +276,6 @@ const getMembershipIcon = (name: string): string => {
     }
 }
 
-// Generar link de suscripción
 const getSubscriptionLink = (membership: Membership): string => {
     if (!authStore.user) {
         return '/auth/login'
@@ -295,13 +287,12 @@ const getSubscriptionLink = (membership: Membership): string => {
     return `/membership/payment-confirmation/${membership.id}/${currentPlan.plan.id}`
 }
 
-// Función para cargar membresías
 const fetchMemberships = async () => {
     try {
         isLoading.value = true
         error.value = false
 
-        const data = await getAllMemberships()
+        const data = await getMemberships()
 
         if (data && data.length > 0) {
             memberships.value = data
@@ -329,7 +320,6 @@ onMounted(() => {
     min-width: fit-content;
 }
 
-/* Animaciones adicionales */
 .group:hover .fas {
     transform: scale(1.1);
     transition: transform 0.3s ease;

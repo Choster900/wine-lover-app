@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <!-- <div class="s-py-50-100">
+        <div class="s-py-50-100">
             <div class="container">
                 <div class="max-w-1366 mx-auto">
                     <div class="max-w-[547px] mx-auto mb-8 sm:mb-[70px] text-center" data-aos="fade-up">
@@ -78,8 +78,13 @@
                     </div>
                     <Blog />
                 </div>
+                <div class="text-center mt-7 md:mt-12" data-aos="fade-up" data-aos-delay="200">
+                    <router-link to="/reviews" class="btn btn-outline" data-text="Ver todas las Reseñas">
+                        <span>Ver todas las Reseñas</span>
+                    </router-link>
+                </div>
             </div>
-        </div> -->
+        </div>
 
         <Footer />
 
@@ -92,7 +97,7 @@
 import { onMounted } from 'vue';
 
 import Navbar from '@/modules/common/components/Navbar.vue';
-// import Blog from '../components/Blog.vue';
+import Blog from '../components/Blog.vue';
 import Footer from '@/modules/common/components/FooterOne.vue';
 import ScrollToTop from '@/modules/common/components/ScrollToTop.vue';
 

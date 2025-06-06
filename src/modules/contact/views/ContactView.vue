@@ -70,49 +70,8 @@
 
 <script setup lang="ts">
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
-import { onMounted, ref } from 'vue'
+import { onMounted } from 'vue'
 import Aos from 'aos'
-
-// Estado del formulario
-const form = ref({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
-})
-
-const isSubmitting = ref(false)
-
-// Función para enviar el formulario
-const submitForm = async () => {
-    isSubmitting.value = true
-
-    try {
-        // Simular envío del formulario
-        await new Promise(resolve => setTimeout(resolve, 2000))
-
-        // Aquí iría la lógica real de envío
-        console.log('Formulario enviado:', form.value)
-
-        // Mostrar mensaje de éxito
-        alert('¡Mensaje enviado exitosamente! Te responderemos pronto.')
-
-        // Limpiar formulario
-        form.value = {
-            name: '',
-            email: '',
-            phone: '',
-            subject: '',
-            message: ''
-        }
-    } catch (error) {
-        console.error('Error al enviar formulario:', error)
-        alert('Error al enviar el mensaje. Por favor, intenta nuevamente.')
-    } finally {
-        isSubmitting.value = false
-    }
-}
 
 onMounted(() => {
     Aos.init()

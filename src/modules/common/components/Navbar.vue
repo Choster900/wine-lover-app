@@ -17,18 +17,18 @@
                             <router-link to="/products">Productos</router-link>
                         </li>
                         <li class="relative"
-                            :class="['/shop-v1', '/shop-v2', '/shop-v3', '/shop-v4', '/product-details', '/cart', '/checkout'].includes(current) ? 'active' : ''">
+                            :class="['/cart', '/cart/checkout'].includes(current) ? 'active' : ''">
                             <router-link to="#">Compras<span></span></router-link>
                             <ul
                                 class="sub-menu lg:absolute z-50 lg:top-full lg:left-0 lg:min-w-[220px] lg:invisible lg:transition-all lg:bg-white lg:dark:bg-title lg:py-[15px] lg:pr-[30px]">
                                 <li :class="current === '/cart' ? 'active' : ''"><router-link to="/cart">Mi Carrito</router-link></li>
-                                <li :class="current === '/checkout' ? 'active' : ''"><router-link
-                                        to="/checkout">Checkout</router-link></li>
+                                <li :class="current === '/cart/checkout' ? 'active' : ''"><router-link
+                                        to="/cart/checkout">Checkout</router-link></li>
                             </ul>
                         </li>
-                        <!-- <li :class="current === '/blog-v1' ? 'active' : ''">
-                            <router-link to="/blog-v1">Blog</router-link>
-                        </li> -->
+                        <li :class="current === '/reviews' ? 'active' : ''">
+                            <router-link to="/reviews">Blog</router-link>
+                        </li>
                         <li :class="current === '/contact' ? 'active' : ''"><router-link
                                 to="/contact">Contacto</router-link></li>
                         <li :class="current === '/auth/login' ? 'active' : ''" class=" lg:hidden"><router-link
