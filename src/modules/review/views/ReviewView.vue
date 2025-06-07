@@ -195,8 +195,8 @@ import { useRoute } from 'vue-router'
 import DOMPurify from 'dompurify'
 import Aos from 'aos'
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
-import { fetchReviewByIdAction } from '../actions/fetch-reviews.action'
-import type { Review } from '../interfaces/reviews.interface'
+import { createCommentAction, fetchReviewByIdAction } from '../actions/fetch-reviews.action'
+import type { CommentRequest, Review } from '../interfaces/reviews.interface'
 
 const route = useRoute()
 const baseUrl = import.meta.env.VITE_BACKEND_STORAGE_URL
@@ -263,16 +263,29 @@ const handleImageError = (event: Event) => {
 const submitComment = async () => {
     if (!commentForm.value.content.trim()) return
 
+    const reviewId = parseInt(route.params.id as string)
+    if (isNaN(reviewId)) {
+        alert('Error: ID de reseña inválido')
+        return
+    }
+
     isSubmitting.value = true
 
     try {
-        await new Promise(resolve => setTimeout(resolve, 1000))
+        const commentData: CommentRequest = {
+            content: commentForm.value.content.trim()
+        }
 
-        alert('Comentario enviado correctamente.')
+        const response = await createCommentAction(reviewId, commentData)
+
+        alert('Comentario enviado correctamente. Será revisado antes de publicarse.')
         commentForm.value.content = ''
-    } catch (err) {
+
+        await loadReview(reviewId)
+
+    } catch (err: any) {
         console.error('Error al enviar comentario:', err)
-        alert('Error al enviar el comentario. Inténtalo de nuevo.')
+        alert(err.message || 'Error al enviar el comentario. Inténtalo de nuevo.')
     } finally {
         isSubmitting.value = false
     }
