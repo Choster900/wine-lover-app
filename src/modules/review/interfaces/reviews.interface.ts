@@ -52,3 +52,12 @@ export interface Link {
     label: string
     active: boolean
 }
+
+export interface CommentRequest {
+    content: string
+}
+
+export interface CommentResponse {
+    message: string
+    data?: any
+}
