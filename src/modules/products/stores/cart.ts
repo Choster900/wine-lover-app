@@ -4,8 +4,8 @@ import { useAuthStore } from '@/modules/auth/stores/auth'
 
 interface CartItem {
   cartItemId: string
-  productId: string
-  presentationId: string
+  productId: number
+  presentationId: number
   price: number
   quantity: number
 }
@@ -16,7 +16,7 @@ export const useCartStore = defineStore('cart', {
   }),
 
   actions: {
-    addItem(productId: string, presentationId: string, price: number, quantity: number) {
+    addItem(productId: number, presentationId: number, price: number, quantity: number) {
       const existingItem = this.cart.find(
         item => item.productId === productId && item.presentationId === presentationId
       )

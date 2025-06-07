@@ -45,7 +45,7 @@ export interface Client {
     birthday_date: string | Date;
     phone: string;
     membership: string | null;
-    current_cashback: string | null;
+    current_cashback: number | null;
 }
 
 export interface ClientExtended extends Client {

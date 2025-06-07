@@ -8,7 +8,7 @@ export const createOrderAction = async (payload: CreateOrderPayload): Promise<Or
 
     try {
         const response = await backendApi.post(
-            '/client/order/createOrder',
+            '/client/order',
             payload,
             {
                 headers: {
