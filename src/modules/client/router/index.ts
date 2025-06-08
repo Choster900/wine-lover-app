@@ -5,6 +5,7 @@ import PaymentMethod from '../components/PaymentMethod.vue'
 import OrderHistory from '../components/OrderHistory.vue'
 import CurrentMembreship from '../components/CurrentMembreship.vue'
 import ListAddress from '../components/ListAddress.vue'
+import CashbackHistory from '../components/CashbackHistory.vue'
 
 export const clientRoutes: RouteRecordRaw = {
     path: '/client',
@@ -54,7 +55,7 @@ export const clientRoutes: RouteRecordRaw = {
         {
             path: 'cashback-history',
             name: 'cashback-history',
-            component: OrderHistory,
+            component: CashbackHistory,
             meta: {
                 title: 'Historial de cashback',
             },

@@ -64,6 +64,7 @@ export interface Order {
     order_status: string
     transaction_id: string
     items: OrderItem[]
+    created_at: string
 }
 
 export interface OrderItem {

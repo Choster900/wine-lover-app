@@ -23,10 +23,15 @@ export interface Comment {
     id: number
     content: string
     banned: string
-    parent: string
+    parent: CommentParent
     review: string
     by: string
     created_at: string
+}
+
+export interface CommentParent {
+    id: number
+    content: string
 }
 
 export interface Links {
@@ -55,9 +60,9 @@ export interface Link {
 
 export interface CommentRequest {
     content: string
+    parent_id?: number
 }
 
 export interface CommentResponse {
-    message: string
-    data?: any
+    data: Comment
 }

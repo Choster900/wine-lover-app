@@ -301,7 +301,7 @@
                                             No tienes tarjetas guardadas
                                         </p>
                                         <router-link
-                                            to="/my-profile/payment-methods"
+                                            to="/client/method-payment"
                                             class="inline-flex items-center gap-2 px-3 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg text-sm transition-all duration-300"
                                         >
                                             <i class="fas fa-plus"></i>

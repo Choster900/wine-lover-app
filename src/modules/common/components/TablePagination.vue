@@ -38,7 +38,7 @@
 
     <!-- Información de resultados -->
     <div v-if="total > 0" class="text-center mt-4 text-sm text-gray-600">
-        Mostrando {{ from }} - {{ to }} de {{ total }} productos
+        Mostrando {{ from }} - {{ to }} de {{ total }} elementos
     </div>
 </template>
 

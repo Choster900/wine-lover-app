@@ -205,7 +205,7 @@
                                 <div v-else-if="!cards.length" class="py-4 text-center">
                                     <p class="text-gray-600 dark:text-gray-400 mb-3 text-sm">No tienes tarjetas guardadas</p>
                                     <router-link
-                                        to="/my-profile/payment-methods"
+                                        to="/client/method-payment"
                                         class="inline-flex items-center gap-2 px-3 py-1.5 bg-primary hover:bg-primary/90 text-white rounded-lg text-sm transition-all duration-300"
                                     >
                                         <i class="fas fa-plus text-xs"></i>

@@ -126,7 +126,7 @@
                         </div>
 
                         <!-- Paginación -->
-                        <ProductsPagination
+                        <TablePagination
                             v-if="productList && productList.length > 0 && productsResponse?.meta"
                             :current-page="currentPage"
                             :total-pages="totalPages"
@@ -152,7 +152,7 @@ import RangePrice from '../components/RangePrice.vue';
 import BrandsFilter from '../components/BrandsFilter.vue';
 import ProductsCards from '../components/ProductsCards.vue';
 import CategoriesFilter from '../components/CategoriesFilter.vue';
-import ProductsPagination from '../components/ProductsPagination.vue';
+import TablePagination from '@/modules/common/components/TablePagination.vue'
 import { useProductsQuery } from '../composable/useProductsQuery';
 import { useProductFilters } from '../composable/useProductFilters';
 

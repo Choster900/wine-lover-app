@@ -61,7 +61,7 @@
                     </div>
                 </div>
 
-                <ReviewPagination
+                <TablePagination
                     v-if="paginationData && paginationData.total > 0"
                     :current-page="currentPage"
                     :total-pages="paginationData.last_page"
@@ -80,7 +80,7 @@ import { ref, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import Aos from 'aos'
 import bg from '@/assets/images/shortcode/breadcumb.jpg'
-import ReviewPagination from '../components/ReviewPagination.vue'
+import TablePagination from '@/modules/common/components/TablePagination.vue'
 import { fetchReviewsAction } from '../actions/fetch-reviews.action'
 
 const route = useRoute()

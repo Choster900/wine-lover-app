@@ -91,11 +91,11 @@
                                 <i class="fas fa-comments text-primary"></i>
                                 Comentarios
                                 <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-                                    ({{ review.comments?.length || 0 }})
+                                    ({{ totalCommentsCount }})
                                 </span>
                             </h3>
 
-                            <!-- Formulario de comentarios -->
+                            <!-- Formulario de comentarios principales -->
                             <div v-if="review.comments_available" class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-8">
                                 <h4 class="text-lg font-medium mb-4">Deja tu comentario</h4>
                                 <form @submit.prevent="submitComment">
@@ -109,9 +109,6 @@
                                         ></textarea>
                                     </div>
                                     <div class="flex justify-between items-center">
-                                        <p class="text-sm text-gray-500">
-                                            Los comentarios son moderados antes de publicarse
-                                        </p>
                                         <button
                                             type="submit"
                                             class="px-6 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium transition-all duration-300 flex items-center gap-2"
@@ -126,12 +123,13 @@
                             </div>
 
                             <!-- Lista de comentarios -->
-                            <div v-if="review.comments && review.comments.length > 0" class="space-y-6">
+                            <div v-if="mainComments.length > 0" class="space-y-6">
                                 <div
-                                    v-for="comment in review.comments"
+                                    v-for="comment in mainComments"
                                     :key="comment.id"
                                     class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-5 shadow-sm"
                                 >
+                                    <!-- Comentario principal -->
                                     <div class="flex items-start gap-3">
                                         <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center flex-shrink-0">
                                             <i class="fas fa-user text-gray-500 dark:text-gray-400"></i>
@@ -141,18 +139,79 @@
                                                 <h5 class="font-medium">{{ comment.by }}</h5>
                                                 <span class="text-xs text-gray-500">{{ formatDate(comment.created_at) }}</span>
                                             </div>
-                                            <p class="text-gray-700 dark:text-gray-300">{{ comment.content }}</p>
+                                            <p class="text-gray-700 dark:text-gray-300 mb-3">{{ comment.content }}</p>
 
                                             <!-- Acciones de comentario -->
-                                            <div class="flex items-center gap-4 mt-3">
-                                                <button class="text-sm text-gray-500 hover:text-primary flex items-center gap-1 transition-colors">
+                                            <div class="flex items-center gap-4">
+                                                <button 
+                                                    @click="toggleReplyForm(comment.id)"
+                                                    class="text-sm text-gray-500 hover:text-primary flex items-center gap-1 transition-colors"
+                                                >
                                                     <i class="fas fa-reply"></i>
                                                     <span>Responder</span>
                                                 </button>
-                                                <button class="text-sm text-gray-500 hover:text-primary flex items-center gap-1 transition-colors">
-                                                    <i class="fas fa-heart"></i>
-                                                    <span>Me gusta</span>
-                                                </button>
+                                                
+                                                <!-- Mostrar número de respuestas si las hay -->
+                                                <span v-if="getCommentReplies(comment.id).length > 0" class="text-sm text-gray-500">
+                                                    {{ getCommentReplies(comment.id).length }} 
+                                                    {{ getCommentReplies(comment.id).length === 1 ? 'respuesta' : 'respuestas' }}
+                                                </span>
+                                            </div>
+
+                                            <!-- Formulario de respuesta -->
+                                            <div v-if="replyingTo === comment.id" class="mt-4 bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                                <form @submit.prevent="submitReply(comment.id)">
+                                                    <div class="mb-3">
+                                                        <textarea
+                                                            v-model="replyForm.content"
+                                                            rows="3"
+                                                            :placeholder="`Responder a ${comment.by}...`"
+                                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-600 dark:border-gray-500 dark:text-white resize-none text-sm"
+                                                            :disabled="isSubmittingReply"
+                                                        ></textarea>
+                                                    </div>
+                                                    <div class="flex justify-end gap-2">
+                                                        <button
+                                                            type="button"
+                                                            @click="cancelReply"
+                                                            class="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"
+                                                            :disabled="isSubmittingReply"
+                                                        >
+                                                            Cancelar
+                                                        </button>
+                                                        <button
+                                                            type="submit"
+                                                            class="px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2"
+                                                            :disabled="isSubmittingReply || !replyForm.content.trim()"
+                                                        >
+                                                            <i v-if="isSubmittingReply" class="fas fa-spinner fa-spin"></i>
+                                                            <i v-else class="fas fa-reply"></i>
+                                                            <span>{{ isSubmittingReply ? 'Enviando...' : 'Responder' }}</span>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Respuestas al comentario -->
+                                    <div v-if="getCommentReplies(comment.id).length > 0" class="mt-4 ml-8 space-y-4">
+                                        <div
+                                            v-for="reply in getCommentReplies(comment.id)"
+                                            :key="reply.id"
+                                            class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 border-l-4 border-primary/30"
+                                        >
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center flex-shrink-0">
+                                                    <i class="fas fa-user text-gray-500 dark:text-gray-400 text-sm"></i>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <div class="flex items-center justify-between mb-2">
+                                                        <h6 class="font-medium text-sm">{{ reply.by }}</h6>
+                                                        <span class="text-xs text-gray-500">{{ formatDate(reply.created_at) }}</span>
+                                                    </div>
+                                                    <p class="text-gray-700 dark:text-gray-300 text-sm">{{ reply.content }}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -205,14 +264,37 @@ const review = ref<Review | null>(null)
 const isLoading = ref(true)
 const error = ref<string | null>(null)
 const isSubmitting = ref(false)
+const isSubmittingReply = ref(false)
+const replyingTo = ref<number | null>(null)
 
 const commentForm = ref({
+    content: ''
+})
+
+const replyForm = ref({
     content: ''
 })
 
 const sanitizedContent = computed(() => {
     if (!review.value?.content) return ''
     return DOMPurify.sanitize(review.value.content)
+})
+
+// Separar comentarios principales de respuestas
+const mainComments = computed(() => {
+    if (!review.value?.comments) return []
+    return review.value.comments.filter(comment => !comment.parent || !comment.parent.id)
+})
+
+// Función para obtener respuestas de un comentario específico
+const getCommentReplies = (commentId: number) => {
+    if (!review.value?.comments) return []
+    return review.value.comments.filter(comment => comment.parent?.id === commentId)
+}
+
+// Contar total de comentarios (principales + respuestas)
+const totalCommentsCount = computed(() => {
+    return review.value?.comments?.length || 0
 })
 
 const loadReview = async (id: number) => {
@@ -276,9 +358,9 @@ const submitComment = async () => {
             content: commentForm.value.content.trim()
         }
 
-        const response = await createCommentAction(reviewId, commentData)
+        await createCommentAction(reviewId, commentData)
 
-        alert('Comentario enviado correctamente. Será revisado antes de publicarse.')
+        alert('Comentario enviado correctamente.')
         commentForm.value.content = ''
 
         await loadReview(reviewId)
@@ -288,6 +370,52 @@ const submitComment = async () => {
         alert(err.message || 'Error al enviar el comentario. Inténtalo de nuevo.')
     } finally {
         isSubmitting.value = false
+    }
+}
+
+const toggleReplyForm = (commentId: number) => {
+    if (replyingTo.value === commentId) {
+        cancelReply()
+    } else {
+        replyingTo.value = commentId
+        replyForm.value.content = ''
+    }
+}
+
+const cancelReply = () => {
+    replyingTo.value = null
+    replyForm.value.content = ''
+}
+
+const submitReply = async (parentCommentId: number) => {
+    if (!replyForm.value.content.trim()) return
+
+    const reviewId = parseInt(route.params.id as string)
+    if (isNaN(reviewId)) {
+        alert('Error: ID de reseña inválido')
+        return
+    }
+
+    isSubmittingReply.value = true
+
+    try {
+        const replyData: CommentRequest = {
+            content: replyForm.value.content.trim(),
+            parent_id: parentCommentId
+        }
+
+        await createCommentAction(reviewId, replyData)
+
+        alert('Respuesta enviada correctamente.')
+        cancelReply()
+
+        await loadReview(reviewId)
+
+    } catch (err: any) {
+        console.error('Error al enviar respuesta:', err)
+        alert(err.message || 'Error al enviar la respuesta. Inténtalo de nuevo.')
+    } finally {
+        isSubmittingReply.value = false
     }
 }
 
