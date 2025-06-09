@@ -86,7 +86,7 @@ const login = async () => {
         }
     } catch (error) {
         const errorMessage = (error instanceof Error) ? error.message : String(error);
-        alert('Login failed: ' + errorMessage)
+        alert('Error al hacer login: ' + errorMessage)
     }
 }
 </script>

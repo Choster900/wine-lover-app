@@ -33,7 +33,8 @@ export const loginAction = async (email: string, password: string): Promise<void
         if (error.response?.data?.errors) {
             console.error('Errores de validación:', error.response.data.errors)
         } else {
-            console.error('Error durante el login:', error.response?.data || error.message)
+            console.error('Error durante el login:', error.response?.data)
+            throw new Error('Credenciales invalidas')
         }
         throw error
     }
