@@ -180,7 +180,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 import { useAuthStore } from '@/modules/auth/stores/auth'
 import { useCartStore } from '@/modules/products/stores/cart'
-import { Product } from '@/modules/products/stores/products'
+import type { Product } from '@/modules/products/interfaces/product.interface.ts'
 import { fetchProductByIdAction } from '@/modules/products/actions/fetch-products.action.ts'
 
 const baseUrl = import.meta.env.VITE_BACKEND_STORAGE_URL
