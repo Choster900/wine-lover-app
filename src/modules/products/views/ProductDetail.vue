@@ -1,16 +1,4 @@
 <template>
-    <div class="bg-[#F8F5F0] dark:bg-dark-secondary py-5 md:py-[30px]">
-        <div class="container-fluid">
-            <ul
-                class="flex items-center gap-[10px] text-base md:text-lg leading-none font-normal text-title dark:text-white max-w-[1720px] mx-auto flex-wrap">
-                <li><router-link to="/">Home</router-link></li>
-                <li>/</li>
-                <li><router-link to="/products">Shop</router-link></li>
-                <li>/</li>
-            </ul>
-        </div>
-    </div>
-
     <div class="s-py-50" data-aos="fade-up">
         <div class="container-fluid">
             <div class="max-w-[1720px] mx-auto flex justify-between gap-10 flex-col lg:flex-row">
@@ -94,25 +82,6 @@
                                 </span>
                             </router-link>
 
-                        </div>
-                    </div>
-                    <div class="pt-4 sm:pt-6" data-aos="fade-up" data-aos-delay="500">
-                        <div class="flex items-center gap-6">
-                            <h6 class="font-normal">Share : </h6>
-                            <div class="flex gap-6">
-                                <router-link to="#"
-                                    class="text-paragraph duration-300 dark:text-white hover:text-primary dark:hover:text-primary">
-                                    <i class="fa-brands fa-facebook-f"></i>
-                                </router-link>
-                                <router-link to="#"
-                                    class="text-paragraph duration-300 dark:text-white hover:text-primary dark:hover:text-primary">
-                                    <i class="fa-brands fa-twitter"></i>
-                                </router-link>
-                                <router-link to="#"
-                                    class="text-paragraph duration-300 dark:text-white hover:text-primary dark:hover:text-primary">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </router-link>
-                            </div>
                         </div>
                     </div>
                 </div>

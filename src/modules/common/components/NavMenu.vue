@@ -176,7 +176,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 
 import { useAuthStore } from '@/modules/auth/stores/auth'
 import { useCartStore } from '@/modules/products/stores/cart'
@@ -270,8 +270,13 @@ const loadProducts = async () => {
     }
 }
 
+watch(cartList, (newVal) => {
+    if (newVal === true) {
+        loadProducts()
+    }
+})
+
 onMounted(() => {
-    loadProducts()
     document.addEventListener('click', closeCartOnClickOutside)
 })
 
