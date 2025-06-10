@@ -54,45 +54,6 @@
                             </div>
                         </div>
 
-                        <!-- Summary Cards -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                            <div class="bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg p-4 border border-green-200 dark:border-green-700">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white">
-                                        <i class="fas fa-plus text-sm"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-green-700 dark:text-green-300">Total Ganado</p>
-                                        <p class="text-lg font-semibold text-green-800 dark:text-green-200">${{ totalEarned }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg p-4 border border-blue-200 dark:border-blue-700">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white">
-                                        <i class="fas fa-minus text-sm"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-blue-700 dark:text-blue-300">Total Usado</p>
-                                        <p class="text-lg font-semibold text-blue-800 dark:text-blue-200">${{ totalUsed }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-4 border border-purple-200 dark:border-purple-700">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white">
-                                        <i class="fas fa-wallet text-sm"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-purple-700 dark:text-purple-300">Disponible</p>
-                                        <p class="text-lg font-semibold text-purple-800 dark:text-purple-200">${{ (totalEarned - totalUsed) }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <!-- Loading State -->
                         <div v-if="isLoading" class="flex justify-center items-center py-20">
                             <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
@@ -208,19 +169,6 @@ const pagination = ref({
     total: 0,
     from: 0,
     to: 0
-})
-
-// Computed properties para los totales
-const totalEarned = computed(() => {
-    return cashbackHistory.value
-        .filter(transaction => transaction.amount > 0)
-        .reduce((sum, transaction) => sum + Number.parseFloat(transaction.amount), 0)
-})
-
-const totalUsed = computed(() => {
-    return Math.abs(cashbackHistory.value
-        .filter(transaction => transaction.amount < 0)
-        .reduce((sum, transaction) => sum + Math.abs(transaction.amount), 0))
 })
 
 // Cargar historial de cashback
