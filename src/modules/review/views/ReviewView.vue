@@ -1,17 +1,22 @@
 <template>
-    <div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70"
-        :style="{ backgroundImage: 'url(' + bg + ')' }">
+    <div
+        class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70"
+        :style="{ backgroundImage: 'url(' + bg + ')' }"
+    >
         <div class="text-center w-full">
             <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">
                 {{ isLoading ? 'Cargando...' : review?.title || 'Reseña' }}
             </h2>
             <ul
-                class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4">
+                class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4"
+            >
                 <li><router-link to="/">Inicio</router-link></li>
                 <li>/</li>
                 <li><router-link to="/reviews">Blog</router-link></li>
                 <li>/</li>
-                <li class="text-primary">{{ isLoading ? 'Cargando...' : truncateTitle(review?.title || '') }}</li>
+                <li class="text-primary">
+                    {{ isLoading ? 'Cargando...' : truncateTitle(review?.title || '') }}
+                </li>
             </ul>
         </div>
     </div>
@@ -21,15 +26,21 @@
             <div class="max-w-4xl mx-auto">
                 <!-- Estado de carga -->
                 <div v-if="isLoading" class="flex justify-center items-center py-20">
-                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                    <div
+                        class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"
+                    ></div>
                 </div>
 
                 <!-- Error -->
                 <div v-else-if="error" class="text-center py-20">
-                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-red-100 flex items-center justify-center text-red-600">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 rounded-full bg-red-100 flex items-center justify-center text-red-600"
+                    >
                         <i class="fas fa-exclamation-triangle text-2xl"></i>
                     </div>
-                    <h4 class="text-lg font-medium text-gray-600 dark:text-gray-400">Error al cargar la reseña</h4>
+                    <h4 class="text-lg font-medium text-gray-600 dark:text-gray-400">
+                        Error al cargar la reseña
+                    </h4>
                     <p class="text-sm text-gray-500 dark:text-gray-500 mt-2">
                         {{ error }}
                     </p>
@@ -43,20 +54,27 @@
                 </div>
 
                 <!-- Contenido de la reseña -->
-                <div v-else-if="review" class="bg-white dark:bg-dark-secondary rounded-xl shadow-lg overflow-hidden">
+                <div
+                    v-else-if="review"
+                    class="bg-white dark:bg-dark-secondary rounded-xl shadow-lg overflow-hidden"
+                >
                     <div class="relative h-[300px] md:h-[400px] overflow-hidden">
                         <img
                             :src="baseUrl + '/' + review.cover_image"
                             :alt="review.title"
                             class="w-full h-full object-cover"
                             @error="handleImageError"
-                        >
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+                        ></div>
 
                         <div class="absolute bottom-0 left-0 w-full p-6 text-white">
                             <div class="flex items-center gap-3 mb-2">
                                 <div v-if="review.username" class="flex items-center gap-2">
-                                    <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center"
+                                    >
                                         <i class="fas fa-user text-sm"></i>
                                     </div>
                                     <span>{{ review.username }}</span>
@@ -66,7 +84,9 @@
                                     <span>{{ formatDate(review.created_at) }}</span>
                                 </div>
                             </div>
-                            <h1 class="text-2xl text-white border-black md:text-3xl font-bold">{{ review.title }}</h1>
+                            <h1 class="text-2xl text-white border-black md:text-3xl font-bold">
+                                {{ review.title }}
+                            </h1>
                         </div>
                     </div>
 
@@ -81,9 +101,12 @@
                             </router-link>
                         </div>
 
-                        <div class="text-justify max-w-none dark:prose-invert mb-8" v-html="sanitizedContent"></div>
+                        <div
+                            class="text-justify max-w-none dark:prose-invert mb-8"
+                            v-html="sanitizedContent"
+                        ></div>
 
-                        <hr class="border-gray-200 dark:border-gray-700 my-8">
+                        <hr class="border-gray-200 dark:border-gray-700 my-8" />
 
                         <!-- Sección de comentarios -->
                         <div id="comments" class="mt-10">
@@ -96,7 +119,10 @@
                             </h3>
 
                             <!-- Formulario de comentarios principales -->
-                            <div v-if="review.comments_available" class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-8">
+                            <div
+                                v-if="review.comments_available"
+                                class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-8"
+                            >
                                 <h4 class="text-lg font-medium mb-4">Deja tu comentario</h4>
                                 <form @submit.prevent="submitComment">
                                     <div class="mb-4">
@@ -104,7 +130,7 @@
                                             v-model="commentForm.content"
                                             rows="4"
                                             placeholder="Escribe tu comentario aquí..."
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white resize-none"
+                                            class="w-full dark:bg-dark-secondary px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white resize-none"
                                             :disabled="isSubmitting"
                                         ></textarea>
                                     </div>
@@ -114,9 +140,14 @@
                                             class="px-6 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium transition-all duration-300 flex items-center gap-2"
                                             :disabled="isSubmitting || !commentForm.content.trim()"
                                         >
-                                            <i v-if="isSubmitting" class="fas fa-spinner fa-spin"></i>
+                                            <i
+                                                v-if="isSubmitting"
+                                                class="fas fa-spinner fa-spin"
+                                            ></i>
                                             <i v-else class="fas fa-paper-plane"></i>
-                                            <span>{{ isSubmitting ? 'Enviando...' : 'Comentar' }}</span>
+                                            <span>{{
+                                                isSubmitting ? 'Enviando...' : 'Comentar'
+                                            }}</span>
                                         </button>
                                     </div>
                                 </form>
@@ -127,46 +158,73 @@
                                 <div
                                     v-for="comment in mainComments"
                                     :key="comment.id"
-                                    class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-5 shadow-sm"
+                                    class="bg-white dark:bg-dark-secondary border border-gray-100 dark:border-gray-700 rounded-xl p-5 shadow-sm"
                                 >
                                     <!-- Comentario principal -->
                                     <div class="flex items-start gap-3">
-                                        <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center flex-shrink-0">
-                                            <i class="fas fa-user text-gray-500 dark:text-gray-400"></i>
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center flex-shrink-0"
+                                        >
+                                            <i
+                                                class="fas fa-user text-gray-500 dark:text-gray-400"
+                                            ></i>
                                         </div>
                                         <div class="flex-1">
                                             <div class="flex items-center justify-between mb-2">
                                                 <h5 class="font-medium">{{ comment.by }}</h5>
-                                                <span class="text-xs text-gray-500">{{ formatDate(comment.created_at) }}</span>
+                                                <span class="text-xs text-gray-500">{{
+                                                    formatDate(comment.created_at)
+                                                }}</span>
                                             </div>
-                                            <p class="text-gray-700 dark:text-gray-300 mb-3">{{ comment.content }}</p>
+                                            <p
+                                                v-if="comment.banned"
+                                                class="text-red-600 dark:text-red-400 text-sm italic"
+                                            >
+                                                Este comentario ha sido ocultado por no cumplir con
+                                                las políticas de la comunidad.
+                                            </p>
+
+                                            <p v-else class="text-gray-700 dark:text-gray-300 mb-3">
+                                                {{ comment.content }}
+                                            </p>
 
                                             <!-- Acciones de comentario -->
                                             <div class="flex items-center gap-4">
-                                                <button 
+                                                <button
+                                                    v-if="!comment.banned"
                                                     @click="toggleReplyForm(comment.id)"
                                                     class="text-sm text-gray-500 hover:text-primary flex items-center gap-1 transition-colors"
                                                 >
                                                     <i class="fas fa-reply"></i>
                                                     <span>Responder</span>
                                                 </button>
-                                                
+
                                                 <!-- Mostrar número de respuestas si las hay -->
-                                                <span v-if="getCommentReplies(comment.id).length > 0" class="text-sm text-gray-500">
-                                                    {{ getCommentReplies(comment.id).length }} 
-                                                    {{ getCommentReplies(comment.id).length === 1 ? 'respuesta' : 'respuestas' }}
+                                                <span
+                                                    v-if="getCommentReplies(comment.id).length > 0"
+                                                    class="text-sm text-gray-500"
+                                                >
+                                                    {{ getCommentReplies(comment.id).length }}
+                                                    {{
+                                                        getCommentReplies(comment.id).length === 1
+                                                            ? 'respuesta'
+                                                            : 'respuestas'
+                                                    }}
                                                 </span>
                                             </div>
 
                                             <!-- Formulario de respuesta -->
-                                            <div v-if="replyingTo === comment.id" class="mt-4 bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                            <div
+                                                v-if="replyingTo === comment.id"
+                                                class="mt-4 bg-gray-50 dark:bg-gray-700 rounded-lg p-4"
+                                            >
                                                 <form @submit.prevent="submitReply(comment.id)">
                                                     <div class="mb-3">
                                                         <textarea
                                                             v-model="replyForm.content"
                                                             rows="3"
                                                             :placeholder="`Responder a ${comment.by}...`"
-                                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-600 dark:border-gray-500 dark:text-white resize-none text-sm"
+                                                            class="w-full dark:bg-dark-secondary px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-600 dark:border-gray-500 dark:text-white resize-none text-sm"
                                                             :disabled="isSubmittingReply"
                                                         ></textarea>
                                                     </div>
@@ -182,11 +240,21 @@
                                                         <button
                                                             type="submit"
                                                             class="px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2"
-                                                            :disabled="isSubmittingReply || !replyForm.content.trim()"
+                                                            :disabled="
+                                                                isSubmittingReply ||
+                                                                !replyForm.content.trim()
+                                                            "
                                                         >
-                                                            <i v-if="isSubmittingReply" class="fas fa-spinner fa-spin"></i>
+                                                            <i
+                                                                v-if="isSubmittingReply"
+                                                                class="fas fa-spinner fa-spin"
+                                                            ></i>
                                                             <i v-else class="fas fa-reply"></i>
-                                                            <span>{{ isSubmittingReply ? 'Enviando...' : 'Responder' }}</span>
+                                                            <span>{{
+                                                                isSubmittingReply
+                                                                    ? 'Enviando...'
+                                                                    : 'Responder'
+                                                            }}</span>
                                                         </button>
                                                     </div>
                                                 </form>
@@ -195,22 +263,47 @@
                                     </div>
 
                                     <!-- Respuestas al comentario -->
-                                    <div v-if="getCommentReplies(comment.id).length > 0" class="mt-4 ml-8 space-y-4">
+                                    <div
+                                        v-if="getCommentReplies(comment.id).length > 0"
+                                        class="mt-4 ml-8 space-y-4"
+                                    >
                                         <div
                                             v-for="reply in getCommentReplies(comment.id)"
                                             :key="reply.id"
                                             class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 border-l-4 border-primary/30"
                                         >
                                             <div class="flex items-start gap-3">
-                                                <div class="w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center flex-shrink-0">
-                                                    <i class="fas fa-user text-gray-500 dark:text-gray-400 text-sm"></i>
+                                                <div
+                                                    class="w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center flex-shrink-0"
+                                                >
+                                                    <i
+                                                        class="fas fa-user text-gray-500 dark:text-gray-400 text-sm"
+                                                    ></i>
                                                 </div>
                                                 <div class="flex-1">
-                                                    <div class="flex items-center justify-between mb-2">
-                                                        <h6 class="font-medium text-sm">{{ reply.by }}</h6>
-                                                        <span class="text-xs text-gray-500">{{ formatDate(reply.created_at) }}</span>
+                                                    <div
+                                                        class="flex items-center justify-between mb-2"
+                                                    >
+                                                        <h6 class="font-medium text-sm">
+                                                            {{ reply.by }}
+                                                        </h6>
+                                                        <span class="text-xs text-gray-500">{{
+                                                            formatDate(reply.created_at)
+                                                        }}</span>
                                                     </div>
-                                                    <p class="text-gray-700 dark:text-gray-300 text-sm">{{ reply.content }}</p>
+                                                    <p
+                                                        v-if="reply.banned"
+                                                        class="text-red-600 dark:text-red-400 text-sm italic"
+                                                    >
+                                                        Este comentario ha sido ocultado por no
+                                                        cumplir con las políticas de la comunidad.
+                                                    </p>
+                                                    <p
+                                                        v-else
+                                                        class="text-gray-700 dark:text-gray-300 text-sm"
+                                                    >
+                                                        {{ reply.content }}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -219,22 +312,36 @@
                             </div>
 
                             <!-- Sin comentarios -->
-                            <div v-else-if="review.comments_available" class="text-center py-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                                <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-400">
+                            <div
+                                v-else-if="review.comments_available"
+                                class="text-center py-8 bg-gray-50 dark:bg-gray-800 rounded-xl"
+                            >
+                                <div
+                                    class="w-12 h-12 mx-auto mb-3 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-400"
+                                >
                                     <i class="fas fa-comments text-xl"></i>
                                 </div>
-                                <h5 class="text-lg font-medium text-gray-600 dark:text-gray-400">No hay comentarios aún</h5>
+                                <h5 class="text-lg font-medium text-gray-600 dark:text-gray-400">
+                                    No hay comentarios aún
+                                </h5>
                                 <p class="text-sm text-gray-500 dark:text-gray-500 mt-1">
                                     Sé el primero en comentar esta reseña
                                 </p>
                             </div>
 
                             <!-- Comentarios deshabilitados -->
-                            <div v-else class="text-center py-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                                <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-400">
+                            <div
+                                v-else
+                                class="text-center py-8 bg-gray-50 dark:bg-gray-800 rounded-xl"
+                            >
+                                <div
+                                    class="w-12 h-12 mx-auto mb-3 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-400"
+                                >
                                     <i class="fas fa-comment-slash text-xl"></i>
                                 </div>
-                                <h5 class="text-lg font-medium text-gray-600 dark:text-gray-400">Comentarios deshabilitados</h5>
+                                <h5 class="text-lg font-medium text-gray-600 dark:text-gray-400">
+                                    Comentarios deshabilitados
+                                </h5>
                                 <p class="text-sm text-gray-500 dark:text-gray-500 mt-1">
                                     Los comentarios no están disponibles para esta reseña
                                 </p>
@@ -242,7 +349,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -268,11 +374,11 @@ const isSubmittingReply = ref(false)
 const replyingTo = ref<number | null>(null)
 
 const commentForm = ref({
-    content: ''
+    content: '',
 })
 
 const replyForm = ref({
-    content: ''
+    content: '',
 })
 
 const sanitizedContent = computed(() => {
@@ -283,13 +389,13 @@ const sanitizedContent = computed(() => {
 // Separar comentarios principales de respuestas
 const mainComments = computed(() => {
     if (!review.value?.comments) return []
-    return review.value.comments.filter(comment => !comment.parent || !comment.parent.id)
+    return review.value.comments.filter((comment) => !comment.parent || !comment.parent.id)
 })
 
 // Función para obtener respuestas de un comentario específico
 const getCommentReplies = (commentId: number) => {
     if (!review.value?.comments) return []
-    return review.value.comments.filter(comment => comment.parent?.id === commentId)
+    return review.value.comments.filter((comment) => comment.parent?.id === commentId)
 }
 
 // Contar total de comentarios (principales + respuestas)
@@ -329,7 +435,7 @@ const formatDate = (dateString?: string) => {
     return date.toLocaleDateString('es-ES', {
         year: 'numeric',
         month: 'long',
-        day: 'numeric'
+        day: 'numeric',
     })
 }
 
@@ -355,7 +461,7 @@ const submitComment = async () => {
 
     try {
         const commentData: CommentRequest = {
-            content: commentForm.value.content.trim()
+            content: commentForm.value.content.trim(),
         }
 
         await createCommentAction(reviewId, commentData)
@@ -364,7 +470,6 @@ const submitComment = async () => {
         commentForm.value.content = ''
 
         await loadReview(reviewId)
-
     } catch (err: any) {
         console.error('Error al enviar comentario:', err)
         alert(err.message || 'Error al enviar el comentario. Inténtalo de nuevo.')
@@ -401,7 +506,7 @@ const submitReply = async (parentCommentId: number) => {
     try {
         const replyData: CommentRequest = {
             content: replyForm.value.content.trim(),
-            parent_id: parentCommentId
+            parent_id: parentCommentId,
         }
 
         await createCommentAction(reviewId, replyData)
@@ -410,7 +515,6 @@ const submitReply = async (parentCommentId: number) => {
         cancelReply()
 
         await loadReview(reviewId)
-
     } catch (err: any) {
         console.error('Error al enviar respuesta:', err)
         alert(err.message || 'Error al enviar la respuesta. Inténtalo de nuevo.')
